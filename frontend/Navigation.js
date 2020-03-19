@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Home from './Components/Home';
@@ -11,33 +11,61 @@ import { Ionicons } from '@expo/vector-icons';
 
 const AppNavigator = createBottomTabNavigator(
     {
-        Home: { screen: Home },
-        Search: { screen: Search },
-        Add: { screen: Add },
-        Settings: { screen: Settings },
-        Notifications: { screen: Notifications }
+        Home: { 
+            screen: Home,
+            navigationOptions: {
+                tabBarLabel: 'Home', 
+                tabBarIcon: ({ tintColor }) => (
+                    <Ionicons name="ios-home" color={tintColor} size={25} />
+                )
+            } },
+        Search: { 
+            screen: Search,
+            navigationOptions: {
+                tabBarLabel: 'Search', 
+                tabBarIcon: ({ tintColor }) => (
+                    <Ionicons name="ios-search" color={tintColor} size={25} />
+                )
+            } },
+        Add: { 
+            screen: Add,
+            navigationOptions: {
+                tabBarLabel: 'Add', 
+                tabBarIcon: ({ tintColor }) => (
+                    <Ionicons name="ios-add-circle" color={"#63816D"} size={45} />
+                )
+            } },
+        Notifications: { 
+            screen: Notifications,
+            navigationOptions: {
+                tabBarLabel: 'Notifications', 
+                tabBarIcon: ({ tintColor }) => (
+                    <Ionicons name="ios-notifications-outline" color={tintColor} size={25} />
+                )
+            } },
+        Settings: { 
+            screen: Settings,
+            navigationOptions: {
+                tabBarLabel: 'Settings', 
+                tabBarIcon: ({ tintColor }) => (
+                    <Ionicons name="ios-settings" color={tintColor} size={25} />
+                )
+            } }, 
+            
 
     },
-
     {
-        defaultNavigationOptions: ({ navigation }) => ({
-            tabBarIcon: ({ tintColor }) => {
-                const { routeName } = navigation.state;
-                if (routeName === 'Home') {
-                    return <Ionicons name='ios-home' size={25} color={tintColor} />;
-                } else if (routeName === 'Settings') {
-                    return <Ionicons name='ios-settings' size={25} color={tintColor} />;
-                } else if (routeName === 'Add') {
-                    return <Ionicons name='ios-add-circle' size={35} color="#63816D" />;
-                } else if (routeName === 'Search') {
-                    return <Ionicons name='ios-search' size={25} color={tintColor} />;
-                } else if (routeName === 'Notifications') {
-                    return <Ionicons name='ios-notifications-outline' size={25} color={tintColor} />;
-                }
-            }
-        })
+        tabBarOptions: {
+            activeTintColor: 'black', 
+            inactiveTintColor: 'grey',
+            showLabel: false       
+        }
     }
+
+
 );
+
+
 const AppContainer = createAppContainer(AppNavigator);
 export default function Navigation() {
     return (
