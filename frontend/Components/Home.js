@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import { Ionicons } from '@expo/vector-icons';
 
 
 export default function Home() {
@@ -17,14 +16,13 @@ export default function Home() {
                 <FlatList
                     horizontal={true}
                     contentContainerStyle={{ alignSelf: 'flex-start' }}
-                    style={{ borderRadius: 6, borderColor: 'black', position: "relative", zIndex: 1 }}
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
                     marginLeft={15}
                     data={plants}
                     renderItem={({ item }) =>
-                        <View>
-                            <Text style={{ textAlign: 'center', fontSize: 16 }}>{item}</Text>
+                        <View style={[styles.border]}>
+                            <Text style={{ textAlign: 'center', fontSize: 16, marginTop: 10, fontWeight:"bold" }}>{item}</Text>
                             <Image style={{ width: 150, height: 150 }} source={require('./flowerpot.png')} />
 
                         </View>
@@ -39,11 +37,11 @@ export default function Home() {
                     renderItem={({ item }) =>
                         <View style={{ flexDirection: "row", marginBottom: 5 }}>
                             <View>
-                                <Image style={{ width: 30, height: 30, borderRadius: 40 }} source={require('./eaaf7e.png')} />
+                                <Image style={{ width: 30, height: 30, borderRadius: 40}} source={require('./eaaf7e.png')} />
                             </View>
-                            <View style={{ marginLeft: 10, marginBottom: 10 }}>
-                                <Text style={{ marginLeft: 5, fontSize: 12, color: "#ACACAC" }}>testi</Text>
-                                <Text style={{ marginLeft: 5, fontSize: 16 }}>{item}</Text>
+                            <View style={{ marginLeft: 10, marginBottom: 10, flex:2 }}>
+                                <Text style={{ marginLeft: 5, fontSize: 12, color: "#ACACAC", fontWeight: "bold" }}>Tänään klo 8.20</Text>
+                                <Text style={{ marginLeft: 5, fontSize: 16 }}>{item} kasteltu.</Text>
                             </View>
                         </View>
 
@@ -79,9 +77,19 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         flex: 2,
         fontWeight: 'bold',
-        fontSize: 14,
+        fontSize: 14
 
     },
+    border: {
+        borderWidth: 2, 
+        borderColor: "#0000000D", 
+        borderRadius: 2, 
+        marginRight: 3,
+        marginLeft: 3,
+        shadowColor:'#0000000D', 
+        shadowOpacity: 1, 
+        shadowOffset:{width: 10, height: 10}
+    }
 
 
 });

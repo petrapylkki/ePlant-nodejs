@@ -58,11 +58,13 @@ const AppNavigator = createBottomTabNavigator(
         tabBarOptions: {
             activeTintColor: 'black', 
             inactiveTintColor: 'grey',
-            showLabel: false       
+            showLabel: false,
+                 
         }
     },
 
 );
+
 
 
 const AppContainer = createAppContainer(AppNavigator);
