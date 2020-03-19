@@ -60,8 +60,7 @@ const AppNavigator = createBottomTabNavigator(
             inactiveTintColor: 'grey',
             showLabel: false       
         }
-    }
-
+    },
 
 );
 
