@@ -1,18 +1,19 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-
+import { setCustomText } from 'react-native-global-props';
 
 export default function Home() {
+    const [user, setuser] = React.useState("Petra")
     const [plants, setPlants] = React.useState(["Teuvo", "Martti", "Ykä", "Teppo"]);
 
     return (
         <View style={styles.container}>
             <View style={styles.top} >
-                <Text style={[styles.top]}>Moi Petra!</Text>
+    <Text style={[styles.top]}>Moi {user}!</Text>
             </View>
             <View style={styles.middle}>
-                <Text style={[styles.middle]}>Omat kasvini</Text>
+                <Text style={[styles.text]}>Omat kasvini</Text>
                 <FlatList
                     horizontal={true}
                     contentContainerStyle={{ alignSelf: 'flex-start' }}
@@ -31,7 +32,7 @@ export default function Home() {
                 />
             </View>
             <View style={styles.bottom}>
-                <Text style={[styles.bottom]}>Viimeisimmät tapahtumat</Text>
+                <Text style={[styles.text]}>Viimeisimmät tapahtumat</Text>
                 <FlatList data={plants}
                     marginLeft={15}
                     renderItem={({ item }) =>
@@ -56,8 +57,12 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
         flex: 1
-
-
+    },
+    text: {
+        fontSize: 14,
+        fontWeight: "bold",
+        marginLeft: 10,
+        marginBottom: 15,
     },
     top: {
         fontSize: 26,

@@ -14,7 +14,9 @@
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
     "react-native-background-color": "0.0.8",
+    "react-native-elements": "^1.2.7",
     "react-native-gesture-handler": "~1.5.0",
+    "react-native-global-props": "^1.1.5",
     "react-native-reanimated": "~1.4.0",
     "react-native-screens": "2.0.0-alpha.12",
     "react-native-web": "~0.11.7",
@@ -25,5 +27,6 @@
     "babel-preset-expo": "~8.0.0",
     "@babel/core": "^7.0.0"
   },
+
   "private": true
 }

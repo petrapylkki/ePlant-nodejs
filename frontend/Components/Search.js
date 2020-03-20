@@ -1,20 +1,19 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, Image } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Image, TextInput, Button } from 'react-native';
+import SearchBox from './SearchBar'
 
 export default function Search() {
 
     const [easyPlants, setEasyPlants] = React.useState(["Kaktus1", "Kaktus2", "Kaktus3", "Kaktus4"]);
     const [foodPlants, setFoodPlants] = React.useState(["Korianteri", "Rucola", "Basilika", "Minitomaatti"]);
 
-
     return (
         <View style={styles.container}>
             <View style={styles.search}>
-                <Text>Haku</Text>
-
+                <SearchBox />
             </View>
             <View style={styles.top}>
-                <Text>Helppohoitoiset kasvit</Text>
+                <Text style={styles.text}>Helppohoitoiset kasvit</Text>
                 <FlatList
                     horizontal={true}
                     contentContainerStyle={{ alignSelf: 'flex-start' }}
@@ -24,7 +23,7 @@ export default function Search() {
                     data={easyPlants}
                     renderItem={({ item }) =>
                         <View style={[styles.border]}>
-                            <Text style={{ textAlign: 'center', fontSize: 16, marginTop: 10, fontWeight:"bold" }}>{item}</Text>
+                            <Text style={{ textAlign: 'center', fontSize: 16, marginTop: 10, fontWeight: "bold" }}>{item}</Text>
                             <Image style={{ width: 150, height: 150 }} source={require('./flowerpot.png')} />
 
                         </View>
@@ -33,7 +32,7 @@ export default function Search() {
                 />
             </View>
             <View style={styles.bottom}>
-                <Text>Ruokaan</Text>
+                <Text style={styles.text}>Ruokaan</Text>
                 <FlatList
                     horizontal={true}
                     contentContainerStyle={{ alignSelf: 'flex-start' }}
@@ -43,7 +42,7 @@ export default function Search() {
                     data={foodPlants}
                     renderItem={({ item }) =>
                         <View style={[styles.border]}>
-                            <Text style={{ textAlign: 'center', fontSize: 16, marginTop: 10, fontWeight:"bold" }}>{item}</Text>
+                            <Text style={{ textAlign: 'center', fontSize: 16, marginTop: 10, fontWeight: "bold" }}>{item}</Text>
                             <Image style={{ width: 150, height: 150 }} source={require('./flowerpot.png')} />
 
                         </View>
@@ -54,7 +53,11 @@ export default function Search() {
 
         </View>
     );
+
+
+
 };
+
 
 const styles = StyleSheet.create({
     container: {
@@ -65,12 +68,28 @@ const styles = StyleSheet.create({
 
     },
     search: {
-        flex:1
+        flex: 1
     },
     top: {
-        flex: 2
+        flex: 2,
     },
     bottom: {
         flex: 2
+    },
+    text: {
+        fontSize: 14,
+        fontWeight: "bold",
+        marginLeft: 10,
+        marginBottom: 15
+    },
+    border: {
+        borderWidth: 2, 
+        borderColor: "#0000000D", 
+        borderRadius: 2, 
+        marginRight: 3,
+        marginLeft: 3,
+        shadowColor:'#0000000D', 
+        shadowOpacity: 1, 
+        shadowOffset:{width: 10, height: 10}
     }
 });
