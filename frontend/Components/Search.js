@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, Image, TextInput, Button } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Image, TextInput, Button, Header } from 'react-native';
 import SearchBox from './SearchBar'
 
 export default function Search() {
@@ -9,7 +9,8 @@ export default function Search() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.search}>
+            <View style={{flex: 1, borderColor: '#FAFAFA'}}>
+                <Text style={[styles.title]}>Haku</Text>
                 <SearchBox />
             </View>
             <View style={styles.top}>
@@ -61,17 +62,15 @@ export default function Search() {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
+        backgroundColor: '#FCFCFC',
         flex: 1
     },
     flatlist: {
 
     },
-    search: {
-        flex: 1
-    },
     top: {
         flex: 2,
+        marginTop: 25
     },
     bottom: {
         flex: 2
@@ -83,13 +82,22 @@ const styles = StyleSheet.create({
         marginBottom: 15
     },
     border: {
-        borderWidth: 2, 
-        borderColor: "#0000000D", 
-        borderRadius: 2, 
+        borderWidth: 2,
+        borderColor: "#0000000D",
+        borderRadius: 2,
         marginRight: 3,
         marginLeft: 3,
-        shadowColor:'#0000000D', 
-        shadowOpacity: 1, 
-        shadowOffset:{width: 10, height: 10}
-    }
+        shadowColor: '#0000000D',
+        shadowOpacity: 1,
+        shadowOffset: { width: 10, height: 10 }
+    },
+    title: {
+        fontSize: 14,
+        fontWeight: "bold",
+        textAlign: 'center',
+        marginTop: 28,
+        marginBottom: 20,
+        backgroundColor: '#FAFAFA',
+        
+    },
 });

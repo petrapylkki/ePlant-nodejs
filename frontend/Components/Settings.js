@@ -1,8 +1,31 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
 
 export default function Settings() {
-    return(
-    <View ><Text>This is Settings</Text></View>
+    return (
+        <View style={[styles.container]}>
+            <View style={[styles.border]}>
+                <Text style={[styles.text]}>Asetukset</Text>
+            </View>
+        </View>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#FCFCFC',
+        flex: 1
+    },
+    text: {
+        fontSize: 14,
+        fontWeight: "bold",
+        textAlign: 'center',
+        marginTop: 28,
+        marginBottom: 20,
+    },
+    border: {
+        borderWidth: 1,
+        borderColor: '#DEDDDD',
+        backgroundColor: '#FAFAFA'
+    },
+});

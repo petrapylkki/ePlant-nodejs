@@ -1,7 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
-import { setCustomText } from 'react-native-global-props';
+import { StyleSheet, View, Text, Image, FlatList } from 'react-native';
 
 export default function Home() {
     const [user, setuser] = React.useState("Petra")
@@ -10,7 +8,7 @@ export default function Home() {
     return (
         <View style={styles.container}>
             <View style={styles.top} >
-    <Text style={[styles.top]}>Moi {user}!</Text>
+                <Text style={[styles.top]}>Moi {user}!</Text>
             </View>
             <View style={styles.middle}>
                 <Text style={[styles.text]}>Omat kasvini</Text>
@@ -23,11 +21,9 @@ export default function Home() {
                     data={plants}
                     renderItem={({ item }) =>
                         <View style={[styles.border]}>
-                            <Text style={{ textAlign: 'center', fontSize: 16, marginTop: 10, fontWeight:"bold" }}>{item}</Text>
+                            <Text style={{ textAlign: 'center', fontSize: 16, marginTop: 10, fontWeight: "bold" }}>{item}</Text>
                             <Image style={{ width: 150, height: 150 }} source={require('./flowerpot.png')} />
-
                         </View>
-
                     }
                 />
             </View>
@@ -38,9 +34,9 @@ export default function Home() {
                     renderItem={({ item }) =>
                         <View style={{ flexDirection: "row", marginBottom: 5 }}>
                             <View>
-                                <Image style={{ width: 30, height: 30, borderRadius: 40}} source={require('./eaaf7e.png')} />
+                                <Image style={{ width: 30, height: 30, borderRadius: 40 }} source={require('./eaaf7e.png')} />
                             </View>
-                            <View style={{ marginLeft: 10, marginBottom: 10, flex:2 }}>
+                            <View style={{ marginLeft: 10, marginBottom: 10, flex: 2 }}>
                                 <Text style={{ marginLeft: 5, fontSize: 12, color: "#ACACAC", fontWeight: "bold" }}>Tänään klo 8.20</Text>
                                 <Text style={{ marginLeft: 5, fontSize: 16 }}>{item} kasteltu.</Text>
                             </View>
@@ -55,8 +51,9 @@ export default function Home() {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
-        flex: 1
+        backgroundColor: '#FCFCFC',
+        flex: 1,
+
     },
     text: {
         fontSize: 14,
@@ -82,18 +79,23 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         flex: 2,
         fontWeight: 'bold',
-        fontSize: 14
+        fontSize: 14,
 
     },
     border: {
-        borderWidth: 2, 
-        borderColor: "#0000000D", 
-        borderRadius: 2, 
+        borderWidth: 2,
+        borderColor: "#0000000D",
+        borderRadius: 2,
         marginRight: 3,
         marginLeft: 3,
-        shadowColor:'#0000000D', 
-        shadowOpacity: 1, 
-        shadowOffset:{width: 10, height: 10}
+    },
+    shadow: {
+        shadowColor: "#000",
+        shadowOffset: {width: 0, height: 6},
+        shadowOpacity: 0.39,
+        shadowRadius: 8.30,
+
+        elevation: 13,
     }
 
 

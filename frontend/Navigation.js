@@ -32,7 +32,7 @@ const AppNavigator = createBottomTabNavigator(
             navigationOptions: {
                 tabBarLabel: 'Add', 
                 tabBarIcon: ({ tintColor }) => (
-                    <Ionicons name="ios-add-circle" color={"#63816D"} size={45} />
+                    <Ionicons name="ios-add-circle" color={"#63816D"} size={50} />
                 )
             } },
         Notifications: { 
@@ -59,6 +59,7 @@ const AppNavigator = createBottomTabNavigator(
             activeTintColor: 'black', 
             inactiveTintColor: 'grey',
             showLabel: false,
+            style: {height: 70}
                  
         }
     },
