@@ -1,14 +1,16 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, FlatList } from 'react-native';
+import { StyleSheet, View, Text, Image, FlatList, Button, ScrollView, TouchableOpacity } from 'react-native';
 
-export default function Home() {
+export default function Home(props) {
     const [user, setuser] = React.useState("Petra")
     const [plants, setPlants] = React.useState(["Teuvo", "Martti", "Ykä", "Teppo"]);
+    const navigationOptions = { title: 'Home' };
+    const { navigate } = props.navigation;
 
     return (
         <View style={styles.container}>
             <View style={styles.top} >
-                <Text style={[styles.top]}>Moi {user}!</Text>
+                <Text style={[styles.top]}>Huomenta {user}!</Text>
             </View>
             <View style={styles.middle}>
                 <Text style={[styles.text]}>Omat kasvini</Text>
@@ -27,8 +29,15 @@ export default function Home() {
                     }
                 />
             </View>
-            <View style={styles.bottom}>
+            <View style={{ flexDirection: 'row', marginLeft: 10, marginTop: 30 }}>
                 <Text style={[styles.text]}>Viimeisimmät tapahtumat</Text>
+                <TouchableOpacity
+                    onPress={() => navigate('Notifications')}
+                >
+                    <Text style={{color:'#63816D', fontSize: 12, marginLeft: 60}}>Näytä lisää</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.bottom}>
                 <FlatList data={plants}
                     marginLeft={15}
                     renderItem={({ item }) =>
@@ -59,15 +68,13 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: "bold",
         marginLeft: 10,
-        marginBottom: 15,
+        marginBottom: 5
     },
     top: {
         fontSize: 26,
-        marginTop: 30,
-        fontWeight: 'bold',
         marginLeft: 10,
-        marginBottom: 25,
-        flex: 1
+        flex: 1,
+        marginTop: 30
     },
     middle: {
         fontSize: 14,
@@ -91,12 +98,12 @@ const styles = StyleSheet.create({
     },
     shadow: {
         shadowColor: "#000",
-        shadowOffset: {width: 0, height: 6},
+        shadowOffset: { width: 0, height: 6 },
         shadowOpacity: 0.39,
         shadowRadius: 8.30,
 
         elevation: 13,
-    }
+    },
 
 
 });

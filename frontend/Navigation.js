@@ -7,65 +7,70 @@ import Add from './Components/Add';
 import Notifications from './Components/Notifications';
 import Search from './Components/Search';
 import Settings from './Components/Settings';
+import NewPlant from './Components/NewPlant';
 import { Ionicons } from '@expo/vector-icons';
 
 const AppNavigator = createBottomTabNavigator(
     {
-        Home: { 
+        Home: {
             screen: Home,
             navigationOptions: {
-                tabBarLabel: 'Home', 
+                tabBarLabel: 'Home',
                 tabBarIcon: ({ tintColor }) => (
                     <Ionicons name="ios-home" color={tintColor} size={25} />
                 )
-            } },
-        Search: { 
+            }
+        },
+        Search: {
             screen: Search,
             navigationOptions: {
-                tabBarLabel: 'Search', 
+                tabBarLabel: 'Search',
                 tabBarIcon: ({ tintColor }) => (
                     <Ionicons name="ios-search" color={tintColor} size={25} />
                 )
-            } },
-        Add: { 
+            }
+        },
+        Add: {
             screen: Add,
             navigationOptions: {
-                tabBarLabel: 'Add', 
+                tabBarLabel: 'Add',
                 tabBarIcon: ({ tintColor }) => (
                     <Ionicons name="ios-add-circle" color={"#63816D"} size={50} />
                 )
-            } },
-        Notifications: { 
+            }
+        },
+        Notifications: {
             screen: Notifications,
             navigationOptions: {
-                tabBarLabel: 'Notifications', 
+                tabBarLabel: 'Notifications',
                 tabBarIcon: ({ tintColor }) => (
                     <Ionicons name="ios-notifications-outline" color={tintColor} size={25} />
                 )
-            } },
-        Settings: { 
+            }
+        },
+        Settings: {
             screen: Settings,
             navigationOptions: {
-                tabBarLabel: 'Settings', 
+                tabBarLabel: 'Settings',
                 tabBarIcon: ({ tintColor }) => (
                     <Ionicons name="ios-settings" color={tintColor} size={25} />
                 )
-            } }, 
-            
+            }
+        },
+
 
     },
     {
         tabBarOptions: {
-            activeTintColor: 'black', 
+            activeTintColor: 'black',
             inactiveTintColor: 'grey',
             showLabel: false,
-            style: {height: 70}
-                 
+            style: { height: 70 }
+
         }
     },
 
 );
-
 
 
 const AppContainer = createAppContainer(AppNavigator);
