@@ -1,22 +1,40 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, Image, TextInput, Button, Header, ScrollView, TouchableOpacity } from 'react-native';
-import SearchBox from './SearchBar';
+import { View, Text, FlatList, StyleSheet, Image, TextInput, Button, Header, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function Search(props) {
+    navigationOptions = { title: 'Search', };
 
     const [easyPlants, setEasyPlants] = React.useState(["Kaktus1", "Kaktus2", "Kaktus3", "Kaktus4"]);
     const [foodPlants, setFoodPlants] = React.useState(["Korianteri", "Rucola", "Basilika", "Minitomaatti"]);
     const [popularPlants, setPopularPlants] = React.useState(["Peikonlehti", "Kultapalmu", "Jukkapalmu", "Traakkipuu"]);
-    const{ navigate} = props.navigation;
+    const { navigate } = props.navigation;
+    const [searchedPlant, setSearchedPlant] = React.useState('');
+
+    const search = () => {
+        fetch(easyPlants, foodPlants, popularPlants);
+
+    }
 
     return (
         <View style={styles.container}>
-            <View style={{ flex: 1, borderColor: '#FAFAFA' }}>
-                <Text style={[styles.title]}>Haku</Text>
-                <SearchBox />
+            <View style={[styles.searchbarcontainer]}>
+            <Text style={[styles.header]}>Haku</Text>
+            <View style={[styles.searchbar]}>
+                <TouchableOpacity onPress={search} >
+                    <Ionicons name="ios-search" size={20} style={[styles.icon]} />
+                </TouchableOpacity>
+                <TextInput
+                    style={[styles.textinput]}
+                    clearButtonMode={"always"}
+                    placeholder={'Hae kasveja'}
+                    onChangeText={searchedPlant => setSearchedPlant(searchedPlant)}
+                    value={searchedPlant}>
+                </TextInput>
             </View>
-            <ScrollView style={{ marginTop: 100 }}>
-                <View style={styles.top}>
+        </View>
+            <ScrollView style={[styles.topborder]} >
+                <View style={styles.category}>
                     <Text style={styles.text}>Helppohoitoiset kasvit</Text>
                     <FlatList
                         horizontal={true}
@@ -31,15 +49,15 @@ export default function Search(props) {
                                 title="NewPlant"
                                 style={[styles.border]}
                             >
-                                <Text style={{ textAlign: 'center', fontSize: 16, marginTop: 10, fontWeight: "bold" }}>{item}</Text>
-                                <Image style={{ width: 150, height: 150 }} source={require('./kaktus.jpeg')} />
+                                <Text style={[styles.plantheader]}>{item}</Text>
+                                <Image style={[styles.plantimage]} source={require('./kaktus.jpeg')} />
 
                             </TouchableOpacity>
 
                         }
                     />
                 </View>
-                <View style={styles.middle}>
+                <View style={styles.category}>
                     <Text style={styles.text}>Ruokaan</Text>
                     <FlatList
                         horizontal={true}
@@ -54,15 +72,15 @@ export default function Search(props) {
                                 title="NewPlant"
                                 style={[styles.border]}
                             >
-                                <Text style={{ textAlign: 'center', fontSize: 16, marginTop: 10, fontWeight: "bold" }}>{item}</Text>
-                                <Image style={{ width: 150, height: 150 }} source={require('./flowerpot.png')} />
+                                <Text style={[styles.plantheader]}>{item}</Text>
+                                <Image style={[styles.plantimage]} source={require('./flowerpot.png')} />
 
                             </TouchableOpacity>
 
                         }
                     />
                 </View>
-                <View style={styles.bottom}>
+                <View style={styles.category}>
                     <Text style={styles.text}>Suositut huonekasvit</Text>
                     <FlatList
                         horizontal={true}
@@ -77,11 +95,10 @@ export default function Search(props) {
                                 title="NewPlant"
                                 style={[styles.border]}
                             >
-                                <Text style={{ textAlign: 'center', fontSize: 16, marginTop: 10, fontWeight: "bold" }}>{item}</Text>
-                                <Image style={{ width: 150, height: 150 }} source={require('./aloevera.jpeg')} />
+                                <Text style={[styles.plantheader]}>{item}</Text>
+                                <Image style={[styles.plantimage]} source={require('./aloevera.jpeg')} />
 
                             </TouchableOpacity>
-
                         }
                     />
                 </View>
@@ -94,29 +111,36 @@ export default function Search(props) {
 
 };
 
-Search.navigationOptions= ({navigate}) => ({title:'Search'});
+Search.navigationOptions = ({ navigate }) => ({ title: 'Search' });
 
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#FCFCFC',
-        flex: 1
     },
-    top: {
+    topborder: {
+        borderTopColor: '#DEDDDD', 
+        borderTopWidth: 1,
+     
+    },
+    category: {
         flex: 2,
         marginTop: 25
     },
-    middle: {
-        flex: 2
+    plantheader: { 
+        textAlign: 'center', 
+        fontSize: 16, 
+        marginTop: 10, 
+        fontWeight: "bold" 
     },
-    bottom: {
-        flex: 2
+    plantimage: { 
+        width: 150, 
+        height: 150 
     },
     text: {
         fontSize: 14,
         fontWeight: "bold",
         marginLeft: 10,
         marginBottom: 15,
-        marginTop: 15
     },
     border: {
         borderWidth: 2,
@@ -125,12 +149,35 @@ const styles = StyleSheet.create({
         marginRight: 3,
         marginLeft: 3,
     },
-    title: {
-        fontSize: 14,
-        fontWeight: "bold",
-        textAlign: 'center',
+    searchbarcontainer: {
+        backgroundColor: '#FCFCFC',
         marginTop: 28,
-        marginBottom: 20,
+        alignSelf: 'center',
+    },
+    header: {
+        textAlign: 'center',
+        fontSize: 14,
+        fontWeight: 'bold',
+        marginBottom: 15
+    },
+    searchbar: {
+        flexDirection: 'row',
+        marginTop: 10,
+        backgroundColor: '#F0F0F0',
+        borderRadius: 6,
+        width: '95%',
+        height: 40,
+        marginBottom: 15
 
     },
+    textinput: {
+        width: '80%',
+        marginLeft: 10
+
+    },
+    icon: {
+        color: 'grey',
+        marginLeft: 10,
+        marginTop: 10
+    }
 });

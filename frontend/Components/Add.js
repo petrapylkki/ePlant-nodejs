@@ -2,12 +2,13 @@ import React from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
 
 export default function Add() {
-    const [value, onChangeText] = React.useState('Lisää kasvi');
+    const [value, onChangeText] = React.useState('');
 
     return (
         <View style={[styles.container]}>
-            <View style={[]}>
+            <View >
                 <TextInput
+                    placeholder={'Lisää kasvi'}
                     style={[styles.textinput]}
                     clearButtonMode={"always"}
                     onChangeText={text => onChangeText(text)}

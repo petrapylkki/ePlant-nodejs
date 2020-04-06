@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createBottomTabNavigator  } from 'react-navigation-tabs';
 import Home from './Components/Home';
 import Add from './Components/Add';
 import Notifications from './Components/Notifications';
