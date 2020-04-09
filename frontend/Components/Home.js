@@ -7,11 +7,22 @@ export default function Home(props) {
     const navigationOptions = { title: 'Home' };
     const { navigate } = props.navigation;
 
+    const alert = () => {
+        
+    }
+
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <View style={[styles.top]} >
                 <Text style={[styles.top]}>Huomenta {user}!</Text>
             </View>
+            {/* <View style={{marginLeft: 20, backgroundColor: '#D7E8F7', width: '90%', height: 80, borderRadius: 4, marginBottom: 15, flexDirection: 'row'}}>
+                <Image style={{height: 30, width: 30, marginTop: 25, marginLeft: 10}} source={require('./drop.png')}/>
+                <View>
+                    <Text style={{color: '#5386B4', fontSize: 14, fontWeight: 'bold', marginLeft: 10, marginTop: 15}}>Vesisäiliö on lähes tyhjä</Text>
+                    <Text style={{color: '#555555', fontSize: 12, marginLeft: 10, marginRight: 10, marginTop: 5}}>Täytä vesisäiliö säännöllisesti, jotta kasvisi saavat raikasta vettä joka päivä.</Text>
+                </View>
+            </View> */}
             <View style={styles.middle}>
                 <Text style={[styles.header]}>Omat kasvini</Text>
                 <FlatList
@@ -22,17 +33,17 @@ export default function Home(props) {
                     marginLeft={15}
                     data={plants}
                     renderItem={({ item }) =>
-                        <View style={[styles.border]}>
+                        <TouchableOpacity style={[styles.border]}>
                             <Text style={[styles.middletext]}>{item}</Text>
                             <Image style={[styles.middleimage]} source={require('./flowerpot.png')} />
-                        </View>
+                        </TouchableOpacity>
                     }
                 />
             </View>
             <View style={[styles.bottomheader]}>
                 <Text style={[styles.header]}>Viimeisimmät tapahtumat</Text>
                 <TouchableOpacity
-                    onPress={() => navigate('Notifications', {plants})}
+                    onPress={() => navigate('Notifications', { plants })}
                 >
                     <Text style={[styles.showmore]}>Näytä lisää</Text>
                 </TouchableOpacity>
@@ -54,10 +65,10 @@ export default function Home(props) {
                     }
                 />
             </View>
-        </View>
+        </ScrollView>
     );
 };
-Home.navigationOptions= ({navigate}) => ({title:'Home'});
+Home.navigationOptions = ({ navigate }) => ({ title: 'Home' });
 
 const styles = StyleSheet.create({
     container: {
@@ -69,7 +80,8 @@ const styles = StyleSheet.create({
         fontSize: 26,
         marginLeft: 10,
         flex: 1,
-        marginTop: 30
+        marginTop: 30,
+        marginBottom: 30
     },
     middle: {
         fontSize: 14,
@@ -84,11 +96,16 @@ const styles = StyleSheet.create({
         marginBottom: 5
     },
     border: {
-        borderWidth: 2,
-        borderColor: "#0000000D",
-        borderRadius: 2,
+        shadowColor: '#DEDDDD',
+        shadowOpacity: 2,
+        shadowOffset:{
+            height: 2,
+            width: 2
+        },
         marginRight: 3,
         marginLeft: 3,
+        backgroundColor: 'white',
+        height: 170
     },
     middletext: {
         textAlign: 'center',
@@ -108,18 +125,30 @@ const styles = StyleSheet.create({
     showmore: {
         color: '#63816D',
         fontSize: 12,
-        marginLeft: 60
+        marginLeft: 90
     },
     bottom: {
         marginLeft: 10,
         flex: 2,
         fontWeight: 'bold',
         fontSize: 14,
+        shadowColor: '#DEDDDD',
+        shadowOpacity: 2,
+        shadowOffset:{
+            height: 2,
+            width: 2
+        },
+        backgroundColor: 'white',
+        marginRight: 10,
+        marginTop: 10,
+        marginBottom: 10
 
     },
     bottomitem: {
         flexDirection: "row",
-        marginBottom: 5
+        marginBottom: 5,
+        marginTop: 10
+
     },
     bottomimage: {
         width: 30,

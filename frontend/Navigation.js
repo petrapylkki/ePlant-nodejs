@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import { createBottomTabNavigator  } from 'react-navigation-tabs';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Home from './Components/Home';
 import Add from './Components/Add';
 import Notifications from './Components/Notifications';
@@ -9,6 +9,7 @@ import Search from './Components/Search';
 import Settings from './Components/Settings';
 import NewPlant from './Components/NewPlant';
 import { Ionicons } from '@expo/vector-icons';
+import { createStackNavigator } from 'react-navigation-stack';
 
 const AppNavigator = createBottomTabNavigator(
     {
@@ -59,18 +60,31 @@ const AppNavigator = createBottomTabNavigator(
         },
 
 
+
     },
     {
         tabBarOptions: {
             activeTintColor: 'black',
             inactiveTintColor: 'grey',
             showLabel: false,
-            style: { height: 70 }
+            style: {
+                height: 70, 
+                shadowColor: '#DEDDDD',
+                shadowOpacity: 2,
+                shadowOffset:{
+                    height: 2,
+                    width: 2
+                },
+            }
 
         }
     },
 
 );
+const StackNavi = createStackNavigator({
+    screen: NewPlant
+})
+
 
 
 const AppContainer = createAppContainer(AppNavigator);

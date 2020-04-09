@@ -12,8 +12,7 @@ export default function Search(props) {
     const [searchedPlant, setSearchedPlant] = React.useState('');
 
     const search = () => {
-        fetch(easyPlants, foodPlants, popularPlants);
-
+        Alert.alert('Tää ei viel tee mitää :/')
     }
 
     return (
@@ -116,11 +115,12 @@ Search.navigationOptions = ({ navigate }) => ({ title: 'Search' });
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#FCFCFC',
+        
     },
     topborder: {
         borderTopColor: '#DEDDDD', 
         borderTopWidth: 1,
-     
+        
     },
     category: {
         flex: 2,
@@ -153,6 +153,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FCFCFC',
         marginTop: 28,
         alignSelf: 'center',
+        
     },
     header: {
         textAlign: 'center',

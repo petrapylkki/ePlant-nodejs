@@ -24,8 +24,12 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     border: {
-        borderWidth: 1,
-        borderColor: '#DEDDDD',
+        shadowColor: '#DEDDDD',
+        shadowOpacity: 2,
+        shadowOffset:{
+            height: 2,
+            width: 2
+        },
         backgroundColor: '#FAFAFA'
     },
 });
