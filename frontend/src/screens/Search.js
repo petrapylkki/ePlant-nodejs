@@ -1,15 +1,30 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet, Image, TextInput, Button, Header, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import firebase from '../components/firebase';
 
 export default function Search(props) {
     navigationOptions = { title: 'Search', };
 
-    const [easyPlants, setEasyPlants] = React.useState(["Kaktus1", "Kaktus2", "Kaktus3", "Kaktus4"]);
-    const [foodPlants, setFoodPlants] = React.useState(["Korianteri", "Rucola", "Basilika", "Minitomaatti"]);
-    const [popularPlants, setPopularPlants] = React.useState(["Peikonlehti", "Kultapalmu", "Jukkapalmu", "Traakkipuu"]);
+    const [easyPlants, setEasyPlants] = React.useState([]);
+    const [foodPlants, setFoodPlants] = React.useState([]);
+    const [lowWaterPlants, setlowWaterPlants] = React.useState([]);
     const { navigate } = props.navigation;
     const [searchedPlant, setSearchedPlant] = React.useState('');
+
+    React.useEffect(() => {
+        firebase.database().ref('kasvit/').on('value', snapshot => {
+          const plants = Object.values(snapshot.val());
+          const easyPlants = plants.filter(plant => plant.hoito === 'Helppo')
+          const foodPlants = plants.filter(plant => plant.tyyppi === 'Ruokakasvi')
+          const lowWaterPlants = plants.filter(plant => plant.vesitarve === 'Niukka')
+        
+          setEasyPlants(easyPlants);
+          setFoodPlants(foodPlants);
+          setlowWaterPlants(lowWaterPlants);
+    
+        });
+    }, []);
 
     const search = () => {
         Alert.alert('Tää ei viel tee mitää :/')
@@ -48,7 +63,7 @@ export default function Search(props) {
                                 title="NewPlant"
                                 style={[styles.border]}
                             >
-                                <Text style={[styles.plantheader]}>{item}</Text>
+                                <Text style={[styles.plantheader]}>{item.laji}</Text>
                                 <Image style={[styles.plantimage]} source={require('../assets/kaktus.png')} />
 
                             </TouchableOpacity>
@@ -57,7 +72,7 @@ export default function Search(props) {
                     />
                 </View>
                 <View style={styles.category}>
-                    <Text style={styles.text}>Ruokaan</Text>
+                    <Text style={styles.text}>Ruoka kasvit</Text>
                     <FlatList
                         horizontal={true}
                         contentContainerStyle={{ alignSelf: 'flex-start' }}
@@ -71,7 +86,7 @@ export default function Search(props) {
                                 title="NewPlant"
                                 style={[styles.border]}
                             >
-                                <Text style={[styles.plantheader]}>{item}</Text>
+                                <Text style={[styles.plantheader]}>{item.laji}</Text>
                                 <Image style={[styles.plantimage]} source={require('../assets/flowerpot.png')} />
 
                             </TouchableOpacity>
@@ -80,21 +95,21 @@ export default function Search(props) {
                     />
                 </View>
                 <View style={styles.category}>
-                    <Text style={styles.text}>Suositut huonekasvit</Text>
+                    <Text style={styles.text}>Kuivuutta kestävät kasvit</Text>
                     <FlatList
                         horizontal={true}
                         contentContainerStyle={{ alignSelf: 'flex-start' }}
                         showsVerticalScrollIndicator={false}
                         showsHorizontalScrollIndicator={false}
                         marginLeft={15}
-                        data={popularPlants}
+                        data={lowWaterPlants}
                         renderItem={({ item }) =>
                             <TouchableOpacity
                                 onPress={() => navigate('NewPlant')}
                                 title="NewPlant"
                                 style={[styles.border]}
                             >
-                                <Text style={[styles.plantheader]}>{item}</Text>
+                                <Text style={[styles.plantheader]}>{item.laji}</Text>
                                 <Image style={[styles.plantimage]} source={require('../assets/aloevera.jpeg')} />
 
                             </TouchableOpacity>
