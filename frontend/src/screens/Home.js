@@ -35,7 +35,7 @@ export default function Home(props) {
                     renderItem={({ item }) =>
                         <TouchableOpacity style={[styles.border]}>
                             <Text style={[styles.middletext]}>{item}</Text>
-                            <Image style={[styles.middleimage]} source={require('./flowerpot.png')} />
+                            <Image style={[styles.middleimage]} source={require('../assets/flowerpot.png')} />
                         </TouchableOpacity>
                     }
                 />
@@ -54,7 +54,7 @@ export default function Home(props) {
                     renderItem={({ item }) =>
                         <View style={[styles.bottomitem]}>
                             <View>
-                                <Image style={[styles.bottomimage]} source={require('./eaaf7e.png')} />
+                                <Image style={[styles.bottomimage]} source={require('../assets/eaaf7e.png')} />
                             </View>
                             <View style={[styles.bottomtext]}>
                                 <Text style={[styles.bottomtext1]}>Tänään klo 8.20</Text>

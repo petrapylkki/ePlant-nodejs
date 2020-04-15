@@ -14,7 +14,7 @@ export default function NewPlant(props) {
     return (
         <ScrollView style={[styles.container]}>
             <View style={{ flex: 1 }}>
-                <Image style={[styles.topimage]} source={require('./peikonlehti.png')} />
+                <Image style={[styles.topimage]} source={require('../assets/peikonlehti.png')} />
             </View>
             {/* <ImageBackground style={{ width: '100%', height: 250 }} source={require('./peikonlehti.png')}> */}
             <View >
@@ -25,7 +25,7 @@ export default function NewPlant(props) {
                 <View style={[styles.view1]}>
                     <View style={[styles.box]}>
                         <View >
-                            <Image style={[styles.icon]} source={require('./hand-holding-plant-icon.png')} />
+                            <Image style={[styles.icon]} source={require('../assets/hand-holding-plant-icon.png')} />
                         </View>
                         <View>
                             <Text style={[styles.boxtext1]}>Hoito</Text>
@@ -34,7 +34,7 @@ export default function NewPlant(props) {
                     </View>
                     <View style={[styles.box]}>
                         <View >
-                            <Image style={[styles.icon]} source={require('./wateringcan.png')} />
+                            <Image style={[styles.icon]} source={require('../assets/wateringcan.png')} />
                         </View>
                         <View>
                             <Text style={[styles.boxtext1]}>Veden tarve</Text>
@@ -45,7 +45,7 @@ export default function NewPlant(props) {
                 <View style={[styles.view2]}>
                     <View style={[styles.box]}>
                         <View >
-                            <Image style={[styles.icon]} source={require('./cloud.png')} />
+                            <Image style={[styles.icon]} source={require('../assets/cloud.png')} />
                         </View>
                         <View>
                             <Text style={[styles.boxtext1]}>Valon tarve</Text>
@@ -54,7 +54,7 @@ export default function NewPlant(props) {
                     </View>
                     <View style={[styles.box]}>
                         <View >
-                            <Image style={[styles.icon]} source={require('./location.png')} />
+                            <Image style={[styles.icon]} source={require('../assets/location.png')} />
                         </View>
                         <View>
                             <Text style={[styles.boxtext1]}>Alkuperä</Text>
@@ -67,13 +67,13 @@ export default function NewPlant(props) {
                 <View style={[styles.bottom]}>
                     <View style={[styles.border]}>
                         <Text style={[styles.bottomtext]}>Teuvo</Text>
-                        <Image style={[styles.bottomimage]} source={require('./flowerpot.png')} />
+                        <Image style={[styles.bottomimage]} source={require('../assets/flowerpot.png')} />
                     </View>
                     <TouchableOpacity style={[styles.add]}
                         onPress={add}
                         title="Add">
                         <Text style={[styles.addtext]}>Lisää kasvi</Text>
-                        <Image style={[styles.addimage]} source={require('./plus.png')} />
+                        <Image style={[styles.addimage]} source={require('../assets/plus.png')} />
                     </TouchableOpacity>
                 </View>
             </View>

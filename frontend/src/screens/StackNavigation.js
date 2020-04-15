@@ -1,8 +1,8 @@
 import React from 'react';
 import{createAppContainer} from 'react-navigation';
 import{createStackNavigator} from 'react-navigation-stack'
-import Search from './Search';
-import NewPlant from './NewPlant';
+import Search from './src/components/Search';
+import NewPlant from './scr/components/NewPlant';
 
 export default createStackNavigator({
   Search,

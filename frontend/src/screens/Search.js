@@ -49,7 +49,7 @@ export default function Search(props) {
                                 style={[styles.border]}
                             >
                                 <Text style={[styles.plantheader]}>{item}</Text>
-                                <Image style={[styles.plantimage]} source={require('./kaktus.jpeg')} />
+                                <Image style={[styles.plantimage]} source={require('../assets/kaktus.png')} />
 
                             </TouchableOpacity>
 
@@ -72,7 +72,7 @@ export default function Search(props) {
                                 style={[styles.border]}
                             >
                                 <Text style={[styles.plantheader]}>{item}</Text>
-                                <Image style={[styles.plantimage]} source={require('./flowerpot.png')} />
+                                <Image style={[styles.plantimage]} source={require('../assets/flowerpot.png')} />
 
                             </TouchableOpacity>
 
@@ -95,7 +95,7 @@ export default function Search(props) {
                                 style={[styles.border]}
                             >
                                 <Text style={[styles.plantheader]}>{item}</Text>
-                                <Image style={[styles.plantimage]} source={require('./aloevera.jpeg')} />
+                                <Image style={[styles.plantimage]} source={require('../assets/aloevera.jpeg')} />
 
                             </TouchableOpacity>
                         }

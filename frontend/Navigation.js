@@ -2,12 +2,12 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import Home from './Components/Home';
-import Add from './Components/Add';
-import Notifications from './Components/Notifications';
-import Search from './Components/Search';
-import Settings from './Components/Settings';
-import NewPlant from './Components/NewPlant';
+import Home from './src/screens/Home';
+import Add from './src/screens/Add';
+import Notifications from './src/screens/Notifications';
+import Search from './src/screens/Search';
+import Settings from './src/screens/Settings';
+import NewPlant from './src/screens/NewPlant';
 import { Ionicons } from '@expo/vector-icons';
 import { createStackNavigator } from 'react-navigation-stack';
 

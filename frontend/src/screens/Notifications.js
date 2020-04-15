@@ -16,7 +16,7 @@ export default function Notifications(props) {
                     renderItem={({ item }) =>
                         <View style={{ flexDirection: "row", width: 179, height: 40, marginBottom: 35 }}>
                             <View>
-                                <Image style={{ width: 40, height: 40, borderRadius: 40 }} source={require('./eaaf7e.png')} />
+                                <Image style={{ width: 40, height: 40, borderRadius: 40 }} source={require('../assets/eaaf7e.png')} />
                             </View>
                             <View style={{ marginLeft: 10, marginBottom: 10, flex: 2 }}>
                                 <Text style={{ marginLeft: 5, fontSize: 12, color: "#ACACAC", fontWeight: "bold", marginBottom: 6 }}>Tänään klo 8.20</Text>
