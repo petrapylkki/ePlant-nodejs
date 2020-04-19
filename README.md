@@ -13,5 +13,6 @@
 - `feat - Feature I'm adding or expanding`
 - `bug - Bug fix or experiment`
 
+> Naming examples:<br>
 > feat/searching<br>
 > bug/navigation
