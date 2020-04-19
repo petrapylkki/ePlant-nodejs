@@ -1,6 +1,6 @@
 # ePlant
 
-##Contents
+## Contents
 1. [Environments](#Environments) 
 2. [Branch naming](#Branch-naming)
 
