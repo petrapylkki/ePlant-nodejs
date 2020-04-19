@@ -13,5 +13,5 @@ Contents
 - `feat - Feature I'm adding or expanding`
 - `bug - Bug fix or experiment`
 
-> feat/searching
+> feat/searching<br>
 > bug/navigation
