@@ -9,9 +9,9 @@ Contents
 - ThingSpeak
 
 ### 2. Branch naming
-- wip        Works in progress; stuff I know won't be finished soon
-- feat       Feature I'm adding or expanding
-- bug        Bug fix or experiment
+- `wip - Works in progress; stuff I know won't be finished soon`
+- `feat - Feature I'm adding or expanding`
+- `bug - Bug fix or experiment`
 
 > feat/searching
 > bug/navigation
