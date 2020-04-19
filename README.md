@@ -2,7 +2,7 @@
 
 Contents
 1. [Environments](#Environments) 
-2. [Branch naming](#Branch naming)
+2. [Branch naming](#Branch-naming)
 
 ### 1. Environments
 - Firebase
