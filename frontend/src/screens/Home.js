@@ -12,20 +12,22 @@ export default function Home(props) {
         
     }
 
-const [res, setRes] = React.useState();
+const [res, setRes] = React.useState("asdfas");
     
 const vaterOn = () => {
 
   const vesipaalle = "api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=1";
   const vesipois = "api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=0";
 
-  fetch(vesipaalle)
-  .then ((response) => response.json())
-  .then ((responseJson) => {
-      setRes(responseJson);
+  fetch("api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=1")
+    .then ((response) => {
+      return response.text()
+    })
+    .then((text) => {
+    setRes(text);
     })
     .catch((error) => {
-        Alert.alert('Error', error);
+        Alert.alert('Error', error.message);
     })
   }
 
