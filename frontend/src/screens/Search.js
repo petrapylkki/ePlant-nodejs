@@ -33,20 +33,20 @@ export default function Search(props) {
     return (
         <View style={styles.container}>
             <View style={[styles.searchbarcontainer]}>
-            <Text style={[styles.header]}>Haku</Text>
-            <View style={[styles.searchbar]}>
-                <TouchableOpacity onPress={search} >
-                    <Ionicons name="ios-search" size={20} style={[styles.icon]} />
-                </TouchableOpacity>
-                <TextInput
-                    style={[styles.textinput]}
-                    clearButtonMode={"always"}
-                    placeholder={'Hae kasveja'}
-                    onChangeText={searchedPlant => setSearchedPlant(searchedPlant)}
-                    value={searchedPlant}>
-                </TextInput>
+                <Text style={[styles.header]}>Haku</Text>
+                <View style={[styles.searchbar]}>
+                    <TouchableOpacity onPress={search} >
+                        <Ionicons name="ios-search" size={20} style={[styles.icon]} />
+                    </TouchableOpacity>
+                    <TextInput
+                        style={[styles.textinput]}
+                        clearButtonMode={"always"}
+                        placeholder={'Hae kasveja'}
+                        onChangeText={searchedPlant => setSearchedPlant(searchedPlant)}
+                        value={searchedPlant}>
+                    </TextInput>
+                </View>
             </View>
-        </View>
             <ScrollView style={[styles.topborder]} >
                 <View style={styles.category}>
                     <Text style={styles.text}>Helppohoitoiset kasvit</Text>
