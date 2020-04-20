@@ -29,6 +29,19 @@ const vaterOn = () => {
     .catch((error) => {
         Alert.alert('Error', error.message);
     })
+
+    /* Jos response on jotain muuta kun 0 niin ookoo eli
+        if (res == 0) {
+            //tehdään fetch uudestaan! 
+            vaterOn();
+        else {
+            alert("Vesipumppu päällä")
+        };
+
+        // Mutta nyt vesipumppu on jatkuvasti päällä. Se pitää sammutta 10 sec päästä käyttämällä  vesipois fetch
+        
+*/
+
   }
 
 
