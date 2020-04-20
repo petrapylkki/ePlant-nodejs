@@ -8,7 +8,7 @@ export default function Home(props) {
     const { navigate } = props.navigation;
 
     const alert = () => {
-        
+
     }
 
     return (
@@ -33,7 +33,10 @@ export default function Home(props) {
                     marginLeft={15}
                     data={plants}
                     renderItem={({ item }) =>
-                        <TouchableOpacity style={[styles.border]}>
+                        <TouchableOpacity style={[styles.border]}
+                            onPress={() => navigate('MyPlant')}
+                        >
+
                             <Text style={[styles.middletext]}>{item}</Text>
                             <Image style={[styles.middleimage]} source={require('./flowerpot.png')} />
                         </TouchableOpacity>
@@ -98,7 +101,7 @@ const styles = StyleSheet.create({
     border: {
         shadowColor: '#DEDDDD',
         shadowOpacity: 2,
-        shadowOffset:{
+        shadowOffset: {
             height: 2,
             width: 2
         },
@@ -134,7 +137,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         shadowColor: '#DEDDDD',
         shadowOpacity: 2,
-        shadowOffset:{
+        shadowOffset: {
             height: 2,
             width: 2
         },
