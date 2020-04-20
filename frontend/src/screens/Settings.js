@@ -7,19 +7,19 @@ export default function Settings() {
     const list = [
         {
             title: 'Ruukut',
-            icon: 'av-timer'
+            icon: 'local-drink'
         },
         {
             title: 'Turvallisuus',
-            icon: 'flight-takeoff'
+            icon: 'security'
         },
         {
             title: 'Ilmoitukset',
-            icon: 'flight-takeoff'
+            icon: 'notifications'
         },
         {
             title: 'Tietoja',
-            icon: 'flight-takeoff'
+            icon: 'info'
         },
       ]
 
@@ -32,14 +32,17 @@ export default function Settings() {
                 {
                     list.map((item, i) => (
                     <ListItem
+                        onPress={() => alert('En tee vielä mitään')}
                         key={i}
                         title={item.title}
                         leftIcon={<Icon
-                                name={'policy'}
-                                type='material'
-                                color='#517fa4'
+                                name={item.icon}
+                                color='#555555'
                                 />}
                         chevron
+                        containerStyle={{
+                            backgroundColor: '#FCFCFC'
+                        }}
                     />
                     ))
                 }
