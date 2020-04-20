@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, FlatList, Button, ScrollView, TouchableOpacity } from 'react-native';
 
+
 export default function Home(props) {
     const [user, setuser] = React.useState("Petra")
     const [plants, setPlants] = React.useState(["Teuvo", "Martti", "Ykä", "Teppo"]);
@@ -10,6 +11,20 @@ export default function Home(props) {
     const alert = () => {
         
     }
+
+const [res, setRes] = React.useState("123123123")
+    
+const vaterOn = () => {
+
+  let vesipaalle = "api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=1";
+  let vesipois = "api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=0";
+
+  fetch(vesipaalle)
+  .then (response => response.json())
+  .then (data => setRes(data))
+  .catch(err => console.error(err))
+  }
+
 
     return (
         <ScrollView style={styles.container}>
@@ -23,6 +38,16 @@ export default function Home(props) {
                     <Text style={{color: '#555555', fontSize: 12, marginLeft: 10, marginRight: 10, marginTop: 5}}>Täytä vesisäiliö säännöllisesti, jotta kasvisi saavat raikasta vettä joka päivä.</Text>
                 </View>
             </View> */}
+
+            <View style={{paddingBottom: 20, margin: 20}}>
+                <Button
+                onPress ={vaterOn}
+                title="Vesi päälle"
+
+            />
+                <Text >{res}</Text>
+            </View>
+
             <View style={styles.middle}>
                 <Text style={[styles.header]}>Omat kasvini</Text>
                 <FlatList
