@@ -18,7 +18,15 @@ fetch('https://mywebsite.com/endpoint/', {
     firstParam: 'yourValue',
     secondParam: 'yourOtherValue',
   }),
-});
+})
+/*.then((response) => response.json())
+.then((responseData) => {
+  console.log(
+    "POST Response",
+    "Response Body -> " + JSON.stringify(responseData)
+  )
+})
+.done()*/;
     
 
 return(
