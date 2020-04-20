@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, FlatList, Button, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Alert, View, Text, Image, FlatList, Button, ScrollView, TouchableOpacity } from 'react-native';
 
 
 export default function Home(props) {
@@ -12,18 +12,23 @@ export default function Home(props) {
         
     }
 
-const [res, setRes] = React.useState("123123123")
+const [res, setRes] = React.useState();
     
 const vaterOn = () => {
 
-  let vesipaalle = "api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=1";
-  let vesipois = "api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=0";
+  const vesipaalle = "api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=1";
+  const vesipois = "api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=0";
 
   fetch(vesipaalle)
-  .then (response => response.json())
-  .then (data => setRes(data))
-  .catch(err => console.error(err))
+  .then ((response) => response.json())
+  .then ((responseJson) => {
+      setRes(responseJson);
+    })
+    .catch((error) => {
+        Alert.alert('Error', error);
+    })
   }
+
 
 
     return (
