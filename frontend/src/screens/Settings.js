@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
-import { ListItem, Icon } from 'react-native-elements';
+import { Avatar, ListItem, Icon } from 'react-native-elements';
 
 export default function Settings() {
 
@@ -24,13 +24,28 @@ export default function Settings() {
       ]
 
     return (
-        <View style={[styles.container]}>
-            <View style={[styles.header]}>
-                <Text style={[styles.text]}>Asetukset</Text>
+        <View style={styles.container}>
+            <View style={styles.header}>
+                <Text style={styles.text}>Asetukset</Text>
             </View>
+
             <View>
-                {
-                    list.map((item, i) => (
+                <View style={styles.profilecontainer}>
+                    <View>
+                        <Avatar
+                            size="large"
+                            rounded title="PP"
+                            overlayContainerStyle={{
+                                backgroundColor: '#63816D'
+                            }}
+                        />
+                    </View>
+                    <View style={styles.profileinfo}>
+                        <Text>Petra</Text>
+                        <Text>pedrrro123</Text>
+                    </View>
+                </View>
+                {list.map((item, i) => (
                     <ListItem
                         onPress={() => alert('En tee vielä mitään')}
                         key={i}
@@ -44,8 +59,8 @@ export default function Settings() {
                             backgroundColor: '#FCFCFC'
                         }}
                     />
-                    ))
-                }
+                ))}
+            <Text>Kirjaudu ulos</Text>
             </View>
         </View>
     );
@@ -54,7 +69,20 @@ export default function Settings() {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#FCFCFC',
-        flex: 1
+        flex: 1,
+        flexDirection: 'column'
+    },
+    profilecontainer: {
+        padding: 20,
+        borderBottomColor: '#DEDDDD', 
+        borderBottomWidth: 1,
+        flexDirection: 'row',
+        height: 120,
+        alignItems: 'center'
+    },
+    profileinfo: {
+        marginLeft: 20,
+        flex: 2
     },
     text: {
         fontSize: 14,
