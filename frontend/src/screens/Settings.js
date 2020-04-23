@@ -41,8 +41,8 @@ export default function Settings() {
                         />
                     </View>
                     <View style={styles.profileinfo}>
-                        <Text>Petra</Text>
-                        <Text>pedrrro123</Text>
+                        <Text style={{fontSize: 25, marginBottom: 5}}>Petra</Text>
+                        <Text style={{fontStyle: 'italic', color: '#63816D'}}>@pedrrro123</Text>
                     </View>
                 </View>
 
