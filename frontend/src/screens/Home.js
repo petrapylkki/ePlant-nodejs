@@ -12,28 +12,36 @@ export default function Home(props) {
         
     }
 
-const [res, setRes] = React.useState("asdfas");
-    
-const vaterOn = () => {
+    const [res, setRes] = React.useState('')
 
-  const vesipaalle = "api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=1";
-  const vesipois = "api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=0";
+    const waterOn = () => {
+        const url = 'https://api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=1';
+        fetch(url)
+        .then((response) => response.json())
+        .then((responseJson) => {
+          setRes(responseJson);
+        })
+        .catch((error) => {
+          Alert.alert('Error', error);
+        });
+      }
 
-  fetch("api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=1")
-    .then ((response) => {
-      return response.text()
-    })
-    .then((text) => {
-    setRes(text);
-    })
-    .catch((error) => {
-        Alert.alert('Error', error.message);
-    })
+      const waterOff = () => {
+        const url = 'https://api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=0';
+        fetch(url)
+        .then((response) => response.json())
+        .then((responseJson) => {
+          setRes(responseJson);
+        })
+        .catch((error) => {
+          Alert.alert('Error', error);
+        });
+
 
     /* Jos response on jotain muuta kun 0 niin ookoo eli
         if (res == 0) {
             //tehdään fetch uudestaan! 
-            vaterOn();
+            waterOn();
         else {
             alert("Vesipumppu päällä")
         };
@@ -43,8 +51,6 @@ const vaterOn = () => {
 */
 
   }
-
-
 
     return (
         <ScrollView style={styles.container}>
@@ -60,11 +66,18 @@ const vaterOn = () => {
             </View> */}
 
             <View style={{paddingBottom: 20, margin: 20}}>
-                <Button
-                onPress ={vaterOn}
-                title="Vesi päälle"
-
+            <View>
+            <Button
+            onPress ={waterOn}
+            title="Vesi päälle"
+            style={styles.button}
             />
+            <Button
+            onPress ={waterOff}
+            title="Vesi pois"
+            style={styles.button}
+            />
+            </View>
                 <Text >{res}</Text>
             </View>
 

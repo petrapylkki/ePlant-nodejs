@@ -1,21 +1,16 @@
 import { View, Button, StyleSheet } from "react-native"
 
-
-
-
 export default function vesipumppu() {
 
-
-
-/*fetch('https://mywebsite.com/endpoint/', {
+/*fetch('https://api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=1', {
   method: 'POST',
   headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
+    Accept: 'text/plain',
+    'Content-Type': 'text/plain',
   },
   body: JSON.stringify({
-    firstParam: 'yourValue',
-    secondParam: 'yourOtherValue',
+    firstParam: 'field3',
+    secondParam: '1',
   }),
 })
 .then((response) => response.json())
@@ -29,10 +24,8 @@ export default function vesipumppu() {
 
 const [res, setRes] = React.useState("123123123")
     
-const vaterOn = () => {
-
-  let vesipaalle = "api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=1";
-  let vesipois = "api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=0";
+const waterOn = () => {
+  let vesipaalle = "https://api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=1";
 
   fetch(vesipaalle)
   .then (response => response.json())
@@ -40,10 +33,24 @@ const vaterOn = () => {
   .catch(err => console.error(err))
   }
 
+const waterOff = () => {
+  let vesipois = "https://api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=0";
+
+  fetch(vesipois)
+  .then(response => response.json())
+  .then(data => setRes(data.content))
+  .catch(err => console.error(err))
+}
+
 return(
 <View>
 <Button
-onPress ={vaterOn}
+onPress ={waterOn}
+title="Vesi päälle"
+style={styles.button}
+/>
+<Button
+onPress ={waterOff}
 title="Vesi päälle"
 style={styles.button}
 />
