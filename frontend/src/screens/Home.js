@@ -12,10 +12,11 @@ export default function Home(props) {
         
     }
 
-    const [res, setRes] = React.useState('')
+    const [res, setRes] = React.useState(0);
+    const apikey = "XR2Z3K3KE1Q1V3UA";
 
     const waterOn = () => {
-        const url = 'https://api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=1';
+        const url = 'https://api.thingspeak.com/update?api_key=' + apikey+ '&field3=1';
         fetch(url)
         .then((response) => response.json())
         .then((responseJson) => {
@@ -27,17 +28,22 @@ export default function Home(props) {
       }
 
       const waterOff = () => {
-        const url = 'https://api.thingspeak.com/update?api_key=7NFTTNLSIK37HNCC&field3=0';
+        const url = 'https://api.thingspeak.com/update?api_key=' + apikey+ '&field3=0';
         fetch(url)
         .then((response) => response.json())
         .then((responseJson) => {
-          setRes(responseJson);
+            while (true) {
+                if (parseInt(responseJson) == 0) { 
+                    waterOff();
+                } break; 
+            }; 
+            setRes(responseJson);
         })
         .catch((error) => {
           Alert.alert('Error', error);
         });
 
-
+        
     /* Jos response on jotain muuta kun 0 niin ookoo eli
         if (res == 0) {
             //tehdään fetch uudestaan! 
@@ -51,6 +57,32 @@ export default function Home(props) {
 */
 
   }
+
+  const wait = (ms) => {
+    let start = new Date().getTime();
+    let end = start;
+    while(end < start + ms) {
+      end = new Date().getTime();
+   }
+ }
+
+  const waterControl = () => {
+
+    waterOff();
+    console.log(res);
+
+    
+
+   /* waterOff();
+
+    if (res == 0) {
+        waterOff();
+        console.log("Vesipumppu päällä")
+    } else {
+        console.log("Vesipumppu pois päältä");
+    }
+*/
+}
 
     return (
         <ScrollView style={styles.container}>
@@ -66,18 +98,24 @@ export default function Home(props) {
             </View> */}
 
             <View style={{paddingBottom: 20, margin: 20}}>
-            <View>
+
+            <View style={styles.button}>
             <Button
-            onPress ={waterOn}
+            onPress ={waterControl}
             title="Vesi päälle"
             style={styles.button}
             />
+            </View>
+
+            <View style={styles.button}>
             <Button
             onPress ={waterOff}
             title="Vesi pois"
             style={styles.button}
             />
+
             </View>
+            
                 <Text >{res}</Text>
             </View>
 
@@ -129,6 +167,9 @@ export default function Home(props) {
 Home.navigationOptions = ({ navigate }) => ({ title: 'Home' });
 
 const styles = StyleSheet.create({
+    button: {
+        paddingBottom: 20
+    },
     container: {
         backgroundColor: '#FCFCFC',
         flex: 1,
