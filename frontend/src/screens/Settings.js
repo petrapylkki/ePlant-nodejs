@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
-import { Avatar, ListItem, Icon } from 'react-native-elements';
+import { View, Text, StyleSheet } from 'react-native';
+import { Avatar, ListItem, Icon, Button } from 'react-native-elements';
 
 export default function Settings() {
 
@@ -29,7 +29,7 @@ export default function Settings() {
                 <Text style={styles.text}>Asetukset</Text>
             </View>
 
-            <View>
+            <View style={styles.content}>
                 <View style={styles.profilecontainer}>
                     <View>
                         <Avatar
@@ -45,6 +45,7 @@ export default function Settings() {
                         <Text>pedrrro123</Text>
                     </View>
                 </View>
+
                 {list.map((item, i) => (
                     <ListItem
                         onPress={() => alert('En tee vielä mitään')}
@@ -60,8 +61,9 @@ export default function Settings() {
                         }}
                     />
                 ))}
-            <Text>Kirjaudu ulos</Text>
             </View>
+
+            <Button title='Kirjaudu ulos' type='clear' titleStyle={{ color: '#63816D' }} buttonStyle={styles.logout}/>
         </View>
     );
 };
@@ -79,6 +81,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         height: 120,
         alignItems: 'center'
+    },
+    content: {
+        flex: 1,
+    },
+    logout: {
+        position: 'absolute',
+        bottom: 10,
+        left: 10
     },
     profileinfo: {
         marginLeft: 20,
