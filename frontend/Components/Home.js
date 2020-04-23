@@ -128,7 +128,8 @@ const styles = StyleSheet.create({
     showmore: {
         color: '#63816D',
         fontSize: 12,
-        marginLeft: 90
+        marginLeft: 90,
+        fontWeight: 'bold'
     },
     bottom: {
         marginLeft: 10,
