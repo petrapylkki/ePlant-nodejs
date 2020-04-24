@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, FlatList, Button, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Alert, View, Text, Image, FlatList, Button, ScrollView, TouchableOpacity } from 'react-native';
+import WaterPump from '../components/WaterpumpControl';
 
 export default function Home(props) {
     const [user, setuser] = React.useState("Petra")
@@ -10,6 +11,8 @@ export default function Home(props) {
     const alert = () => {
         
     }
+
+
 
     return (
         <ScrollView style={styles.container}>
@@ -23,6 +26,16 @@ export default function Home(props) {
                     <Text style={{color: '#555555', fontSize: 12, marginLeft: 10, marginRight: 10, marginTop: 5}}>Täytä vesisäiliö säännöllisesti, jotta kasvisi saavat raikasta vettä joka päivä.</Text>
                 </View>
             </View> */}
+
+           
+
+           
+            <View>
+                <WaterPump/>
+            </View>
+              
+            
+
             <View style={styles.middle}>
                 <Text style={[styles.header]}>Omat kasvini</Text>
                 <FlatList
@@ -71,6 +84,9 @@ export default function Home(props) {
 Home.navigationOptions = ({ navigate }) => ({ title: 'Home' });
 
 const styles = StyleSheet.create({
+    button: {
+        paddingBottom: 20
+    },
     container: {
         backgroundColor: '#FCFCFC',
         flex: 1,
