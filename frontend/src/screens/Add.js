@@ -1,16 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { Icon, ListItem, SearchBar } from 'react-native-elements';
 import firebase from '../components/firebase';
 
 export default function Add() {
     const [plantList, setPlantlist] = React.useState([]);
-    const [searchedPlant, setSearchedPlant] = React.useState('');
+    const [searchedPlant, setSearchedPlant] = React.useState([]);
 
     React.useEffect(() => {
         firebase.database().ref('kasvit/').on('value', snapshot => {
           const plantList = Object.values(snapshot.val());
-
+        
           setPlantlist(plantList);
     
         });
@@ -23,10 +23,15 @@ export default function Add() {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
+                <View>
                 <Text style={styles.headertitle}>Lisää kasvi</Text>
-                <Icon name="close" style={{position: 'absolute', right: 0}}/>
+                </View>
+                <View>
+                <Icon name="close"/>
+                </View>
             </View>
 
+        <ScrollView>
             <View style={styles.content}>
                 <Text style={styles.title}>Valitse kasvi</Text>
                 <SearchBar
@@ -51,6 +56,7 @@ export default function Add() {
                     />
                 ))}
             </View>
+            </ScrollView>
         </View>
     );
 };
@@ -60,11 +66,16 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#FCFCFC'
     },
+    header: {
+        flexDirection: 'row',
+        flex: 1,
+        justifyContent: 'space-between',
+        marginTop: 30
+    },
     headertitle: {
         fontSize: 14,
-        fontWeight: "bold",
+        fontWeight: 'bold',
         textAlign: 'center',
-        marginTop: 28,
         marginBottom: 20,
     },
     title: {
