@@ -115,15 +115,15 @@ Search.navigationOptions = ({ navigate }) => ({ title: 'Search' });
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#FCFCFC',
+        flex: 1
         
     },
     topborder: {
         borderTopColor: '#DEDDDD', 
-        borderTopWidth: 1,
+        borderTopWidth: 1
         
     },
     category: {
-        flex: 2,
         marginTop: 25
     },
     plantheader: { 
@@ -143,11 +143,16 @@ const styles = StyleSheet.create({
         marginBottom: 15,
     },
     border: {
-        borderWidth: 2,
-        borderColor: "#0000000D",
-        borderRadius: 2,
+        shadowColor: '#DEDDDD',
+        shadowOpacity: 2,
+        shadowOffset: {
+            height: 2,
+            width: 2
+        },
         marginRight: 3,
         marginLeft: 3,
+        backgroundColor: 'white',
+        height: 170
     },
     searchbarcontainer: {
         backgroundColor: '#FCFCFC',

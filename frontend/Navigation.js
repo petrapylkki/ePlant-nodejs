@@ -13,7 +13,6 @@ import MyPlant from './Components/MyPlant';
 import { Ionicons } from '@expo/vector-icons';
 import { createStackNavigator } from 'react-navigation-stack';
 
-
 const AppNavigator = createBottomTabNavigator(
     {
         Home: {
@@ -28,9 +27,6 @@ const AppNavigator = createBottomTabNavigator(
 
         Search: {
             screen: Search,
-            createStackNavigator: ({
-                screen: NewPlant
-            }),
             navigationOptions: {
                 tabBarLabel: 'Search',
                 tabBarIcon: ({ tintColor }) => (
@@ -65,12 +61,6 @@ const AppNavigator = createBottomTabNavigator(
                 )
             }
         },
-        MyPlant: {
-            screen: MyPlant
-        }
-
-
-
 
     },
     {
