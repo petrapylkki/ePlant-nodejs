@@ -9,7 +9,7 @@ export default function Home(props) {
     const { navigate } = props.navigation;
 
     const alert = () => {
-        
+
     }
 
 
@@ -46,7 +46,10 @@ export default function Home(props) {
                     marginLeft={15}
                     data={plants}
                     renderItem={({ item }) =>
-                        <TouchableOpacity style={[styles.border]}>
+                        <TouchableOpacity style={[styles.border]}
+                            onPress={() => navigate('MyPlant')}
+                        >
+
                             <Text style={[styles.middletext]}>{item}</Text>
                             <Image style={[styles.middleimage]} source={require('../assets/flowerpot.png')} />
                         </TouchableOpacity>
@@ -114,7 +117,7 @@ const styles = StyleSheet.create({
     border: {
         shadowColor: '#DEDDDD',
         shadowOpacity: 2,
-        shadowOffset:{
+        shadowOffset: {
             height: 2,
             width: 2
         },
@@ -141,7 +144,8 @@ const styles = StyleSheet.create({
     showmore: {
         color: '#63816D',
         fontSize: 12,
-        marginLeft: 90
+        marginLeft: 90,
+        fontWeight: 'bold'
     },
     bottom: {
         marginLeft: 10,
@@ -150,7 +154,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         shadowColor: '#DEDDDD',
         shadowOpacity: 2,
-        shadowOffset:{
+        shadowOffset: {
             height: 2,
             width: 2
         },
