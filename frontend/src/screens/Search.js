@@ -179,7 +179,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 14,
         fontWeight: 'bold',
-        marginBottom: 15
+        marginBottom: 15,
+        marginTop: 20
     },
     searchbar: {
         flexDirection: 'row',
