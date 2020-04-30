@@ -48,10 +48,10 @@ export default function MyPlant(props) {
                 <View>
                     <Text style={[styles.plantname]}>{plants[0]}</Text>
                     <Text style={[styles.plantheader]}>Peikonlehti</Text>
-                    <Image style={[styles.topimage]} source={require('./smile.png')} />
+                    <Image style={[styles.topimage]} source={require('../assets/smile.png')} />
                 </View>
                 <View>
-                    <Image style={[styles.topimage2]} source={require('./flowerpot.png')} />
+                    <Image style={[styles.topimage2]} source={require('../assets/flowerpot.png')} />
                 </View>
             </View>
             <View style={[styles.container2]}>
@@ -115,7 +115,7 @@ export default function MyPlant(props) {
                         renderItem={({ item }) =>
                             <View style={[styles.bottomitem]}>
                                 <View>
-                                    <Image style={[styles.bottomimage]} source={require('./eaaf7e.png')} />
+                                    <Image style={[styles.bottomimage]} source={require('../assets/eaaf7e.png')} />
                                 </View>
                                 <View style={[styles.bottomtext]}>
                                     <Text style={[styles.bottomtext1]}>Tänään klo 8.20</Text>
