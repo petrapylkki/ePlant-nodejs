@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Alert, View, Text, Image, FlatList, Button, ScrollView, TouchableOpacity } from 'react-native';
 import WaterPump from '../components/WaterpumpControl';
+import AutomaticControl from '../components/AutomaticControll';
 
 export default function Home(props) {
     const [user, setuser] = React.useState("Petra")
@@ -29,6 +30,7 @@ export default function Home(props) {
            
             <View>
                 <WaterPump/>
+                <AutomaticControl/>
             </View>
               
             <View style={styles.middle}>

@@ -13,7 +13,7 @@ export default function waterpumpControl() {
       .then((responseJson) => {
           while (true) {
               if (parseInt(responseJson) == 0) { 
-                  waterOff();
+                  waterOn();
                   console.log(responseJson);
               } 
               break; 
@@ -34,7 +34,8 @@ export default function waterpumpControl() {
               if (parseInt(responseJson) == 0) { 
                   waterOff();
                   console.log(responseJson);
-              } 
+              }
+              // Loading icon off                                     //            //
               break; 
           }; 
           setRes(responseJson);
