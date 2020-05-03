@@ -1,23 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { Icon, ListItem, SearchBar } from 'react-native-elements';
 import firebase from '../components/firebase';
 
 export default function Add() {
-    const [plantList, setPlantlist] = React.useState([]);
-    const [searchTerm, setSearchTerm] = React.useState('');
-    const handleChange = event => {
-        setSearchTerm(event.target.value);
-    }
+    const [plantList, setPlantlist] = useState([]);
+    const [filteredPlantList, setFilteredPlantlist] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const handleChange = text => {
+        console.log(text)
+        setSearchTerm(text);
+    };
+    const handleSubmit = event => {
+        console.log(event)
+        handleChange(event.nativeEvent.text)
+    };
 
-    React.useEffect(() => {
+    useEffect(() => {
         firebase.database().ref('kasvit/').on('value', snapshot => {
-          const plantList = Object.values(snapshot.val());
-          const results = plantList.filter(plant => 
-            plant.toLowerCase().includes(searchTerm.toLowerCase())
-          )
-          setPlantlist(results);
+            const plantList = Object.values(snapshot.val());
+
+            setPlantlist(plantList);
+            setFilteredPlantlist(plantList);
         });
+    }, []);
+
+    useEffect(() => {
+          const results = plantList.filter(plant => 
+            plant.laji.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+          setFilteredPlantlist(results);
     }, [searchTerm]);
 
     return (
@@ -37,7 +49,7 @@ export default function Add() {
                 <SearchBar
                     onChangeText={handleChange}
                     placeholder='Hae kasveja'
-                    onSubmitEditing={() => search()}
+                    onSubmitEditing={handleSubmit}
                     value={searchTerm}
                     platform='ios'
                     lightTheme={true}
@@ -47,7 +59,7 @@ export default function Add() {
                     inputContainerStyle={{backgroundColor: '#F0F0F0'}}
                     returnKeyType='search'
                     />
-                {plantList.map((item, i) => (
+                {filteredPlantList.map((item, i) => (
                     <ListItem
                         onPress={() => alert('En tee vielä mitään')}
                         key={i}
