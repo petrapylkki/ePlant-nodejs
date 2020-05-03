@@ -5,20 +5,20 @@ import firebase from '../components/firebase';
 
 export default function Add() {
     const [plantList, setPlantlist] = React.useState([]);
-    const [searchedPlant, setSearchedPlant] = React.useState([]);
+    const [searchTerm, setSearchTerm] = React.useState('');
+    const handleChange = event => {
+        setSearchTerm(event.target.value);
+    }
 
     React.useEffect(() => {
         firebase.database().ref('kasvit/').on('value', snapshot => {
           const plantList = Object.values(snapshot.val());
-        
-          setPlantlist(plantList);
-    
+          const results = plantList.filter(plant => 
+            plant.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+          setPlantlist(results);
         });
-    }, []);
-
-    const search = () => {
-        Alert.alert('Tää ei viel tee mitää :/')
-    }
+    }, [searchTerm]);
 
     return (
         <View style={styles.container}>
@@ -35,15 +35,17 @@ export default function Add() {
             <View style={styles.content}>
                 <Text style={styles.title}>Valitse kasvi</Text>
                 <SearchBar
-                    onChangeText={search}
-                    placeholder={'Hae kasveja'}
-                    onChangeText={searchedPlant => setSearchedPlant(searchedPlant)}
-                    value={searchedPlant}
+                    onChangeText={handleChange}
+                    placeholder='Hae kasveja'
+                    onSubmitEditing={() => search()}
+                    value={searchTerm}
+                    platform='ios'
                     lightTheme={true}
                     showCancel={true}
-                    cancelButtonTitle={'Peruuta'}
+                    cancelButtonTitle='Peruuta'
                     containerStyle={styles.searchcontainer}
                     inputContainerStyle={{backgroundColor: '#F0F0F0'}}
+                    returnKeyType='search'
                     />
                 {plantList.map((item, i) => (
                     <ListItem
@@ -85,7 +87,7 @@ const styles = StyleSheet.create({
     },
     content: {
         flexDirection: "column",
-        marginTop: 40
+        marginTop: 20
     },
     searchcontainer: {
         backgroundColor: '#FCFCFC',
