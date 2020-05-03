@@ -41,8 +41,10 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: "bold",
         textAlign: 'center',
-        marginTop: 28,
-        marginBottom: 20,
+        marginTop: 48,
+        paddingBottom: 20,
+        borderBottomColor: '#DEDDDD', 
+        borderBottomWidth: 1,
     },
     border: {
         shadowColor: '#DEDDDD',
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
         flex: 2,
         fontWeight: 'bold',
         fontSize: 14,
-        marginTop: 51
+        marginTop: 10
 
     },
 });

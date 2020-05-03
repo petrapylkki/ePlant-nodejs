@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: "bold",
         textAlign: 'center',
-        marginTop: 28,
+        marginTop: 48,
         marginBottom: 20,
     },
     header: {

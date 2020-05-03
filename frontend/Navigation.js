@@ -22,6 +22,7 @@ const AppNavigator = createBottomTabNavigator(
                 )
             }
         },
+
         Search: {
             screen: Search,
             navigationOptions: {
@@ -59,8 +60,6 @@ const AppNavigator = createBottomTabNavigator(
             }
         },
 
-
-
     },
     {
         tabBarOptions: {
@@ -68,10 +67,10 @@ const AppNavigator = createBottomTabNavigator(
             inactiveTintColor: 'grey',
             showLabel: false,
             style: {
-                height: 70, 
+                height: 70,
                 shadowColor: '#DEDDDD',
                 shadowOpacity: 2,
-                shadowOffset:{
+                shadowOffset: {
                     height: 2,
                     width: 2
                 },
@@ -81,10 +80,6 @@ const AppNavigator = createBottomTabNavigator(
     },
 
 );
-const StackNavi = createStackNavigator({
-    screen: NewPlant
-})
-
 
 
 const AppContainer = createAppContainer(AppNavigator);

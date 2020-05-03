@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, FlatList, Button, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Alert, View, Text, Image, FlatList, Button, ScrollView, TouchableOpacity } from 'react-native';
+import WaterPump from '../components/WaterpumpControl';
 
 export default function Home(props) {
     const [user, setuser] = React.useState("Petra")
@@ -8,8 +9,10 @@ export default function Home(props) {
     const { navigate } = props.navigation;
 
     const alert = () => {
-        
+
     }
+
+
 
     return (
         <ScrollView style={styles.container}>
@@ -23,6 +26,11 @@ export default function Home(props) {
                     <Text style={{color: '#555555', fontSize: 12, marginLeft: 10, marginRight: 10, marginTop: 5}}>Täytä vesisäiliö säännöllisesti, jotta kasvisi saavat raikasta vettä joka päivä.</Text>
                 </View>
             </View> */}
+           
+            <View>
+                <WaterPump/>
+            </View>
+              
             <View style={styles.middle}>
                 <Text style={[styles.header]}>Omat kasvini</Text>
                 <FlatList
@@ -33,7 +41,10 @@ export default function Home(props) {
                     marginLeft={15}
                     data={plants}
                     renderItem={({ item }) =>
-                        <TouchableOpacity style={[styles.border]}>
+                        <TouchableOpacity style={[styles.border]}
+                            onPress={() => navigate('MyPlant')}
+                        >
+
                             <Text style={[styles.middletext]}>{item}</Text>
                             <Image style={[styles.middleimage]} source={require('../assets/flowerpot.png')} />
                         </TouchableOpacity>
@@ -71,6 +82,9 @@ export default function Home(props) {
 Home.navigationOptions = ({ navigate }) => ({ title: 'Home' });
 
 const styles = StyleSheet.create({
+    button: {
+        paddingBottom: 20
+    },
     container: {
         backgroundColor: '#FCFCFC',
         flex: 1,
@@ -80,7 +94,7 @@ const styles = StyleSheet.create({
         fontSize: 26,
         marginLeft: 10,
         flex: 1,
-        marginTop: 30,
+        marginTop: 40,
         marginBottom: 30
     },
     middle: {
@@ -88,17 +102,18 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         flex: 2,
         fontWeight: 'bold',
+        shadowColor: "#000"
     },
     header: {
         fontSize: 14,
         fontWeight: "bold",
         marginLeft: 10,
-        marginBottom: 5
+        marginBottom: 10
     },
     border: {
         shadowColor: '#DEDDDD',
         shadowOpacity: 2,
-        shadowOffset:{
+        shadowOffset: {
             height: 2,
             width: 2
         },
@@ -118,6 +133,7 @@ const styles = StyleSheet.create({
         height: 150
     },
     bottomheader: {
+        justifyContent:"space-between",
         flexDirection: 'row',
         marginLeft: 10,
         marginTop: 30
@@ -125,7 +141,8 @@ const styles = StyleSheet.create({
     showmore: {
         color: '#63816D',
         fontSize: 12,
-        marginLeft: 90
+        fontWeight: "bold",
+        marginRight: 15
     },
     bottom: {
         marginLeft: 10,
@@ -134,7 +151,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         shadowColor: '#DEDDDD',
         shadowOpacity: 2,
-        shadowOffset:{
+        shadowOffset: {
             height: 2,
             width: 2
         },
