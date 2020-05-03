@@ -38,9 +38,6 @@ export default function Add() {
                 <View>
                 <Text style={styles.headertitle}>Lisää kasvi</Text>
                 </View>
-                <View>
-                <Icon name="close"/>
-                </View>
             </View>
 
         <ScrollView>
@@ -81,16 +78,22 @@ const styles = StyleSheet.create({
         backgroundColor: '#FCFCFC'
     },
     header: {
-        flexDirection: 'row',
-        flex: 1,
-        justifyContent: 'space-between',
-        marginTop: 30
+        shadowColor: '#DEDDDD',
+        shadowOpacity: 2,
+        shadowOffset:{
+            height: 2,
+            width: 2
+        },
+        backgroundColor: '#FAFAFA'
     },
     headertitle: {
         fontSize: 14,
-        fontWeight: 'bold',
+        fontWeight: "bold",
         textAlign: 'center',
-        marginBottom: 20,
+        marginTop: 48,
+        paddingBottom: 20,
+        borderBottomColor: '#DEDDDD', 
+        borderBottomWidth: 1,
     },
     title: {
         fontSize: 22, 
