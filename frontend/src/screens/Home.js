@@ -4,7 +4,7 @@ import WaterPump from '../components/WaterpumpControl';
 
 export default function Home(props) {
     const [user, setuser] = React.useState("Petra")
-    const [plants, setPlants] = React.useState(["Teuvo", "Martti", "Ykä", "Teppo"]);
+    const [plants, setPlants] = React.useState(["Teuvo", "Martti", "Ykä", "Teppo", "Jukka", "Kaija", "Pasi"]);
     const navigationOptions = { title: 'Home' };
     const { navigate } = props.navigation;
 
@@ -26,19 +26,17 @@ export default function Home(props) {
                     <Text style={{color: '#555555', fontSize: 12, marginLeft: 10, marginRight: 10, marginTop: 5}}>Täytä vesisäiliö säännöllisesti, jotta kasvisi saavat raikasta vettä joka päivä.</Text>
                 </View>
             </View> */}
-           
-            <View>
-                <WaterPump/>
-            </View>
               
             <View style={styles.middle}>
-                <Text style={[styles.header]}>Omat kasvini</Text>
+                <View style={styles.middleheader}>
+                    <Text style={[styles.header]}>Omat kasvini</Text>
+                    <View><WaterPump/></View>
+                </View>
                 <FlatList
                     horizontal={true}
                     contentContainerStyle={{ alignSelf: 'flex-start' }}
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
-                    marginLeft={15}
                     data={plants}
                     renderItem={({ item }) =>
                         <TouchableOpacity style={[styles.border]}
@@ -102,23 +100,28 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         flex: 2,
         fontWeight: 'bold',
-        shadowColor: "#000"
+        shadowColor: "#000",
+    },
+    middleheader: {
+        justifyContent:"space-between",
+        flexDirection: 'row',
     },
     header: {
         fontSize: 14,
         fontWeight: "bold",
-        marginLeft: 10,
-        marginBottom: 10
+        marginLeft: 5,
+        marginBottom: 15
     },
     border: {
-        shadowColor: '#DEDDDD',
-        shadowOpacity: 2,
-        shadowOffset: {
-            height: 2,
-            width: 2
-        },
+        shadowColor: 'rgba(0,0,0, .1)', // IOS
+        shadowOffset: { height: 3, width: 2 }, // IOS
+        shadowOpacity: 3, // IOS
+        shadowRadius: 1, //IOS
+        elevation: 3, // android
+        margin:5,
         marginRight: 3,
         marginLeft: 3,
+        marginTop: 10,
         backgroundColor: 'white',
         height: 170
     },
@@ -145,21 +148,19 @@ const styles = StyleSheet.create({
         marginRight: 15
     },
     bottom: {
-        marginLeft: 10,
+        marginLeft: 15,
+        marginRight: 15,
+        marginBottom: 10,
+        marginTop: 10,
         flex: 2,
         fontWeight: 'bold',
         fontSize: 14,
-        shadowColor: '#DEDDDD',
-        shadowOpacity: 2,
-        shadowOffset: {
-            height: 2,
-            width: 2
-        },
+        shadowColor: 'rgba(0,0,0, .1)', // IOS
+        shadowOffset: { height: 3, width: 2 }, // IOS
+        shadowOpacity: 3, // IOS
+        shadowRadius: 1, //IOS
+        elevation: 3, // android
         backgroundColor: 'white',
-        marginRight: 10,
-        marginTop: 10,
-        marginBottom: 10
-
     },
     bottomitem: {
         flexDirection: "row",
