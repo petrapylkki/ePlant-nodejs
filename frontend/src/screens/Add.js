@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { Icon, ListItem, SearchBar } from 'react-native-elements';
+import { ListItem, SearchBar } from 'react-native-elements';
 import firebase from '../components/firebase';
 
 export default function Add() {
     const [plantList, setPlantlist] = useState([]);
     const [filteredPlantList, setFilteredPlantlist] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [selected, setSelected] = useState({});
     const handleChange = text => {
-        console.log(text)
         setSearchTerm(text);
     };
     const handleSubmit = event => {
-        console.log(event)
         handleChange(event.nativeEvent.text)
     };
 
@@ -31,6 +30,10 @@ export default function Add() {
           )
           setFilteredPlantlist(results);
     }, [searchTerm]);
+
+    selectPlant = () => {
+        setSelected(event.target.value)
+    };
 
     return (
         <View style={styles.container}>
@@ -58,7 +61,7 @@ export default function Add() {
                     />
                 {filteredPlantList.map((item, i) => (
                     <ListItem
-                        onPress={() => alert('En tee vielä mitään')}
+                        onPress={() => alert(`${item.laji}`)}
                         key={i}
                         title={item.laji}
                         containerStyle={{
