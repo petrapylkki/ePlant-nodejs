@@ -1,18 +1,218 @@
-# ePlant
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
 
-## Contents
-1. [Environments](#Environments) 
-2. [Branch naming](#Branch-naming)
 
-### 1. Environments
-- Firebase
-- ThingSpeak
 
-### 2. Branch naming
-- `wip - Works in progress; stuff I know won't be finished soon`
-- `feat - Feature I'm adding or expanding`
-- `bug - Bug fix or experiment`
 
-> Naming examples:<br>
-> feat/searching<br>
-> bug/navigation
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+ <!-- <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a> -->
+
+  <h3 align="center">ePlant</h3>
+
+  <p align="center">
+    An automated pot for home plants
+    <br />
+    <a href="https://github.com/petrapylkki/ePlant/tree/master/frontend"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+  <!--  <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    ·
+    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a> -->
+  </p>
+</p>
+
+
+
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
+
+* [About the Project](#about-the-project)
+  * [Branch Naming](#branch-naming)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [License](#license)
+* [Contact](#contact)
+* [Acknowledgements](#acknowledgements)
+
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
+
+This projects purpose is to ease people's everyday lives and to help them keep their plants alive.
+
+The aim of the project was to create an automatized pot that has been programmed to answer the specific needs of a certain plant.
+
+The controlling of the smart pot happens with a mobile application that we have developed.
+
+
+### Branch Naming
+* `wip - Works in progress; stuff I know won't be finished soon`
+* `feat - Feature I'm adding or expanding`
+* `bug - Bug fix or experiment`
+
+	> Naming examples:<br>
+	> feat/searching<br>
+	> bug/navigation
+
+
+### Built With
+This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+* [React Native](https://reactnative.dev/)
+* [ESP32](https://www.espressif.com/en/products/socs/esp32/overview)
+* [C++](https://www.cplusplus.com/)
+
+
+###Enviroments
+* [ThingSpeak](https://thingspeak.com/)
+* [Firebase](https://firebase.google.com/)
+
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+You will be needing your own ESP32 and also some kind of pot (preferably a 3D-printed) to create an automatized pot. You'll also need a humidity sensor [humidity sensor](https://www.adafruit.com/product/386), [a water level sensor](https://www.instructables.com/id/How-to-use-a-Water-Level-Sensor-Arduino-Tutorial/) and [a water pump](https://www.adafruit.com/product/1150)
+
+### Installation
+
+1. Clone the repo
+```sh
+git clone https://github.com/petrapylkki/ePlant.git
+```
+3. Install NPM packages
+```sh
+npm install
+```
+
+
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+<!-- Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources. -->
+
+_For more examples, please refer to the [Documentation](https://example.com)_
+
+
+
+<!-- ROADMAP -->
+## Roadmap
+
+<!-- See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues). -->
+
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+<!-- 1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request -->
+
+
+
+<!-- LICENSE -->
+## License
+
+The content of this project itself is licensed under the Creative Commons Attribution 3.0 Unported license [Creative Commons Attribution 4.0 license](https://creativecommons.org/licenses/by/4.0/legalcode), and the MIT license.
+
+
+MIT License
+
+Copyright (c) [2020] [Petra Pylkki]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+
+<!-- CONTACT -->
+## Contact
+
+<!-- Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com -->
+
+<!-- Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name) -->
+
+
+
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements
+<!-- * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet) -->
+<!-- * [Img Shields](https://shields.io) -->
+* [Choose an Open Source License](https://choosealicense.com)
+* [README Template](https://github.com/othneildrew/Best-README-Template)
+<!-- * [GitHub Pages](https://pages.github.com) -->
+<!-- * [Animate.css](https://daneden.github.io/animate.css) -->
+<!-- * [Loaders.css](https://connoratherton.com/loaders) -->
+<!-- * [Slick Carousel](https://kenwheeler.github.io/slick) -->
+<!-- * [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll) -->
+<!-- * [Sticky Kit](http://leafo.net/sticky-kit) -->
+<!-- * [JVectorMap](http://jvectormap.com) -->
+<!-- * [Font Awesome](https://fontawesome.com) -->
+
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
+[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
+[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
+[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
+[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
+[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
+[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/othneildrew
+[product-screenshot]: images/screenshot.png
