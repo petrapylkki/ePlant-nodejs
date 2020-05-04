@@ -13,7 +13,6 @@ export default function Home(props) {
         firebase.database().ref('omatkasvit/').on('value', snapshot => {
             const plants = Object.values(snapshot.val());
             setPlants(plants);
-            console.log(plants)
         });
     }, []);
 
