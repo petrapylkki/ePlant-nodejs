@@ -55,7 +55,7 @@ export default function Search(props) {
                         contentContainerStyle={{ alignSelf: 'flex-start' }}
                         showsVerticalScrollIndicator={false}
                         showsHorizontalScrollIndicator={false}
-                        marginLeft={15}
+                        marginLeft={10}
                         data={easyPlants}
                         renderItem={({ item }) =>
                             <TouchableOpacity
@@ -78,7 +78,7 @@ export default function Search(props) {
                         contentContainerStyle={{ alignSelf: 'flex-start' }}
                         showsVerticalScrollIndicator={false}
                         showsHorizontalScrollIndicator={false}
-                        marginLeft={15}
+                        marginLeft={10}
                         data={foodPlants}
                         renderItem={({ item }) =>
                             <TouchableOpacity
@@ -101,7 +101,7 @@ export default function Search(props) {
                         contentContainerStyle={{ alignSelf: 'flex-start' }}
                         showsVerticalScrollIndicator={false}
                         showsHorizontalScrollIndicator={false}
-                        marginLeft={15}
+                        marginLeft={10}
                         data={lowWaterPlants}
                         renderItem={({ item }) =>
                             <TouchableOpacity
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
         borderTopWidth: 1,
     },
     category: {
-        marginTop: 25
+        marginTop: 25,
     },
     plantheader: { 
         textAlign: 'center', 
@@ -162,6 +162,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 3, // IOS
         shadowRadius: 1, //IOS
         elevation: 3, // android
+        borderRadius: 4,
         margin:5,
         marginRight: 3,
         marginLeft: 3,

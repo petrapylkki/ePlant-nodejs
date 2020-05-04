@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 3, // IOS
         shadowRadius: 1, //IOS
         elevation: 3, // android
+        borderRadius: 4,
         margin:5,
         marginRight: 3,
         marginLeft: 3,
@@ -151,7 +152,6 @@ const styles = StyleSheet.create({
         marginLeft: 15,
         marginRight: 15,
         marginBottom: 10,
-        marginTop: 10,
         flex: 2,
         fontWeight: 'bold',
         fontSize: 14,
@@ -161,6 +161,7 @@ const styles = StyleSheet.create({
         shadowRadius: 1, //IOS
         elevation: 3, // android
         backgroundColor: 'white',
+        borderRadius: 4
     },
     bottomitem: {
         flexDirection: "row",

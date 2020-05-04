@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
 
 export default function Notifications(props) {
     const { params } = props.navigation.state;
-    const [plants, setPlants] = React.useState(["Teuvo", "Martti", "Ykä", "Teppo"]);
+    const [plants, setPlants] = React.useState(["Teuvo", "Martti", "Ykä", "Teppo", "Jukka", "Kaija", "Pasi"]);
 
     return (
         <View style={[styles.container]}>
