@@ -1,23 +1,26 @@
-import React from 'react';
-import { StyleSheet, Alert, View, Text, Image, FlatList, Button, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View, Text, Image, FlatList, ScrollView, TouchableOpacity } from 'react-native';
 import WaterPump from '../components/WaterpumpControl';
+import firebase from '../components/firebase';
 
 export default function Home(props) {
-    const [user, setuser] = React.useState("Petra")
-    const [plants, setPlants] = React.useState(["Teuvo", "Martti", "Ykä", "Teppo", "Jukka", "Kaija", "Pasi"]);
+    const [user, setuser] = useState("Petra")
+    const [plants, setPlants] = useState([]);
     const navigationOptions = { title: 'Home' };
     const { navigate } = props.navigation;
 
-    const alert = () => {
-
-    }
-
-
+    useEffect(() => {
+        firebase.database().ref('omatkasvit/').on('value', snapshot => {
+            const plants = Object.values(snapshot.val());
+            setPlants(plants);
+            console.log(plants)
+        });
+    }, []);
 
     return (
         <ScrollView style={styles.container}>
-            <View style={[styles.top]} >
-                <Text style={[styles.top]}>Huomenta {user}!</Text>
+            <View style={styles.top} >
+                <Text style={styles.top}>Huomenta {user}!</Text>
             </View>
             {/* <View style={{marginLeft: 20, backgroundColor: '#D7E8F7', width: '90%', height: 80, borderRadius: 4, marginBottom: 15, flexDirection: 'row'}}>
                 <Image style={{height: 30, width: 30, marginTop: 25, marginLeft: 10}} source={require('./drop.png')}/>
@@ -29,7 +32,7 @@ export default function Home(props) {
               
             <View style={styles.middle}>
                 <View style={styles.middleheader}>
-                    <Text style={[styles.header]}>Omat kasvini</Text>
+                    <Text style={styles.header}>Omat kasvini</Text>
                     <View><WaterPump/></View>
                 </View>
                 <FlatList
@@ -39,35 +42,34 @@ export default function Home(props) {
                     showsHorizontalScrollIndicator={false}
                     data={plants}
                     renderItem={({ item }) =>
-                        <TouchableOpacity style={[styles.border]}
+                        <TouchableOpacity style={styles.border}
                             onPress={() => navigate('MyPlant')}
                         >
-
-                            <Text style={[styles.middletext]}>{item}</Text>
-                            <Image style={[styles.middleimage]} source={require('../assets/flowerpot.png')} />
+                            <Text style={styles.middletext}>{item.nimi}</Text>
+                            <Image style={styles.middleimage} source={require('../assets/flowerpot.png')} />
                         </TouchableOpacity>
                     }
                 />
             </View>
-            <View style={[styles.bottomheader]}>
-                <Text style={[styles.header]}>Viimeisimmät tapahtumat</Text>
+            <View style={styles.bottomheader}>
+                <Text style={styles.header}>Viimeisimmät tapahtumat</Text>
                 <TouchableOpacity
                     onPress={() => navigate('Notifications', { plants })}
                 >
-                    <Text style={[styles.showmore]}>Näytä lisää</Text>
+                    <Text style={styles.showmore}>Näytä lisää</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.bottom}>
                 <FlatList data={plants}
                     marginLeft={15}
                     renderItem={({ item }) =>
-                        <View style={[styles.bottomitem]}>
+                        <View style={styles.bottomitem}>
                             <View>
                                 <Image style={[styles.bottomimage]} source={require('../assets/eaaf7e.png')} />
                             </View>
-                            <View style={[styles.bottomtext]}>
-                                <Text style={[styles.bottomtext1]}>Tänään klo 8.20</Text>
-                                <Text style={[styles.bottomtext2]}>{item} kasteltu.</Text>
+                            <View style={styles.bottomtext}>
+                                <Text style={styles.bottomtext1}>Tänään klo 8.20</Text>
+                                <Text style={styles.bottomtext2}>{item.nimi} kasteltu.</Text>
                             </View>
                         </View>
 

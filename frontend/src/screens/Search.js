@@ -21,8 +21,7 @@ export default function Search(props) {
         
           setEasyPlants(easyPlants);
           setFoodPlants(foodPlants);
-          setlowWaterPlants(lowWaterPlants);
-    
+          setlowWaterPlants(lowWaterPlants); 
         });
     }, []);
 
