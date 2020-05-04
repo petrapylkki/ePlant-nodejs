@@ -74,6 +74,8 @@ const AppNavigator = createBottomTabNavigator(
                     height: 2,
                     width: 2
                 },
+                elevation: 3
+                
             }
 
         }

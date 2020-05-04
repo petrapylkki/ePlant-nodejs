@@ -1,4 +1,4 @@
-import { View, Button, StyleSheet } from "react-native"
+import { View, TouchableOpacity, StyleSheet, Text } from "react-native"
 import React from 'react';
 
 export default function waterpumpControl() {
@@ -73,12 +73,12 @@ const waterControl = () => {
 
 return(
 
-  <View style= {styles.waterpumpButton}>
-      <Button
-        onPress ={waterControl}
-        title="Vesi päälle"
-        style={styles.button}
-        />  
+  <View>
+      <TouchableOpacity
+        onPress={waterControl}
+        >
+          <Text style= {styles.waterpumpButton}>Vesi päälle</Text>
+      </TouchableOpacity>  
   </View>
 );
 
@@ -88,8 +88,14 @@ return(
 const styles = StyleSheet.create({
 
     waterpumpButton: {
-        margin: 50,
-        backgroundColor: '#FCFCFC',
-        textAlign: 'center',
+      color: '#63816D',
+      backgroundColor: "#c1dbc9",
+      fontSize: 15,
+      fontWeight: "bold",
+      marginRight: 15,
+      borderColor: "#c1dbc9",
+      borderWidth: 1,
+      borderRadius:10,
+      padding:4
     }
 });

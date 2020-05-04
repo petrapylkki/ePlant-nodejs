@@ -72,7 +72,7 @@ export default function Search(props) {
                     />
                 </View>
                 <View style={styles.category}>
-                    <Text style={styles.text}>Ruoka kasvit</Text>
+                    <Text style={styles.text}>Ruokakasvit</Text>
                     <FlatList
                         horizontal={true}
                         contentContainerStyle={{ alignSelf: 'flex-start' }}
@@ -135,8 +135,7 @@ const styles = StyleSheet.create({
     },
     topborder: {
         borderTopColor: '#DEDDDD', 
-        borderTopWidth: 1
-        
+        borderTopWidth: 1,
     },
     category: {
         marginTop: 25
@@ -158,12 +157,12 @@ const styles = StyleSheet.create({
         marginBottom: 15,
     },
     border: {
-        shadowColor: '#DEDDDD',
-        shadowOpacity: 2,
-        shadowOffset: {
-            height: 2,
-            width: 2
-        },
+        shadowColor: 'rgba(0,0,0, .1)', // IOS
+        shadowOffset: { height: 3, width: 2 }, // IOS
+        shadowOpacity: 3, // IOS
+        shadowRadius: 1, //IOS
+        elevation: 3, // android
+        margin:5,
         marginRight: 3,
         marginLeft: 3,
         backgroundColor: 'white',
