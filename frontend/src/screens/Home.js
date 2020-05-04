@@ -1,18 +1,21 @@
-import React from 'react';
-import { StyleSheet, Alert, View, Text, Image, FlatList, Button, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View, Text, Image, FlatList, ScrollView, TouchableOpacity } from 'react-native';
 import WaterPump from '../components/WaterpumpControl';
+import firebase from '../components/firebase';
 
 export default function Home(props) {
-    const [user, setuser] = React.useState("Petra")
-    const [plants, setPlants] = React.useState(["Teuvo", "Martti", "Ykä", "Teppo", "Jukka", "Kaija", "Pasi"]);
+    const [user, setuser] = useState("Petra")
+    const [plants, setPlants] = useState([]);
     const navigationOptions = { title: 'Home' };
     const { navigate } = props.navigation;
+    import firebase from '../components/firebase';
 
-    const alert = () => {
-
-    }
-
-
+    useEffect(() => {
+        firebase.database().ref('omatkasvit/').on('value', snapshot => {
+            const plants = Object.values(snapshot.val());
+            setPlants(plants);
+        });
+    }, []);
 
     return (
         <ScrollView style={styles.container}>
