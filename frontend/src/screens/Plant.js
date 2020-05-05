@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlatList, Image, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
 
-export default function NewPlant(props) {
+export default function Plant(props) {
     const [plants, setPlants] = React.useState([]);
     const { params } = props.navigation.state;
-    navigationOptions = { title: 'NewPlant', };
+    navigationOptions = { title: 'Plant', };
     const { route, navigation } = props;
 
     const add = () => {

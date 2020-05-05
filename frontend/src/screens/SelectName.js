@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, KeyboardAvoidingView } from 'react-native';
 import { Input } from 'react-native-elements';
 
-export default function Add() {
+export default function SelectName(props) {
     const [plantName, setPlantName] = useState('');
+    const { navigate } = props.navigation;
+
+    addPlantToDatabase = () => {
+        navigate('Home')
+    }
 
     return (
         <View style={{flex: 1}}>
@@ -27,6 +32,7 @@ export default function Add() {
                         clearButtonMode='always'
                         onChangeText={text => setPlantName(text)}
                         returnKeyType='done'
+                        onSubmitEditing={addPlantToDatabase}
                     />
                 </View>
             </KeyboardAvoidingView>

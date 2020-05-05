@@ -1,17 +1,23 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import Home from './src/screens/Home';
-import Add from './src/screens/Add';
-import Notifications from './src/screens/Notifications';
-import Search from './src/screens/Search';
-import Settings from './src/screens/Settings';
-import NewPlant from './src/screens/NewPlant';
 import { Ionicons } from '@expo/vector-icons';
-import { createStackNavigator } from 'react-navigation-stack';
 
-const AppNavigator = createBottomTabNavigator(
+// bottom navigation
+import Home from './src/screens/Home';
+import Search from './src/screens/Search';
+import Add from './src/screens/SelectPlant';
+import Notifications from './src/screens/Notifications';
+import Settings from './src/screens/Settings';
+
+// stack navigation
+import Plant from './src/screens/Plant';
+import MyPlant from './src/screens/MyPlant';
+import SelectPlant from './src/screens/SelectPlant';
+import SelectName from './src/screens/SelectName';
+// import SelectPot from './src/screens/SelectPot';
+
+const BottomNavigator = createBottomTabNavigator(
     {
         Home: {
             screen: Home,
@@ -37,7 +43,7 @@ const AppNavigator = createBottomTabNavigator(
             navigationOptions: {
                 tabBarLabel: 'Add',
                 tabBarIcon: ({ tintColor }) => (
-                    <Ionicons name="ios-add-circle" color={"#63816D"} size={50} />
+                    <Ionicons name="ios-add-circle" color={"#63816D"} size={54} />
                 )
             }
         },
@@ -79,14 +85,33 @@ const AppNavigator = createBottomTabNavigator(
             }
 
         }
-    },
+    }
 
 );
 
+const SwitchNavigation = createSwitchNavigator({ 
+    Plant: Plant,
+    MyPlant: MyPlant,
+    SelectPlant: SelectPlant, 
+    SelectName: SelectName,
+//  SelectPot: SelectPot
+  },
+  { 
+    navigationOptions: {
+      headerStyle: { borderBottomWidth: 0 }
+    }
+});
+
+const AppNavigator = createSwitchNavigator({
+    Main: BottomNavigator,
+    Views: SwitchNavigation
+})
+
 
 const AppContainer = createAppContainer(AppNavigator);
+
 export default function Navigation() {
     return (
         <AppContainer />
-    );
+    )
 }

@@ -3,14 +3,17 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
 import firebase from '../components/firebase';
 
-export default function Add() {
+export default function SelectPlant(props) {
     const [plantList, setPlantlist] = useState([]);
     const [filteredPlantList, setFilteredPlantlist] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [selected, setSelected] = useState({});
+    const { navigate } = props.navigation;
+
     const handleChange = text => {
         setSearchTerm(text);
     };
+
     const handleSubmit = event => {
         handleChange(event.nativeEvent.text)
     };
@@ -61,7 +64,7 @@ export default function Add() {
                     />
                 {filteredPlantList.map((item, i) => (
                     <ListItem
-                        onPress={() => alert(`${item.laji}`)}
+                        onPress={() => navigate('SelectName')}
                         key={i}
                         title={item.laji}
                         containerStyle={{
@@ -94,7 +97,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: 'center',
         marginTop: 48,
-        paddingBottom: 20,
+        marginBottom: 20,
         borderBottomColor: '#DEDDDD', 
         borderBottomWidth: 1,
     },

@@ -58,8 +58,8 @@ export default function Search(props) {
                         data={easyPlants}
                         renderItem={({ item }) =>
                             <TouchableOpacity
-                                onPress={() => navigate('NewPlant')}
-                                title="NewPlant"
+                                onPress={() => navigate('Plant')}
+                                title='Plant'
                                 style={[styles.border]}
                             >
                                 <Text style={[styles.plantheader]}>{item.laji}</Text>
@@ -81,8 +81,8 @@ export default function Search(props) {
                         data={foodPlants}
                         renderItem={({ item }) =>
                             <TouchableOpacity
-                                onPress={() => navigate('NewPlant')}
-                                title="NewPlant"
+                                onPress={() => navigate('Plant')}
+                                title="Plant"
                                 style={[styles.border]}
                             >
                                 <Text style={[styles.plantheader]}>{item.laji}</Text>
@@ -104,8 +104,8 @@ export default function Search(props) {
                         data={lowWaterPlants}
                         renderItem={({ item }) =>
                             <TouchableOpacity
-                                onPress={() => navigate('NewPlant')}
-                                title="NewPlant"
+                                onPress={() => navigate('Plant')}
+                                title="Plant"
                                 style={[styles.border]}
                             >
                                 <Text style={[styles.plantheader]}>{item.laji}</Text>
