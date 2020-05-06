@@ -5,6 +5,7 @@ import { Input } from 'react-native-elements';
 export default function SelectName(props) {
     const [plantName, setPlantName] = useState('');
     const { navigate } = props.navigation;
+//    const { params } = props.selected.state;
 
     addPlantToDatabase = () => {
         navigate('Home')
