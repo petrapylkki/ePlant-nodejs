@@ -10,13 +10,14 @@ import Add from './src/screens/SelectPlant';
 import Notifications from './src/screens/Notifications';
 import Settings from './src/screens/Settings';
 
-// stack navigation
+// switch navigation
 import Plant from './src/screens/Plant';
 import MyPlant from './src/screens/MyPlant';
 import SelectPlant from './src/screens/SelectPlant';
 import SelectName from './src/screens/SelectName';
 // import SelectPot from './src/screens/SelectPot';
 
+//creating bottom navigation
 const BottomNavigator = createBottomTabNavigator(
     {
         Home: {
@@ -43,7 +44,7 @@ const BottomNavigator = createBottomTabNavigator(
             navigationOptions: {
                 tabBarLabel: 'Add',
                 tabBarIcon: ({ tintColor }) => (
-                    <Ionicons name="ios-add-circle" color={"#63816D"} size={54} />
+                    <Ionicons name="ios-add-circle" color={"#63816D"} size={70} />
                 )
             }
         },
@@ -89,19 +90,17 @@ const BottomNavigator = createBottomTabNavigator(
 
 );
 
+// creating switch navigation for screens without bottom navigation
 const SwitchNavigation = createSwitchNavigator({ 
     Plant: Plant,
     MyPlant: MyPlant,
     SelectPlant: SelectPlant, 
     SelectName: SelectName,
 //  SelectPot: SelectPot
-  },
-  { 
-    navigationOptions: {
-      headerStyle: { borderBottomWidth: 0 }
-    }
-});
+  })
 
+
+// combining the 2 navigations into one app navigation
 const AppNavigator = createSwitchNavigator({
     Main: BottomNavigator,
     Views: SwitchNavigation
