@@ -86,7 +86,7 @@ This section should list any major frameworks that you built your project using.
 * [C++](https://www.cplusplus.com/)
 
 
-###Enviroments
+### Enviroments
 * [ThingSpeak](https://thingspeak.com/)
 * [Firebase](https://firebase.google.com/)
 
@@ -107,7 +107,7 @@ You will be needing your own ESP32 and also some kind of pot (preferably a 3D-pr
 ```sh
 git clone https://github.com/petrapylkki/ePlant.git
 ```
-3. Install NPM packages
+2. Install NPM packages
 ```sh
 npm install
 ```
