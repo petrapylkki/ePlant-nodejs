@@ -2,8 +2,8 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Button } from 'react-native-elements';
 
-export default function Select() {
-    const [value, onChangeText] = React.useState('');
+export default function SelectPot() {
+    const { navigate } = props.navigation;
 
     return (
         <View style={styles.container}>
