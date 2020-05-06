@@ -26,16 +26,15 @@ export default function Select() {
             </View>
             <View style={styles.bottom}>
                 <Button
-                icon={{
-                    name: "add",
-                    size: 20,
-                    color: "black",
-                }}
-                title="Lisää uusi ruukku"
-                titleStyle={{color:"black", marginLeft:20}}
-                buttonStyle={styles.btn}
-                //onPress={}
-                />
+                    icon={{
+                        name: "add",
+                        size: 25,
+                        color: "black"
+                    }}
+                    title="Lisää uusi ruukku"
+                    titleStyle={{marginLeft:15, color:"black"}}
+                    buttonStyle={styles.btn}
+                /> 
             </View>
         </View>
 
@@ -99,14 +98,13 @@ const styles = StyleSheet.create({
     },
     bottom: {
         justifyContent:"center",
-        alignContent:"center",
         flexDirection:"row",
-        flex:1 
+        flex:1
     },
     btn: {
         backgroundColor: "#F0F0F0",
         borderRadius: 4,
         width: 250,
-        marginTop: -50
+        marginTop:-40
     }
 });
