@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Image, FlatList, ScrollView, TouchableOpacity } from 'react-native';
-import WaterPump from '../components/WaterpumpControl';
 import firebase from '../components/firebase';
 
 export default function Home(props) {
@@ -32,7 +31,6 @@ export default function Home(props) {
             <View style={styles.middle}>
                 <View style={styles.middleheader}>
                     <Text style={styles.header}>Omat kasvini</Text>
-                    <View><WaterPump/></View>
                 </View>
                 <FlatList
                     horizontal={true}

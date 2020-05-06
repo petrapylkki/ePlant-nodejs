@@ -2,6 +2,7 @@ import React, { useState, useEffect, Component } from 'react';
 import { View, Text, StyleSheet, FlatList, Image, ScrollView, TouchableOpacity, ImageBackground, Alert, Button } from 'react-native';
 import { LineChart, BarChart, PieChart, ProgressChart, ContributionGraph, StackedBarChart } from 'react-native-chart-kit';
 import ProgressCircle from 'react-native-progress-circle';
+import WaterPump from '../components/WaterpumpControl';
 
 export default function MyPlant(props) {
     const [channelId, setChannelId] = React.useState(1020483);
@@ -101,6 +102,7 @@ export default function MyPlant(props) {
 
                     </View>
                 </View>
+                <View><WaterPump/></View>
                 <View style={[styles.bottomheader]}>
                     <Text style={[styles.header]}>Viimeisimmät tapahtumat</Text>
                     <TouchableOpacity
