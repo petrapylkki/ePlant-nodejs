@@ -34,10 +34,9 @@ export default function SelectPlant(props) {
           setFilteredPlantlist(results);
     }, [searchTerm]);
 
-    selectPlant = (event) => {
+    handleSelect = (event) => {
         setSelected(event.target.value)
-        navigate('SelectName', { plant: selected })
-        // console.log(selected)
+        navigate('SelectPot', { plant: selected })
     };
 
     return (
@@ -66,7 +65,7 @@ export default function SelectPlant(props) {
                     />
                 {filteredPlantList.map((item, i) => (
                     <ListItem
-                        onPress={selectPlant}
+                        onPress={handleSelect}
                         key={i}
                         title={item.laji}
                         containerStyle={{

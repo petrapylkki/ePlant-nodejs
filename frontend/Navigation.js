@@ -15,7 +15,7 @@ import Plant from './src/screens/Plant';
 import MyPlant from './src/screens/MyPlant';
 import SelectPlant from './src/screens/SelectPlant';
 import SelectName from './src/screens/SelectName';
-// import SelectPot from './src/screens/SelectPot';
+import SelectPot from './src/screens/SelectPot';
 
 //creating bottom navigation
 const BottomNavigator = createBottomTabNavigator(
@@ -96,7 +96,7 @@ const SwitchNavigation = createSwitchNavigator({
     MyPlant: MyPlant,
     SelectPlant: SelectPlant, 
     SelectName: SelectName,
-//  SelectPot: SelectPot
+    SelectPot: SelectPot
   })
 
 

@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Button } from 'react-native-elements';
 
-export default function SelectPot() {
+export default function SelectPot(props) {
+    const [selected, setSelected] = useState('');
     const { navigate } = props.navigation;
+
+    handleSelect = (event) => {
+        setSelected(event.target.value)
+        navigate('SelectName')
+    };
 
     return (
         <View style={styles.container}>
@@ -15,7 +21,7 @@ export default function SelectPot() {
             </View>
             <View style={styles.middle}>
                 <TouchableOpacity
-                    //onPress={() => navigate('NewPlant')}
+                    onPress={handleSelect}
                     title="choosePot"
                     style={styles.border}
                 >
