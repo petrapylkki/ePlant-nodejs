@@ -1,5 +1,6 @@
 import * as firebase from 'firebase';
 
+//initializing firebase object by giving database and project reference
 var firebaseConfig = {
     apiKey: "AIzaSyA53LIFELYwXqO5jseLIxTYaCodHGF6Kuw",
     authDomain: "eplant-19cd0.firebaseapp.com",

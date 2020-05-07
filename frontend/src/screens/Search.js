@@ -12,6 +12,7 @@ export default function Search(props) {
     const { navigate } = props.navigation;
     const [searchedPlant, setSearchedPlant] = React.useState('');
 
+    //retrieving and filtering data from firebase db
     React.useEffect(() => {
         firebase.database().ref('kasvit/').on('value', snapshot => {
           const plants = Object.values(snapshot.val());

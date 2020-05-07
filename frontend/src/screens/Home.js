@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, Image, FlatList, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Alert, View, Text, Image, FlatList, Button, ScrollView, TouchableOpacity } from 'react-native';
 import firebase from '../components/firebase';
 
 export default function Home(props) {
@@ -8,6 +8,7 @@ export default function Home(props) {
     const navigationOptions = { title: 'Home' };
     const { navigate } = props.navigation;
 
+    //retrieving firebase data to const?
     useEffect(() => {
         firebase.database().ref('omatkasvit/').on('value', snapshot => {
             const plants = Object.values(snapshot.val());
