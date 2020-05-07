@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Alert, View, Text, Image, FlatList, Button, ScrollView, TouchableOpacity } from 'react-native';
 import WaterPump from '../components/WaterpumpControl';
 import AutomaticControl from '../components/AutomaticControll';
+import firebase from '../components/firebase';
 
 export default function Home(props) {
     const [user, setuser] = useState("Petra")
@@ -29,11 +30,6 @@ export default function Home(props) {
                     <Text style={{color: '#555555', fontSize: 12, marginLeft: 10, marginRight: 10, marginTop: 5}}>Täytä vesisäiliö säännöllisesti, jotta kasvisi saavat raikasta vettä joka päivä.</Text>
                 </View>
             </View> */}
-           
-            <View>
-                <WaterPump/>
-                <AutomaticControl/>
-            </View>
               
             <View style={styles.middle}>
                 <View style={styles.middleheader}>
