@@ -7,7 +7,6 @@ export default function SelectPlant(props) {
     const [plantList, setPlantlist] = useState([]);
     const [filteredPlantList, setFilteredPlantlist] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [selected, setSelected] = useState('');
     const { navigate } = props.navigation;
 
     const handleChange = text => {
@@ -34,9 +33,9 @@ export default function SelectPlant(props) {
           setFilteredPlantlist(results);
     }, [searchTerm]);
 
-    handleSelect = (event) => {
-        setSelected(event.target.value)
-        navigate('SelectPot', { plant: selected })
+    handleSelect = (item) => {
+        console.log(item.laji)
+        navigate('SelectPot', { plant: item.laji })
     };
 
     return (
@@ -65,7 +64,7 @@ export default function SelectPlant(props) {
                     />
                 {filteredPlantList.map((item, i) => (
                     <ListItem
-                        onPress={handleSelect}
+                        onPress={() => handleSelect(item)}
                         key={i}
                         title={item.laji}
                         containerStyle={{

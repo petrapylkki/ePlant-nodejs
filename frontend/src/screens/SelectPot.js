@@ -5,10 +5,12 @@ import { Button } from 'react-native-elements';
 export default function SelectPot(props) {
     const [selected, setSelected] = useState('');
     const { navigate } = props.navigation;
+    //const { params } = props.plant;
 
     handleSelect = (event) => {
-        setSelected(event.target.value)
-        navigate('SelectName')
+        console.log(event)
+        setSelected(event)
+        //navigate('SelectName')
     };
 
     return (
@@ -20,15 +22,26 @@ export default function SelectPot(props) {
                 <Text style={styles.top}>Valitse ruukku</Text>
             </View>
             <View style={styles.middle}>
-                <TouchableOpacity
-                    onPress={handleSelect}
-                    title="choosePot"
+                {filteredPlantList.map((item, i) => (
+                    <TouchableOpacity
+                    onPress={() => handleSelect(item)}
+                    key={i}
+                    title={"choosePot"}
                     style={styles.border}
-                >
-                    <Text style={styles.plantheader}>ePlant1</Text>
+                    >
+                    <Text style={styles.plantheader}>{item.nimi}</Text>
                     <Image style={styles.plantimage} source={require('../assets/flowerpot.png')} />
 
-                </TouchableOpacity>
+                    </TouchableOpacity>
+                ))}
+                <ListItem
+                        onPress={() => handleSelect(item)}
+                        key={i}
+                        title={item.laji}
+                        containerStyle={{
+                            backgroundColor: '#FCFCFC'
+                        }}
+                    />
             </View>
             <View style={styles.bottom}>
                 <Button
