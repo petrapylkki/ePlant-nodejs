@@ -21,7 +21,8 @@
  <!-- <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a> -->
-![ePlant](https://user-images.githubusercontent.com/25533588/81294825-1c178480-9078-11ea-8b8c-5e3eec8290c4.jpeg)
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;![ePlant](https://user-images.githubusercontent.com/25533588/81295527-39008780-9079-11ea-8c84-3de1557d96be.png)
+
 
 
   <h3 align="center">ePlant</h3>
@@ -137,7 +138,10 @@ git clone https://github.com/petrapylkki/ePlant.git
 ```sh
 npm install
 ```
-
+3. Install Expo
+```sh
+npm install expo-cli --global
+```
 
 
 <!-- USAGE EXAMPLES -->
