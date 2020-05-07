@@ -103,7 +103,7 @@ You will be needing your own ESP32 and also some kind of pot (preferably a 3D-pr
 
 
 For firebase, push some data to the database. For example we have:
-
+```sh
 eplant-19-cd0
 	kasvit (plants)
 		K1(plant1)
@@ -116,11 +116,10 @@ eplant-19-cd0
 			type:
 			needOfLight:
 			needOfWater:
+```
 
-<!-- PICTURE FROM FIREBASE-->
- <!-- <a href="https://github.com/petrapylkki/ePlant">
-    <img src="images/firebase.png" alt="Firebase database" width="80" height="80">
-  </a> -->
+![Firebase](https://user-images.githubusercontent.com/25533588/81291522-90e7c000-9072-11ea-8f28-3a1217a54f14.PNG)
+
 
 ### Installation
 
