@@ -99,7 +99,28 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-You will be needing your own ESP32 and also some kind of pot (preferably a 3D-printed) to create an automatized pot. You'll also need a humidity sensor [humidity sensor](https://www.adafruit.com/product/386), [a water level sensor](https://www.instructables.com/id/How-to-use-a-Water-Level-Sensor-Arduino-Tutorial/) and [a water pump](https://www.adafruit.com/product/1150)
+You will be needing your own ESP32 and also some kind of pot (preferably a 3D-printed, we used this [guide](https://www.thingiverse.com/thing:3537287)) to create an automatized pot. You'll also need a humidity sensor [humidity sensor](https://www.adafruit.com/product/386), [a water level sensor](https://www.instructables.com/id/How-to-use-a-Water-Level-Sensor-Arduino-Tutorial/) and [a water pump](https://www.adafruit.com/product/1150)
+
+
+For firebase, push some data to the database. For example we have:
+
+eplant-19-cd0
+	kasvit (plants)
+		K1(plant1)
+			treatment:
+			id:
+			description:
+			species:
+			latin:
+			origin:
+			type:
+			needOfLight:
+			needOfWater:
+
+<!-- PICTURE FROM FIREBASE-->
+ <!-- <a href="https://github.com/petrapylkki/ePlant">
+    <img src="images/firebase.png" alt="Firebase database" width="80" height="80">
+  </a> -->
 
 ### Installation
 
@@ -146,7 +167,7 @@ Contributions are what make the open source community such an amazing place to b
 <!-- LICENSE -->
 ## License
 
-The content of this project itself is licensed under the Creative Commons Attribution 3.0 Unported license [Creative Commons Attribution 4.0 license](https://creativecommons.org/licenses/by/4.0/legalcode), and the MIT license.
+The content of this project itself is licensed under the Creative Commons Attribution 4.0 Unported license [Creative Commons Attribution 4.0 license](https://creativecommons.org/licenses/by/4.0/legalcode), and the MIT license.
 
 
 MIT License
