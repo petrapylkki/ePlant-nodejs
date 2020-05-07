@@ -17,9 +17,12 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
+
  <!-- <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a> -->
+![ePlant](https://user-images.githubusercontent.com/25533588/81294825-1c178480-9078-11ea-8b8c-5e3eec8290c4.jpeg)
+
 
   <h3 align="center">ePlant</h3>
 
