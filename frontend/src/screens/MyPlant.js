@@ -16,6 +16,7 @@ export default function MyPlant(props) {
         getData();
     }, []);
 
+    //retrieving sensor statistics from the IoT device
     const getData = () => {
         const url = 'https://thingspeak.com/channels/' + channelId + '/feed.json';
         fetch(url)

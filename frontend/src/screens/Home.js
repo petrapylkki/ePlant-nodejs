@@ -8,6 +8,7 @@ export default function Home(props) {
     const navigationOptions = { title: 'Home' };
     const { navigate } = props.navigation;
 
+    //retrieving firebase data to const?
     useEffect(() => {
         firebase.database().ref('omatkasvit/').on('value', snapshot => {
             const plants = Object.values(snapshot.val());
