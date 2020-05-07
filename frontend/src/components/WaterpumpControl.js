@@ -77,7 +77,7 @@ return(
       <TouchableOpacity
         onPress={waterControl}
         >
-          <Text style= {styles.waterpumpButton}>Vesi päälle</Text>
+          <Text style= {styles.waterpumpButton}>Kastele kasvi</Text>
       </TouchableOpacity>  
   </View>
 );
@@ -92,10 +92,11 @@ const styles = StyleSheet.create({
       backgroundColor: "#c1dbc9",
       fontSize: 15,
       fontWeight: "bold",
-      marginRight: 15,
+      textAlign:"center",
       borderColor: "#c1dbc9",
       borderWidth: 1,
       borderRadius:10,
-      padding:4
+      padding:4,
+      width:150
     }
 });

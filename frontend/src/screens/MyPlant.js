@@ -61,7 +61,7 @@ export default function MyPlant(props) {
                     <Text style={[styles.datetext1]}>5.6.2019</Text>
                     <Text style={[styles.datetext2]}>7 kuukautta</Text>
                 </View>
-                <View style={{ flexDirection: 'row' }}>
+                <View style={{ flexDirection: 'row', justifyContent:"center", alignContent:"center" }}>
                     <View style={[styles.humidity]}>
                         <Text style={[styles.humiditytext]}>Mullan kosteus</Text>
                         <ProgressCircle
@@ -71,7 +71,7 @@ export default function MyPlant(props) {
                             color="#63816D"
                             shadowColor="#E8E7E2"
                             bgColor="#fff"
-                            outerCircleStyle={{ marginLeft: 40, marginTop: 15, marginBottom: 15 }}
+                            outerCircleStyle={{ marginTop: 15, marginBottom: 15 }}
 
                         >
                             <Text style={[styles.humiditytext2]}>{(humidity / 2500 * 100).toFixed(0)}%</Text>
@@ -103,7 +103,7 @@ export default function MyPlant(props) {
 
                     </View>
                 </View>
-                <View><WaterPump/></View>
+                <View style={{marginLeft:38, marginTop:10}}><WaterPump/></View>
                 <View style={[styles.bottomheader]}>
                     <Text style={[styles.header]}>Viimeisimmät tapahtumat</Text>
                     <TouchableOpacity
@@ -197,11 +197,10 @@ const styles = StyleSheet.create({
         borderRightWidth: 1 
     },
     humiditytext: { 
-        fontSize: 16, 
-        marginLeft: 38,
+        fontSize: 16,
         marginTop: 20, 
         fontWeight: 'bold', 
-        marginRight: 40 
+        marginRight: 50 
     },
     humiditytext2: { 
         fontSize: 22, 
@@ -210,13 +209,12 @@ const styles = StyleSheet.create({
     humiditytext3: { 
         fontSize: 14, 
         color: '#63816D', 
-        marginLeft: 38, 
         fontWeight: '600' 
     },
     humiditytext4: { 
         fontSize: 12, 
         color: '#555555', 
-        marginLeft: 48 
+        marginLeft: 5
     },
     waterlevel: { 
         fontSize: 16, 
@@ -259,11 +257,12 @@ const styles = StyleSheet.create({
             height: 2,
             width: 2
         },
+        elevation: 4,
+        borderRadius:4,
         backgroundColor: 'white',
         marginRight: 10,
         marginTop: 10,
         marginBottom: 10
-
     },
     bottomitem: {
         flexDirection: "row",
