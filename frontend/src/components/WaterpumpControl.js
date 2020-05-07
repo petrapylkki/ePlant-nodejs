@@ -1,9 +1,12 @@
-import { View, TouchableOpacity, StyleSheet, Text } from "react-native"
-import React from 'react';
+import { View, Button, StyleSheet } from "react-native"
+import React, { useState } from 'react';
+import { DotIndicator } from 'react-native-indicators';
 
 export default function waterpumpControl() {
 
-  const [res, setRes] = React.useState(0);
+  const [res, setRes] = useState(0);
+  const [isLoading, setLoading] = useState(false);
+
   const apikey = "XR2Z3K3KE1Q1V3UA";
 
   const waterOn = () => {
@@ -16,6 +19,9 @@ export default function waterpumpControl() {
                   waterOn();
                   console.log(responseJson);
               } 
+              if (waterOn != 0) {
+                setLoading(true);
+              }
               break; 
           }; 
           setRes(responseJson);
@@ -34,7 +40,10 @@ export default function waterpumpControl() {
               if (parseInt(responseJson) == 0) { 
                   waterOff();
                   console.log(responseJson);
-              } 
+              }
+              if (waterOff != true) {
+                setLoading(false);
+            }
               break; 
           }; 
           setRes(responseJson);
@@ -73,12 +82,16 @@ const waterControl = () => {
 
 return(
 
-  <View>
-      <TouchableOpacity
-        onPress={waterControl}
-        >
-          <Text style= {styles.waterpumpButton}>Kastele kasvi</Text>
-      </TouchableOpacity>  
+  <View style= {styles.waterpumpButton}>
+  { isLoading ? res : 
+   <DotIndicator 
+        color='#63816D' 
+        />}
+      <Button
+        onPress ={waterControl}
+        title="Vesi päälle"
+        style={styles.button}
+        />  
   </View>
 );
 
