@@ -13,7 +13,7 @@ export default function waterpumpControl() {
       .then((responseJson) => {
           while (true) {
               if (parseInt(responseJson) == 0) { 
-                  waterOff();
+                  waterOn();
                   console.log(responseJson);
               } 
               break; 
