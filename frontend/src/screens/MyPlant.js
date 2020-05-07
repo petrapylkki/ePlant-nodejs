@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, FlatList, Image, ScrollView, TouchableOpacity, 
 import { LineChart, BarChart, PieChart, ProgressChart, ContributionGraph, StackedBarChart } from 'react-native-chart-kit';
 import ProgressCircle from 'react-native-progress-circle';
 import WaterPump from '../components/WaterpumpControl';
+import AutomaticControl from '../components/AutomaticControl';
 
 export default function MyPlant(props) {
     const [channelId, setChannelId] = React.useState(1020483);

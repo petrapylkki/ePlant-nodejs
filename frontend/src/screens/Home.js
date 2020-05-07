@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Alert, View, Text, Image, FlatList, Button, ScrollView, TouchableOpacity } from 'react-native';
-import WaterPump from '../components/WaterpumpControl';
-import AutomaticControl from '../components/AutomaticControll';
 import firebase from '../components/firebase';
 
 export default function Home(props) {
