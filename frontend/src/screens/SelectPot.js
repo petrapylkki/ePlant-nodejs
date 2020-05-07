@@ -6,19 +6,20 @@ import firebase from '../components/firebase';
 export default function SelectPot(props) {
     const [potList, setPotList] = useState([]);
     const { navigate } = props.navigation;
-    //const { params } = props.plant;
+    const plant = props.navigation.state.params.plant;
 
     useEffect(() => {
         firebase.database().ref('ruukut/').on('value', snapshot => {
             const potList = Object.values(snapshot.val());
 
             setPotList(potList);
+            console.log(plant)
         });
     }, []);
 
     handleSelect = (item) => {
         console.log(item.nimi)
-        navigate('SelectName', { pot: item.nimi })
+        navigate('SelectName', { pot: item.nimi, plant: plant })
     };
 
     return (
