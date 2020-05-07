@@ -103,7 +103,10 @@ export default function MyPlant(props) {
 
                     </View>
                 </View>
-                <View style={{marginLeft:38, marginTop:10}}><WaterPump/></View>
+                <View>
+                <WaterPump/>
+                <AutomaticControl/>
+                </View>
                 <View style={[styles.bottomheader]}>
                     <Text style={[styles.header]}>Viimeisimmät tapahtumat</Text>
                     <TouchableOpacity
