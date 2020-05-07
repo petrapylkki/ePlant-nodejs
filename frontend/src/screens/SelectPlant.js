@@ -34,7 +34,6 @@ export default function SelectPlant(props) {
     }, [searchTerm]);
 
     handleSelect = (item) => {
-        console.log(item.laji)
         navigate('SelectPot', { plant: item.laji })
     };
 

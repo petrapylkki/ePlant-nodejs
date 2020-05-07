@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Button } from 'react-native-elements';
+import firebase from '../components/firebase';
 
 export default function SelectPot(props) {
-    const [selected, setSelected] = useState('');
+    const [potList, setPotList] = useState([]);
     const { navigate } = props.navigation;
     //const { params } = props.plant;
 
-    handleSelect = (event) => {
-        console.log(event)
-        setSelected(event)
-        //navigate('SelectName')
+    useEffect(() => {
+        firebase.database().ref('ruukut/').on('value', snapshot => {
+            const potList = Object.values(snapshot.val());
+
+            setPotList(potList);
+        });
+    }, []);
+
+    handleSelect = (item) => {
+        console.log(item.nimi)
+        navigate('SelectName', { pot: item.nimi })
     };
 
     return (
@@ -22,7 +30,7 @@ export default function SelectPot(props) {
                 <Text style={styles.top}>Valitse ruukku</Text>
             </View>
             <View style={styles.middle}>
-                {filteredPlantList.map((item, i) => (
+                {potList.map((item, i) => (
                     <TouchableOpacity
                     onPress={() => handleSelect(item)}
                     key={i}
@@ -34,14 +42,6 @@ export default function SelectPot(props) {
 
                     </TouchableOpacity>
                 ))}
-                <ListItem
-                        onPress={() => handleSelect(item)}
-                        key={i}
-                        title={item.laji}
-                        containerStyle={{
-                            backgroundColor: '#FCFCFC'
-                        }}
-                    />
             </View>
             <View style={styles.bottom}>
                 <Button
