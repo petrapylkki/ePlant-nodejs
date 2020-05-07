@@ -117,9 +117,12 @@ eplant-19-cd0
 			needOfLight:
 			needOfWater:
 ```
-
+<!--FIREBASE PICTURE-->
 ![Firebase](https://user-images.githubusercontent.com/25533588/81291522-90e7c000-9072-11ea-8f28-3a1217a54f14.PNG)
 
+On ThingSpeak we can see the humidity on chart 1, water level on chart 2, if the pump is on or off on chart 3, sensor values on chart 4 and automatic pilot on chart 5. There is a huge amount of good guides in ThingSpeak on how to do this kind of monitoring, so we're not going into the spesifics here. 
+<!--THINGSPEAK PICTURE-->
+![thingspeak](https://user-images.githubusercontent.com/25533588/81293303-c4781980-9075-11ea-8592-d0801835843f.PNG)
 
 ### Installation
 
