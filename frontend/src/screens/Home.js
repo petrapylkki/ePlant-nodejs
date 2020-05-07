@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, Alert, View, Text, Image, FlatList, Button, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Alert, View, Text, Image, FlatList, Button,useState, useEffect, ScrollView, TouchableOpacity } from 'react-native';
 import WaterPump from '../components/WaterpumpControl';
 import AutomaticControl from '../components/AutomaticControll';
 
 export default function Home(props) {
-    const [user, setuser] = useState("Petra")
-    const [plants, setPlants] = useState([]);
+    const [user, setuser] = React.useState("Petra")
+    const [plants, setPlants] = React.useState([]);
     const navigationOptions = { title: 'Home' };
     const { navigate } = props.navigation;
 
