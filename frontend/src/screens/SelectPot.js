@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Button } from 'react-native-elements';
+import firebase from '../components/firebase';
 
 export default function SelectPot(props) {
-    const [selected, setSelected] = useState('');
+    const [potList, setPotList] = useState([]);
     const { navigate } = props.navigation;
+    const plant = props.navigation.state.params.plant;
 
-    handleSelect = (event) => {
-        setSelected(event.target.value)
-        navigate('SelectName')
+    useEffect(() => {
+        firebase.database().ref('ruukut/').on('value', snapshot => {
+            const potList = Object.values(snapshot.val());
+
+            setPotList(potList);
+            console.log(plant)
+        });
+    }, []);
+
+    handleSelect = (item) => {
+        console.log(item.nimi)
+        navigate('SelectName', { pot: item.nimi, plant: plant })
     };
 
     return (
@@ -20,15 +31,18 @@ export default function SelectPot(props) {
                 <Text style={styles.top}>Valitse ruukku</Text>
             </View>
             <View style={styles.middle}>
-                <TouchableOpacity
-                    onPress={handleSelect}
-                    title="choosePot"
+                {potList.map((item, i) => (
+                    <TouchableOpacity
+                    onPress={() => handleSelect(item)}
+                    key={i}
+                    title={"choosePot"}
                     style={styles.border}
-                >
-                    <Text style={styles.plantheader}>ePlant1</Text>
+                    >
+                    <Text style={styles.plantheader}>{item.nimi}</Text>
                     <Image style={styles.plantimage} source={require('../assets/flowerpot.png')} />
 
-                </TouchableOpacity>
+                    </TouchableOpacity>
+                ))}
             </View>
             <View style={styles.bottom}>
                 <Button

@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, KeyboardAvoidingView } from 'react-native';
 import { Input } from 'react-native-elements';
+import firebase from '../components/firebase';
 
 export default function SelectName(props) {
     const [plantName, setPlantName] = useState('');
     const { navigate } = props.navigation;
-//    const { params } = props.selected.state;
+    const plant = props.navigation.state.params.plant;
+    const pot = props.navigation.state.params.pot;
 
     addPlantToDatabase = () => {
+        firebase.database().ref('omatkasvit/').push(
+            {
+                'kasvi': plant,
+                'ruukku': pot,
+                'nimi': plantName,
+                'paivays': Date()
+            }
+        )
         navigate('Home')
     }
 
