@@ -4,6 +4,8 @@ import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
 export default function Notifications() {
     const [plants, setPlants] = React.useState(["Teuvo", "Martti", "Ykä", "Teppo"]);
 
+    console.disableYellowBox = true;
+    
     return (
         <View style={[styles.container]}>
             <View style={[styles.border]}>

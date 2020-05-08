@@ -1,171 +1,116 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { createAppContainer } from 'react-navigation';
-import Home from './src/screens/Home';
-import Add from './src/screens/Add';
-import Notifications from './src/screens/Notifications';
-import Search from './src/screens/Search';
-import Settings from './src/screens/Settings';
-import NewPlant from './src/screens/NewPlant';
-import MyPlant from './src/screens/MyPlant';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
+
+// bottom navigation
+import Home from './src/screens/Home';
+import Search from './src/screens/Search';
+import Add from './src/screens/SelectPlant';
+import Notifications from './src/screens/Notifications';
+import Settings from './src/screens/Settings';
+
+// switch navigation
+import Plant from './src/screens/Plant';
+import MyPlant from './src/screens/MyPlant';
+import SelectPlant from './src/screens/SelectPlant';
+import SelectName from './src/screens/SelectName';
+import SelectPot from './src/screens/SelectPot';
+
+//creating bottom navigation
+const BottomNavigator = createBottomTabNavigator(
+    {
+        Home: {
+            screen: Home,
+            navigationOptions: {
+                tabBarLabel: 'Home',
+                tabBarIcon: ({ tintColor }) => (
+                    <Ionicons name="ios-home" color={tintColor} size={25} />
+                )
+            }
+        },
+
+        Search: {
+            screen: Search,
+            navigationOptions: {
+                tabBarLabel: 'Search',
+                tabBarIcon: ({ tintColor }) => (
+                    <Ionicons name="ios-search" color={tintColor} size={25} />
+                )
+            }
+        },
+        Add: {
+            screen: Add,
+            navigationOptions: {
+                tabBarLabel: 'Add',
+                tabBarIcon: ({ tintColor }) => (
+                    <Ionicons name="ios-add-circle" color={"#63816D"} size={70} />
+                )
+            }
+        },
+        Notifications: {
+            screen: Notifications,
+            navigationOptions: {
+                tabBarLabel: 'Notifications',
+                tabBarIcon: ({ tintColor }) => (
+                    <Ionicons name="ios-notifications-outline" color={tintColor} size={25} />
+                )
+            }
+        },
+        Settings: {
+            screen: Settings,
+            navigationOptions: {
+                tabBarLabel: 'Settings',
+                tabBarIcon: ({ tintColor }) => (
+                    <Ionicons name="ios-settings" color={tintColor} size={25} />
+                )
+            }
+        },
+
+    },
+    {
+        tabBarOptions: {
+            activeTintColor: 'black',
+            inactiveTintColor: 'grey',
+            showLabel: false,
+            style: {
+                height: 70,
+                shadowColor: '#DEDDDD',
+                shadowOpacity: 2,
+                shadowOffset: {
+                    height: 2,
+                    width: 2
+                },
+                elevation: 3
+                
+            }
+
+        }
+    }
+
+);
+
+// creating switch navigation for screens without bottom navigation
+const SwitchNavigation = createSwitchNavigator({ 
+    Plant: Plant,
+    MyPlant: MyPlant,
+    SelectPlant: SelectPlant, 
+    SelectName: SelectName,
+    SelectPot: SelectPot
+  })
 
 
-const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
+// combining the 2 navigations into one app navigation
+const AppNavigator = createSwitchNavigator({
+    Main: BottomNavigator,
+    Views: SwitchNavigation
+})
 
-function HomePage() {
+
+const AppContainer = createAppContainer(AppNavigator);
+
+export default function Navigation() {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
-            <Stack.Screen name="MyPlant" component={MyPlant} />
-        </Stack.Navigator>
-    );
+        <AppContainer />
+    )
 }
-function SearchPage() {
-    return (
-        <Stack.Navigator>
-            <Stack.Screen name="Search" component={Search} options={{ headerShown: false }} />
-            <Stack.Screen name="NewPlant" component={NewPlant} />
-        </Stack.Navigator>
-    );
-}
-
-function MainNavigation() {
-    return (
-        <NavigationContainer>
-            <Tab.Navigator
-                tabBarOptions={{
-                    activeTintColor: 'black',
-                    showLabel: false,
-                    style: {
-                        height: 70,
-                        shadowColor: '#DEDDDD',
-                        shadowOpacity: 2,
-                        shadowOffset: {
-                            height: 2,
-                            width: 2
-                        },
-                    },
-                }}
-            >
-                <Tab.Screen name="Home" component={HomePage}
-                    options={{
-                        tabBarLabel: 'Home',
-                        tabBarIcon: ({ color }) => (
-                            <Ionicons name="ios-home" color={color} size={25} />
-                        )
-                    }}
-                />
-                <Tab.Screen name="Search" component={SearchPage}
-                    options={{
-                        tabBarLabel: 'Search',
-                        tabBarIcon: ({ color }) => (
-                            <Ionicons name="ios-search" color={color} size={25} />
-                        )
-                    }}
-                />
-                <Tab.Screen name="Add" component={Add}
-                    options={{
-                        tabBarLabel: 'Add',
-                        tabBarIcon: ({ }) => (
-                            <Ionicons name="ios-add-circle" color={'#63816D'} size={50} />
-                        )
-                    }}
-                />
-                <Tab.Screen name="Notifications" component={Notifications}
-                    options={{
-                        tabBarLabel: 'Notifications',
-                        tabBarIcon: ({ color }) => (
-                            <Ionicons name="ios-notifications-outline" color={color} size={25} />
-                        )
-                    }}
-                />
-                <Tab.Screen name="Settings" component={Settings}
-                    options={{
-                        tabBarLabel: 'Settings',
-                        tabBarIcon: ({ color }) => (
-                            <Ionicons name="ios-settings" color={color} size={25} />
-                        )
-                    }}
-                />
-            </Tab.Navigator>
-        </NavigationContainer>
-    );
-}
-
-// const AppNavigator = createBottomTabNavigator(
-//     {
-//         Home: {
-//             screen: Home,
-//             navigationOptions: {
-//                 tabBarLabel: 'Home',
-//                 tabBarIcon: ({ tintColor }) => (
-//                     <Ionicons name="ios-home" color={tintColor} size={25} />
-//                 )
-//             }
-//         },
-
-//         Search: {
-//             screen: Search,
-//             navigationOptions: {
-//                 tabBarLabel: 'Search',
-//                 tabBarIcon: ({ tintColor }) => (
-//                     <Ionicons name="ios-search" color={tintColor} size={25} />
-//                 )    
-//             }
-//         },
-//         Add: {
-//             screen: Add,
-//             navigationOptions: {
-//                 tabBarLabel: 'Add',
-//                 tabBarIcon: ({ tintColor }) => (
-//                     <Ionicons name="ios-add-circle" color={"#63816D"} size={50} />
-//                 )
-//             }
-//         },
-//         Notifications: {
-//             screen: Notifications,
-//             navigationOptions: {
-//                 tabBarLabel: 'Notifications',
-//                 tabBarIcon: ({ tintColor }) => (
-//                     <Ionicons name="ios-notifications-outline" color={tintColor} size={25} />
-//                 )
-//             }
-//         },
-//         Settings: {
-//             screen: Settings,
-//             navigationOptions: {
-//                 tabBarLabel: 'Settings',
-//                 tabBarIcon: ({ tintColor }) => (
-//                     <Ionicons name="ios-settings" color={tintColor} size={25} />
-//                 )
-//             }
-//         },
-
-//     },
-//     {
-// tabBarOptions: {
-//     activeTintColor: 'black',
-//     inactiveTintColor: 'grey',
-//     showLabel: false,
-//     style: {
-//         height: 70,
-//         shadowColor: '#DEDDDD',
-//         shadowOpacity: 2,
-//         shadowOffset: {
-//             height: 2,
-//             width: 2
-//         },
-//     }
-
-//         }
-//     },
-
-// );
-
-
-export default MainNavigation;

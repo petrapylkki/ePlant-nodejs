@@ -11,6 +11,9 @@ export default function Search({navigation: { navigate }}) {
     const [lowWaterPlants, setlowWaterPlants] = React.useState([]);
     const [searchedPlant, setSearchedPlant] = React.useState('');
 
+    console.disableYellowBox = true;
+
+    //retrieving and filtering data from firebase db
     React.useEffect(() => {
         firebase.database().ref('kasvit/').on('value', snapshot => {
           const plants = Object.values(snapshot.val());
@@ -27,6 +30,10 @@ export default function Search({navigation: { navigate }}) {
     const search = () => {
         Alert.alert('Tää ei viel tee mitää :/')
     }
+
+    handleSelect = (item) => {
+        navigate('Plant', { plant: item })
+    };
 
     return (
         <View style={styles.container}>
@@ -57,12 +64,12 @@ export default function Search({navigation: { navigate }}) {
                         data={easyPlants}
                         renderItem={({ item }) =>
                             <TouchableOpacity
-                                onPress={() => navigate('NewPlant')}
-                                title="NewPlant"
+                                onPress={() => handleSelect(item)}
+                                title='Plant'
                                 style={[styles.border]}
                             >
                                 <Text style={[styles.plantheader]}>{item.laji}</Text>
-                                <Image style={[styles.plantimage]} source={require('../assets/kaktus.png')} />
+                                <Image style={[styles.plantimage]} source={require('../assets/plant_img/kaktus.png')} />
 
                             </TouchableOpacity>
 
@@ -80,8 +87,8 @@ export default function Search({navigation: { navigate }}) {
                         data={foodPlants}
                         renderItem={({ item }) =>
                             <TouchableOpacity
-                                onPress={() => navigate('NewPlant')}
-                                title="NewPlant"
+                                onPress={() => handleSelect(item)}
+                                title="Plant"
                                 style={[styles.border]}
                             >
                                 <Text style={[styles.plantheader]}>{item.laji}</Text>
@@ -103,12 +110,12 @@ export default function Search({navigation: { navigate }}) {
                         data={lowWaterPlants}
                         renderItem={({ item }) =>
                             <TouchableOpacity
-                                onPress={() => navigate('NewPlant')}
-                                title="NewPlant"
+                                onPress={() => handleSelect(item)}
+                                title="Plant"
                                 style={[styles.border]}
                             >
                                 <Text style={[styles.plantheader]}>{item.laji}</Text>
-                                <Image style={[styles.plantimage]} source={require('../assets/aloevera.jpeg')} />
+                                <Image style={[styles.plantimage]} source={require('../assets/plant_img/aloe_vera.png')} />
 
                             </TouchableOpacity>
                         }

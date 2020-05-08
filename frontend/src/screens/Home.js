@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, Image, FlatList, ScrollView, TouchableOpacity } from 'react-native';
-import WaterPump from '../components/WaterpumpControl';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Alert, View, Text, Image, FlatList, Button, ScrollView, TouchableOpacity } from 'react-native';
 import firebase from '../components/firebase';
 
 export default function Home(props) {
-    const [user, setuser] = useState("Petra")
-    const [plants, setPlants] = useState([]);
+    const [user, setuser] = React.useState("Petra")
+    const [plants, setPlants] = React.useState([]);
     const navigationOptions = { title: 'Home' };
     const { navigate } = props.navigation;
 
+    console.disableYellowBox = true;
+
+    //retrieving firebase data to const?
     useEffect(() => {
         firebase.database().ref('omatkasvit/').on('value', snapshot => {
             const plants = Object.values(snapshot.val());
@@ -32,7 +34,6 @@ export default function Home(props) {
             <View style={styles.middle}>
                 <View style={styles.middleheader}>
                     <Text style={styles.header}>Omat kasvini</Text>
-                    <View><WaterPump/></View>
                 </View>
                 <FlatList
                     horizontal={true}
