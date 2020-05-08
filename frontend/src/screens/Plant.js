@@ -62,7 +62,7 @@ export default function Plant(props) {
                         </View>
                     </View>
                     <View style={styles.box}>
-                        <View >
+                        <View>
                             <Image style={styles.icon} source={require('../assets/location.png')} />
                         </View>
                         <View>
@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     },
     top: {
         flexDirection: 'row',
+        justifyContent: "space-between",
         marginLeft: 10,
         marginTop: 10
     },
@@ -111,34 +112,34 @@ const styles = StyleSheet.create({
         marginLeft: 10,
     },
     header2: {
-        marginLeft: 100,
         fontSize: 10,
         color: '#63816D',
         fontWeight: '600',
-        fontStyle: 'italic'
+        fontStyle: 'italic',
+        marginRight: 20
     },
     view1: {
         flexDirection: 'row',
-        marginTop: 15
+        marginTop: 15,
+
     },
     view2: {
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     box: {
         flexDirection: "row",
         marginLeft: 15,
         backgroundColor: '#F0F0F0',
-        width: 168,
-        height: 68,
-        alignItems: 'center',
         borderRadius: 10,
-        marginTop: 10
+        marginTop: 10,
+        padding:15,
+        width: "45%"
     },
     icon: {
         width: 30,
         height: 30,
-        marginLeft: 20,
-        marginRight: 10
+        marginLeft: 3,
+        marginRight: 15
     },
     boxtext1: {
         fontSize: 12,
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
     },
     boxtext2: {
         fontSize: 14,
-        color: '#404040'
+        color: '#404040',
     },
     description: {
         marginLeft: 15,

@@ -37,14 +37,14 @@ export default function Search({navigation: { navigate }}) {
 
     return (
         <View style={styles.container}>
-            <View style={[styles.searchbarcontainer]}>
-                <Text style={[styles.header]}>Haku</Text>
-                <View style={[styles.searchbar]}>
+            <View style={styles.searchbarcontainer}>
+                <Text style={styles.header}>Haku</Text>
+                <View style={styles.searchbar}>
                     <TouchableOpacity onPress={search} >
                         <Ionicons name="ios-search" size={20} style={[styles.icon]} />
                     </TouchableOpacity>
                     <TextInput
-                        style={[styles.textinput]}
+                        style={styles.textinput}
                         clearButtonMode={"always"}
                         placeholder={'Hae kasveja'}
                         onChangeText={searchedPlant => setSearchedPlant(searchedPlant)}
@@ -52,7 +52,7 @@ export default function Search({navigation: { navigate }}) {
                     </TextInput>
                 </View>
             </View>
-            <ScrollView style={[styles.topborder]} >
+            <ScrollView>
                 <View style={styles.category}>
                     <Text style={styles.text}>Helppohoitoiset kasvit</Text>
                     <FlatList
@@ -138,10 +138,6 @@ const styles = StyleSheet.create({
         flex: 1
         
     },
-    topborder: {
-        borderTopColor: '#DEDDDD', 
-        borderTopWidth: 1,
-    },
     category: {
         marginTop: 25,
     },
@@ -177,8 +173,7 @@ const styles = StyleSheet.create({
     searchbarcontainer: {
         backgroundColor: '#FCFCFC',
         marginTop: 28,
-        alignSelf: 'center',
-        
+        alignSelf: 'center',        
     },
     header: {
         textAlign: 'center',

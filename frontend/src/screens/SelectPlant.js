@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { ListItem, SearchBar } from 'react-native-elements';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { ListItem, SearchBar, Icon } from 'react-native-elements';
 import firebase from '../components/firebase';
 
 export default function SelectPlant(props) {
@@ -42,9 +42,11 @@ export default function SelectPlant(props) {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <View>
+                <Text style={{width:"14%"}}></Text>
                 <Text style={styles.headertitle}>Lisää kasvi</Text>
-                </View>
+                <TouchableOpacity onPress={() => navigate('Home')}>
+                    <Icon name="close" size={40} iconStyle={styles.icon} />
+                </TouchableOpacity>
             </View>
 
         <ScrollView>
@@ -85,22 +87,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#FCFCFC'
     },
     header: {
-        shadowColor: '#DEDDDD',
-        shadowOpacity: 2,
-        shadowOffset:{
-            height: 2,
-            width: 2
-        },
-        backgroundColor: '#FAFAFA'
+        flexDirection:"row",
+        justifyContent:"space-between",
     },
     headertitle: {
         fontSize: 14,
         fontWeight: "bold",
         textAlign: 'center',
-        marginTop: 48,
-        marginBottom: 20,
-        borderBottomColor: '#DEDDDD', 
-        borderBottomWidth: 1,
+        marginTop: "11%",
+        paddingBottom: 20,
+    },
+    icon: {
+        marginTop: "70%",
+        marginRight:15,
+        color: 'grey',
     },
     title: {
         fontSize: 22, 

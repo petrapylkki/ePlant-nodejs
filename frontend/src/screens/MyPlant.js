@@ -302,7 +302,7 @@ const styles = StyleSheet.create({
     },  
     icon: {
         marginLeft: 30,
-        marginTop: 30,
+        marginTop: "40%",
         color: 'grey'
     }
 

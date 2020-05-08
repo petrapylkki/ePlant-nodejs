@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
             height: 2,
             width: 2
         },
+        elevation:4,
         backgroundColor: '#FAFAFA'
     },
     bottom: {
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
         flex: 2,
         fontWeight: 'bold',
         fontSize: 14,
-        marginTop: 10
+        marginTop:  20
 
     },
 });
