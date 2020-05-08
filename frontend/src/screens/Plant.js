@@ -14,10 +14,6 @@ export default function Plant(props) {
         alert('tää ei tee vielä mitään')
     }
 
-    useEffect(() => {
-        console.log(props.navigation.state.params.plant)
-    }, []);
-
     return (
         <ScrollView style={styles.container}>
             <View style={{ flex: 1 }}>
