@@ -8,6 +8,7 @@ export default function SelectName(props) {
     const { navigate } = props.navigation;
     const plant = props.navigation.state.params.plant;
     const pot = props.navigation.state.params.pot;
+    const potId = props.navigation.state.params.potId;
 
     console.disableYellowBox = true;
 
@@ -17,7 +18,8 @@ export default function SelectName(props) {
                 'kasvi': plant,
                 'ruukku': pot,
                 'nimi': plantName,
-                'paivays': Date()
+                'paivays': Date(),
+                'ruukkuid': potId 
             }
         )
         navigate('Home')

@@ -20,8 +20,7 @@ export default function SelectPot(props) {
     }, []);
 
     handleSelect = (item) => {
-        console.log(item.nimi)
-        navigate('SelectName', { pot: item.nimi, plant: plant })
+        navigate('SelectName', { pot: item.nimi, potId: item.id, plant: plant })
     };
 
     return (
