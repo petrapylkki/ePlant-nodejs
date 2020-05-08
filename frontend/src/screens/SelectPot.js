@@ -10,6 +10,7 @@ export default function SelectPot(props) {
 
     console.disableYellowBox = true;
 
+    // getting object values from firebase and setting values to potList
     useEffect(() => {
         firebase.database().ref('ruukut/').on('value', snapshot => {
             const potList = Object.values(snapshot.val());
@@ -19,6 +20,7 @@ export default function SelectPot(props) {
         });
     }, []);
 
+    // sending selected items data to next screen and navigating to there
     handleSelect = (item) => {
         navigate('SelectName', { pot: item.nimi, potId: item.id, plant: plant })
     };

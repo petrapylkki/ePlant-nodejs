@@ -12,7 +12,8 @@ export default function Search(props) {
 
     console.disableYellowBox = true;
 
-    //retrieving and filtering data from firebase db
+    // retrieving and filtering data from firebase db
+    // setting filtered data to differend lists
     useEffect(() => {
         firebase.database().ref('kasvit/').on('value', snapshot => {
           const plants = Object.values(snapshot.val());
@@ -30,6 +31,7 @@ export default function Search(props) {
         Alert.alert('Tää ei viel tee mitää :/')
     }
 
+    // sending selected items data to next screen and navigating to there
     const handleSelect = (item) => {
         navigate('Plant', { plant: item })
     };

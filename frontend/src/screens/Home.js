@@ -9,7 +9,7 @@ export default function Home(props) {
 
     console.disableYellowBox = true;
 
-    //retrieving firebase data to const?
+    // retrieving firebase data and inserting it to "plants" list
     useEffect(() => {
         firebase.database().ref('omatkasvit/').on('value', snapshot => {
             const plants = Object.values(snapshot.val());

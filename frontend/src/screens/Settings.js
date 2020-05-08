@@ -6,7 +6,8 @@ export default function Settings() {
 
     console.disableYellowBox = true;
 
-    const list = [
+    // list of listitems headers and icons to make list rendering cleaner
+    const listItems = [
         {
             title: 'Ruukut',
             icon: 'local-drink'
@@ -48,7 +49,7 @@ export default function Settings() {
                     </View>
                 </View>
 
-                {list.map((item, i) => (
+                {listItems.map((item, i) => (
                     <ListItem
                         onPress={() => alert('En tee vielä mitään')}
                         key={i}

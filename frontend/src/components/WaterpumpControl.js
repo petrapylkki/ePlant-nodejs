@@ -1,9 +1,8 @@
-import { View, Button, StyleSheet } from "react-native"
 import React, { useState } from 'react';
+import { View, Button, StyleSheet } from "react-native"
 import { DotIndicator } from 'react-native-indicators';
 
 export default function waterpumpControl() {
-
   const [res, setRes] = useState(0);
   const [isLoading, setLoading] = useState(false);
 

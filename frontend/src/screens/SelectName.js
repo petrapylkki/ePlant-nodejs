@@ -12,6 +12,9 @@ export default function SelectName(props) {
 
     console.disableYellowBox = true;
 
+    // adds new plants data to firebase database table "own plants"
+    // data are received with props from previous screens SelectPlant.js and SelectPot.js
+    // user is taken back to Home.js screen
     addPlantToDatabase = () => {
         firebase.database().ref('omatkasvit/').push(
             {

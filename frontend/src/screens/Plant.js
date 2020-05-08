@@ -14,6 +14,7 @@ export default function Plant(props) {
         alert('tää ei tee vielä mitään')
     }
 
+    // returning plant data based on props from Search.js and plantImage from SetBackgroundImg.js
     return (
         <ScrollView style={styles.container}>
             <View style={{ flex: 1 }}>
