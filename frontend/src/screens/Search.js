@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet, Image, TextInput, Button, Header, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import firebase from '../components/firebase';
@@ -6,14 +6,14 @@ import firebase from '../components/firebase';
 export default function Search(props) {
     navigationOptions = { title: 'Search', };
 
-    const [easyPlants, setEasyPlants] = React.useState([]);
-    const [foodPlants, setFoodPlants] = React.useState([]);
-    const [lowWaterPlants, setlowWaterPlants] = React.useState([]);
+    const [easyPlants, setEasyPlants] = useState([]);
+    const [foodPlants, setFoodPlants] = useState([]);
+    const [lowWaterPlants, setlowWaterPlants] = useState([]);
     const { navigate } = props.navigation;
-    const [searchedPlant, setSearchedPlant] = React.useState('');
+    const [searchedPlant, setSearchedPlant] = useState('');
 
     //retrieving and filtering data from firebase db
-    React.useEffect(() => {
+    useEffect(() => {
         firebase.database().ref('kasvit/').on('value', snapshot => {
           const plants = Object.values(snapshot.val());
           const easyPlants = plants.filter(plant => plant.hoito === 'Helppo')
@@ -30,7 +30,7 @@ export default function Search(props) {
         Alert.alert('Tää ei viel tee mitää :/')
     }
 
-    handleSelect = (item) => {
+    const handleSelect = (item) => {
         navigate('Plant', { plant: item })
     };
 

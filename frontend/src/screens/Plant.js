@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { View, Text, StyleSheet, FlatList, Image, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity} from 'react-native';
 import SetBackgroundImage from '../components/SetBackgroundImg.js';
 
 export default function Plant(props) {
