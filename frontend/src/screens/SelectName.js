@@ -36,7 +36,7 @@ export default function SelectName(props) {
                         <Text style={styles.title}>Melkein valmista!</Text>
                         <Text style={styles.text}>Anna vielä kasvillesi nimi</Text>
                     </View>
-                    <Image style={styles.middleimage} source={require('../assets/Aloe_Vera2.png')} />
+                    <Image style={styles.middleimage} source={require('../assets/plant_img/aloe_vera.png')} />
                     <Input
                         placeholder='Anna kasville nimi'
                         inputContainerStyle={styles.textinput}

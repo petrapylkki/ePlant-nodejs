@@ -1,79 +1,82 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { View, Text, StyleSheet, FlatList, Image, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
+import SetBackgroundImage from '../components/SetBackgroundImg.js';
 
 export default function Plant(props) {
-    const [plants, setPlants] = React.useState([]);
-    const { params } = props.navigation.state;
-    navigationOptions = { title: 'Plant', };
-    const { route, navigation } = props;
+    const plant = props.navigation.state.params.plant;
+    const plantImage = SetBackgroundImage(plant.laji);
+    const { navigate } = props.navigation;
 
     const add = () => {
-        // Ei vielä tee mitään.
+        navigate('Search')
     }
 
+    useEffect(() => {
+        console.log(props.navigation.state.params.plant)
+    }, []);
+
     return (
-        <ScrollView style={[styles.container]}>
+        <ScrollView style={styles.container}>
             <View style={{ flex: 1 }}>
-                <Image style={[styles.topimage]} source={require('../assets/peikonlehti.png')} />
+                <Image style={styles.topimage} source={plantImage} />
             </View>
-            {/* <ImageBackground style={{ width: '100%', height: 250 }} source={require('./peikonlehti.png')}> */}
             <View >
-                <View style={[styles.top]}>
-                    <Text style={[styles.header]}>Peikonlehti</Text>
-                    <Text style={[styles.header2]}>Monstera deliciosa</Text>
+                <View style={styles.top}>
+                    <Text style={styles.header}>{plant.laji}</Text>
+                    <Text style={styles.header2}>{plant.latina}</Text>
                 </View>
-                <View style={[styles.view1]}>
-                    <View style={[styles.box]}>
+                <View style={styles.view1}>
+                    <View style={styles.box}>
                         <View >
-                            <Image style={[styles.icon]} source={require('../assets/hand-holding-plant-icon.png')} />
+                            <Image style={styles.icon} source={require('../assets/hand-holding-plant-icon.png')} />
                         </View>
                         <View>
-                            <Text style={[styles.boxtext1]}>Hoito</Text>
-                            <Text style={[styles.boxtext2]}>Helppo</Text>
+                            <Text style={styles.boxtext1}>Hoito</Text>
+                            <Text style={styles.boxtext2}>{plant.hoito}</Text>
                         </View>
                     </View>
-                    <View style={[styles.box]}>
+                    <View style={styles.box}>
                         <View >
-                            <Image style={[styles.icon]} source={require('../assets/wateringcan.png')} />
+                            <Image style={styles.icon} source={require('../assets/wateringcan.png')} />
                         </View>
                         <View>
-                            <Text style={[styles.boxtext1]}>Veden tarve</Text>
-                            <Text style={[styles.boxtext2]}>Niukka</Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={[styles.view2]}>
-                    <View style={[styles.box]}>
-                        <View >
-                            <Image style={[styles.icon]} source={require('../assets/cloud.png')} />
-                        </View>
-                        <View>
-                            <Text style={[styles.boxtext1]}>Valon tarve</Text>
-                            <Text style={[styles.boxtext2]}>Varjo</Text>
-                        </View>
-                    </View>
-                    <View style={[styles.box]}>
-                        <View >
-                            <Image style={[styles.icon]} source={require('../assets/location.png')} />
-                        </View>
-                        <View>
-                            <Text style={[styles.boxtext1]}>Alkuperä</Text>
-                            <Text style={[styles.boxtext2]}>Alankomaat</Text>
+                            <Text style={styles.boxtext1}>Veden tarve</Text>
+                            <Text style={styles.boxtext2}>{plant.vesitarve}</Text>
                         </View>
                     </View>
                 </View>
-                <Text style={[styles.description]}>Erittäin kestävä, veistoksellinen ja trendikäs lehtikasvi, jolla on suuret, kiiltävän vihreät lehdet ja pitkät ilmajuuret. Tasainen kastelu vuoden ympäri, kasvia ei saa päästää täysin kuivaksi. Lannoitus viikoittain kasvukaudella. Pitää lehtien sumuttamisesta. Uudelleenistutus vasta, kun ruukku on jäänyt pieneksi. Ilmajuuria ei tarvitse poistaa.</Text>
-                <Text style={[styles.header3]}>Peikonlehteni</Text>
-                <View style={[styles.bottom]}>
-                    <View style={[styles.border]}>
-                        <Text style={[styles.bottomtext]}>Teuvo</Text>
-                        <Image style={[styles.bottomimage]} source={require('../assets/flowerpot.png')} />
+                <View style={styles.view2}>
+                    <View style={styles.box}>
+                        <View >
+                            <Image style={styles.icon} source={require('../assets/cloud.png')} />
+                        </View>
+                        <View>
+                            <Text style={styles.boxtext1}>Valon tarve</Text>
+                            <Text style={styles.boxtext2}>{plant.valotarve}</Text>
+                        </View>
                     </View>
-                    <TouchableOpacity style={[styles.add]}
+                    <View style={styles.box}>
+                        <View >
+                            <Image style={styles.icon} source={require('../assets/location.png')} />
+                        </View>
+                        <View>
+                            <Text style={styles.boxtext1}>Alkuperä</Text>
+                            <Text style={styles.boxtext2}>{plant.origin}</Text>
+                        </View>
+                    </View>
+                </View>
+                <Text style={styles.description}>{plant.kuvaus}</Text>
+                <Text style={styles.header3}>Peikonlehteni</Text>
+                <View style={styles.bottom}>
+                    <View style={styles.border}>
+                        <Text style={styles.bottomtext}>Teuvo</Text>
+                        <Image style={styles.bottomimage} source={require('../assets/flowerpot.png')} />
+                    </View>
+                    <TouchableOpacity style={styles.add}
                         onPress={add}
                         title="Add">
-                        <Text style={[styles.addtext]}>Lisää kasvi</Text>
-                        <Image style={[styles.addimage]} source={require('../assets/plus.png')} />
+                        <Text style={styles.addtext}>Lisää kasvi</Text>
+                        <Image style={styles.addimage} source={require('../assets/plus.png')} />
                     </TouchableOpacity>
                 </View>
             </View>

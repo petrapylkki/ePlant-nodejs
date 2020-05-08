@@ -30,6 +30,10 @@ export default function Search(props) {
         Alert.alert('Tää ei viel tee mitää :/')
     }
 
+    handleSelect = (item) => {
+        navigate('Plant', { plant: item })
+    };
+
     return (
         <View style={styles.container}>
             <View style={[styles.searchbarcontainer]}>
@@ -59,12 +63,12 @@ export default function Search(props) {
                         data={easyPlants}
                         renderItem={({ item }) =>
                             <TouchableOpacity
-                                onPress={() => navigate('Plant')}
+                                onPress={() => handleSelect(item)}
                                 title='Plant'
                                 style={[styles.border]}
                             >
                                 <Text style={[styles.plantheader]}>{item.laji}</Text>
-                                <Image style={[styles.plantimage]} source={require('../assets/kaktus.png')} />
+                                <Image style={[styles.plantimage]} source={require('../assets/plant_img/kaktus.png')} />
 
                             </TouchableOpacity>
 
@@ -82,7 +86,7 @@ export default function Search(props) {
                         data={foodPlants}
                         renderItem={({ item }) =>
                             <TouchableOpacity
-                                onPress={() => navigate('Plant')}
+                                onPress={() => handleSelect(item)}
                                 title="Plant"
                                 style={[styles.border]}
                             >
@@ -105,12 +109,12 @@ export default function Search(props) {
                         data={lowWaterPlants}
                         renderItem={({ item }) =>
                             <TouchableOpacity
-                                onPress={() => navigate('Plant')}
+                                onPress={() => handleSelect(item)}
                                 title="Plant"
                                 style={[styles.border]}
                             >
                                 <Text style={[styles.plantheader]}>{item.laji}</Text>
-                                <Image style={[styles.plantimage]} source={require('../assets/aloevera.jpeg')} />
+                                <Image style={[styles.plantimage]} source={require('../assets/plant_img/aloe_vera.png')} />
 
                             </TouchableOpacity>
                         }
