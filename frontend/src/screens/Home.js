@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Image, FlatList, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image, FlatList, ScrollView, TouchableOpacity, Button } from 'react-native';
 import firebase from '../components/firebase';
+import { Snackbar } from 'react-native-paper';
 
 export default function Home(props) {
     const [user, setuser] = useState("Petra")
     const [plants, setPlants] = useState([]);
     const { navigate } = props.navigation;
+    const [visible, setVisible] = useState(false);
+    
+    const showSnackbar = () => {
+        setVisible(true);
+    }
 
     console.disableYellowBox = true;
 
@@ -18,6 +24,7 @@ export default function Home(props) {
     }, []);
 
     return (
+        
         <ScrollView style={styles.container}>
             <View style={styles.top} >
                 <Text style={styles.top}>Huomenta {user}!</Text>
@@ -31,6 +38,12 @@ export default function Home(props) {
             </View> */}
               
             <View style={styles.middle}>
+            <View>
+            <Button
+                title='moi'
+                onPress={showSnackbar}
+            />
+        </View>
                 <View style={styles.middleheader}>
                     <Text style={styles.header}>Omat kasvini</Text>
                 </View>
@@ -74,6 +87,20 @@ export default function Home(props) {
 
                     }
                 />
+            </View>
+            <View>
+                <Snackbar
+                    visible={visible}
+                    onDismiss={setVisible(false)}
+                    action={{
+                        label: 'Näytä',
+                        onPress: () => {
+                        console.log(jee)
+                        },
+                    }}
+                >
+                    Hey there! I'm a Snackbar.
+                </Snackbar>
             </View>
         </ScrollView>
     );
