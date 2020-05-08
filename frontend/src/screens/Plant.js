@@ -11,7 +11,7 @@ export default function Plant(props) {
     console.disableYellowBox = true;
 
     const add = () => {
-        navigate('Search')
+        alert('tää ei tee vielä mitään')
     }
 
     useEffect(() => {
