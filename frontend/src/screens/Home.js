@@ -8,6 +8,8 @@ export default function Home(props) {
     const navigationOptions = { title: 'Home' };
     const { navigate } = props.navigation;
 
+    console.disableYellowBox = true;
+
     //retrieving firebase data to const?
     useEffect(() => {
         firebase.database().ref('omatkasvit/').on('value', snapshot => {

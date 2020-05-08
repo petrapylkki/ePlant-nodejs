@@ -1,19 +1,18 @@
-import React, {useEffect} from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity} from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import SetBackgroundImage from '../components/SetBackgroundImg.js';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function Plant(props) {
     const plant = props.navigation.state.params.plant;
     const plantImage = SetBackgroundImage(plant.laji);
     const { navigate } = props.navigation;
 
-    const add = () => {
-        navigate('Search')
-    }
+    console.disableYellowBox = true;
 
-    useEffect(() => {
-        console.log(props.navigation.state.params.plant)
-    }, []);
+    const add = () => {
+        alert('tää ei tee vielä mitään')
+    }
 
     return (
         <ScrollView style={styles.container}>
@@ -21,6 +20,9 @@ export default function Plant(props) {
                 <Image style={styles.topimage} source={plantImage} />
             </View>
             <View >
+                <TouchableOpacity onPress={() => navigate('Search')}>
+                    <Ionicons name="md-arrow-round-back" size={40} style={[styles.arrow]} />
+                </TouchableOpacity>
                 <View style={styles.top}>
                     <Text style={styles.header}>{plant.laji}</Text>
                     <Text style={styles.header2}>{plant.latina}</Text>
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
     top: {
         flexDirection: 'row',
         marginLeft: 10,
-        marginTop: 30
+        marginTop: 10
     },
     header: {
         fontSize: 22,
@@ -111,12 +113,12 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         fontStyle: 'italic'
     },
-    view1: { 
-        flexDirection: 'row', 
-        marginTop: 15 
+    view1: {
+        flexDirection: 'row',
+        marginTop: 15
     },
-    view2: { 
-        flexDirection: 'row' 
+    view2: {
+        flexDirection: 'row'
     },
     box: {
         flexDirection: "row",
@@ -128,36 +130,36 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginTop: 10
     },
-    icon: { 
-        width: 30, 
-        height: 30, 
-        marginLeft: 20, 
-        marginRight: 10 
+    icon: {
+        width: 30,
+        height: 30,
+        marginLeft: 20,
+        marginRight: 10
     },
-    boxtext1: { 
-        fontSize: 12, 
-        fontWeight: 'bold', 
-        color: '#404040' 
+    boxtext1: {
+        fontSize: 12,
+        fontWeight: 'bold',
+        color: '#404040'
     },
-    boxtext2: { 
-        fontSize: 14, 
-        color: '#404040' 
+    boxtext2: {
+        fontSize: 14,
+        color: '#404040'
     },
-    description: { 
-        marginLeft: 15, 
-        marginRight: 15, 
-        marginTop: 15, 
-        fontSize: 14 
+    description: {
+        marginLeft: 15,
+        marginRight: 15,
+        marginTop: 15,
+        fontSize: 14
     },
-    header3: { 
+    header3: {
         marginLeft: 10,
-        marginTop: 15, 
-        fontSize: 18, 
-        fontWeight: 'bold' 
+        marginTop: 15,
+        fontSize: 18,
+        fontWeight: 'bold'
     },
-    bottom: { 
-        flexDirection: 'row', 
-        marginBottom: 70 
+    bottom: {
+        flexDirection: 'row',
+        marginBottom: 70
     },
     border: {
         borderWidth: 2,
@@ -167,15 +169,15 @@ const styles = StyleSheet.create({
         marginTop: 15,
         marginLeft: 15,
     },
-    bottomtext: { 
-        textAlign: 'center', 
-        fontSize: 12, 
-        marginTop: 10, 
-        fontWeight: "bold" 
+    bottomtext: {
+        textAlign: 'center',
+        fontSize: 12,
+        marginTop: 10,
+        fontWeight: "bold"
     },
-    bottomimage: { 
-        width: 150, 
-        height: 150 
+    bottomimage: {
+        width: 150,
+        height: 150
     },
     add: {
         backgroundColor: '#F5F5F5',
@@ -185,17 +187,22 @@ const styles = StyleSheet.create({
         width: 150,
         borderRadius: 4
     },
-    addtext: { 
-        textAlign: 'center', 
-        fontSize: 12, 
-        marginTop: 50, 
-        fontWeight: "bold" 
+    addtext: {
+        textAlign: 'center',
+        fontSize: 12,
+        marginTop: 50,
+        fontWeight: "bold"
     },
-    addimage: { 
-        width: 50, 
-        height: 50, 
-        marginLeft: 50, 
-        marginTop: 15 
+    addimage: {
+        width: 50,
+        height: 50,
+        marginLeft: 50,
+        marginTop: 15
     },
+    arrow: {
+        marginLeft: 20,
+        marginTop: 10,
+        color: 'grey'
+    }
 
 });

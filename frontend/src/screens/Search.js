@@ -3,14 +3,15 @@ import { View, Text, FlatList, StyleSheet, Image, TextInput, Button, Header, Scr
 import { Ionicons } from '@expo/vector-icons';
 import firebase from '../components/firebase';
 
-export default function Search(props) {
+export default function Search({navigation: { navigate }}) {
     navigationOptions = { title: 'Search', };
 
-    const [easyPlants, setEasyPlants] = useState([]);
-    const [foodPlants, setFoodPlants] = useState([]);
-    const [lowWaterPlants, setlowWaterPlants] = useState([]);
-    const { navigate } = props.navigation;
-    const [searchedPlant, setSearchedPlant] = useState('');
+    const [easyPlants, setEasyPlants] = React.useState([]);
+    const [foodPlants, setFoodPlants] = React.useState([]);
+    const [lowWaterPlants, setlowWaterPlants] = React.useState([]);
+    const [searchedPlant, setSearchedPlant] = React.useState('');
+
+    console.disableYellowBox = true;
 
     //retrieving and filtering data from firebase db
     useEffect(() => {

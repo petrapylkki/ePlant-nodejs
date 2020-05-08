@@ -8,6 +8,8 @@ export default function SelectPot(props) {
     const { navigate } = props.navigation;
     const plant = props.navigation.state.params.plant;
 
+    console.disableYellowBox = true;
+
     useEffect(() => {
         firebase.database().ref('ruukut/').on('value', snapshot => {
             const potList = Object.values(snapshot.val());

@@ -4,6 +4,8 @@ import { Avatar, ListItem, Icon, Button } from 'react-native-elements';
 
 export default function Settings() {
 
+    console.disableYellowBox = true;
+
     const list = [
         {
             title: 'Ruukut',

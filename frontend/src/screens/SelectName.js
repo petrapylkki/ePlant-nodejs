@@ -9,6 +9,8 @@ export default function SelectName(props) {
     const plant = props.navigation.state.params.plant;
     const pot = props.navigation.state.params.pot;
 
+    console.disableYellowBox = true;
+
     addPlantToDatabase = () => {
         firebase.database().ref('omatkasvit/').push(
             {

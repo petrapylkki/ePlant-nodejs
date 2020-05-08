@@ -4,6 +4,7 @@ import { LineChart, BarChart, PieChart, ProgressChart, ContributionGraph, Stacke
 import ProgressCircle from 'react-native-progress-circle';
 import WaterPump from '../components/WaterpumpControl';
 import AutomaticControl from '../components/AutomaticControl';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function MyPlant(props) {
     const [channelId, setChannelId] = React.useState(1020483);
@@ -12,6 +13,7 @@ export default function MyPlant(props) {
     const [plants, setPlants] = React.useState(["Teuvo"]);
     const { navigate } = props.navigation;
 
+    console.disableYellowBox = true;
 
     useEffect(() => {
         getData();
@@ -49,6 +51,9 @@ export default function MyPlant(props) {
         <ScrollView style={[styles.container]}>
             <View style={[styles.top]}>
                 <View>
+                    <TouchableOpacity onPress={() => navigate('Home')}>
+                        <Ionicons name="md-arrow-round-back" size={40} style={[styles.icon]}/>
+                    </TouchableOpacity>
                     <Text style={[styles.plantname]}>{plants[0]}</Text>
                     <Text style={[styles.plantheader]}>Peikonlehti</Text>
                     <Image style={[styles.topimage]} source={require('../assets/smile.png')} />
@@ -62,7 +67,7 @@ export default function MyPlant(props) {
                     <Text style={[styles.datetext1]}>5.6.2019</Text>
                     <Text style={[styles.datetext2]}>7 kuukautta</Text>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent:"center", alignContent:"center" }}>
+                <View style={{ flexDirection: 'row', justifyContent: "center", alignContent: "center" }}>
                     <View style={[styles.humidity]}>
                         <Text style={[styles.humiditytext]}>Mullan kosteus</Text>
                         <ProgressCircle
@@ -105,8 +110,8 @@ export default function MyPlant(props) {
                     </View>
                 </View>
                 <View>
-                <WaterPump/>
-                <AutomaticControl/>
+                    <WaterPump />
+                    <AutomaticControl />
                 </View>
                 <View style={[styles.bottomheader]}>
                     <Text style={[styles.header]}>Viimeisimmät tapahtumat</Text>
@@ -143,95 +148,96 @@ const styles = StyleSheet.create({
         backgroundColor: '#E8E7E2',
         flex: 1,
     },
-    top: { flex: 1, 
-        flexDirection: 'row' 
+    top: {
+        flex: 1,
+        flexDirection: 'row'
     },
-    plantname: { 
+    plantname: {
         fontSize: 22,
-        fontWeight: 'bold', 
-        marginTop: 70, 
-        marginLeft: 30 
+        fontWeight: 'bold',
+        marginTop: 10,
+        marginLeft: 30
     },
-    plantheader: { 
-        fontSize: 16, 
-        color: '#63816D', 
-        marginLeft: 30, 
-        marginTop: 5, 
-        fontWeight: '600', 
-        fontStyle: 'italic' 
-    },
-    topimage: { 
-        width: 50, 
-        height: 50, 
-        marginLeft: 30, 
-        marginTop: 20, 
-        backgroundColor: 'white', 
-        borderRadius: 100 
-    },
-    topimage2: { 
-        width: 250, 
-        height: 250, 
-        marginLeft: 20 
-    },
-    container2: { 
-        flex: 2, 
-        backgroundColor: 'white', 
-        height: 600, 
-        borderTopLeftRadius: 30, 
-        borderTopRightRadius: 30 
-    },
-    date: { 
-        flexDirection: 'row', 
-        marginTop: 15, 
-        marginBottom: 15 
-    },
-    datetext1: { 
-        fontSize: 12, 
-        color: '#63816D', 
-        marginLeft: 20, 
-        fontWeight: 'bold' 
-    },
-    datetext2: { 
-        fontSize: 12, 
-        color: '#ACACAC', 
-        marginLeft: 10 
-    },
-    humidity: { 
-        borderRightColor: 'lightgrey', 
-        borderRightWidth: 1 
-    },
-    humiditytext: { 
+    plantheader: {
         fontSize: 16,
-        marginTop: 20, 
-        fontWeight: 'bold', 
-        marginRight: 50 
+        color: '#63816D',
+        marginLeft: 30,
+        marginTop: 5,
+        fontWeight: '600',
+        fontStyle: 'italic'
     },
-    humiditytext2: { 
-        fontSize: 22, 
-        color: '#63816D' 
+    topimage: {
+        width: 50,
+        height: 50,
+        marginLeft: 30,
+        marginTop: 20,
+        backgroundColor: 'white',
+        borderRadius: 100
     },
-    humiditytext3: { 
-        fontSize: 14, 
-        color: '#63816D', 
-        fontWeight: '600' 
+    topimage2: {
+        width: 250,
+        height: 250,
+        marginLeft: 20
     },
-    humiditytext4: { 
-        fontSize: 12, 
-        color: '#555555', 
+    container2: {
+        flex: 2,
+        backgroundColor: 'white',
+        height: 600,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30
+    },
+    date: {
+        flexDirection: 'row',
+        marginTop: 15,
+        marginBottom: 15
+    },
+    datetext1: {
+        fontSize: 12,
+        color: '#63816D',
+        marginLeft: 20,
+        fontWeight: 'bold'
+    },
+    datetext2: {
+        fontSize: 12,
+        color: '#ACACAC',
+        marginLeft: 10
+    },
+    humidity: {
+        borderRightColor: 'lightgrey',
+        borderRightWidth: 1
+    },
+    humiditytext: {
+        fontSize: 16,
+        marginTop: 20,
+        fontWeight: 'bold',
+        marginRight: 50
+    },
+    humiditytext2: {
+        fontSize: 22,
+        color: '#63816D'
+    },
+    humiditytext3: {
+        fontSize: 14,
+        color: '#63816D',
+        fontWeight: '600'
+    },
+    humiditytext4: {
+        fontSize: 12,
+        color: '#555555',
         marginLeft: 5
     },
-    waterlevel: { 
-        fontSize: 16, 
-        marginLeft: 40, 
-        marginTop: 20, 
-        fontWeight: 'bold' 
+    waterlevel: {
+        fontSize: 16,
+        marginLeft: 40,
+        marginTop: 20,
+        fontWeight: 'bold'
     },
-    waterlevel2: { 
-        color: '#51799B', 
-        fontSize: 14, 
-        marginLeft: 30, 
-        marginTop: 145, 
-        fontWeight: 'bold' 
+    waterlevel2: {
+        color: '#51799B',
+        fontSize: 14,
+        marginLeft: 30,
+        marginTop: 145,
+        fontWeight: 'bold'
     },
     header: {
         fontSize: 14,
@@ -262,7 +268,7 @@ const styles = StyleSheet.create({
             width: 2
         },
         elevation: 4,
-        borderRadius:4,
+        borderRadius: 4,
         backgroundColor: 'white',
         marginRight: 10,
         marginTop: 10,
@@ -293,7 +299,11 @@ const styles = StyleSheet.create({
     bottomtext2: {
         marginLeft: 5,
         fontSize: 16
+    },  
+    icon: {
+        marginLeft: 30,
+        marginTop: 30,
+        color: 'grey'
     }
-
 
 });

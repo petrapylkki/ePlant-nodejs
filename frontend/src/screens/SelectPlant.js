@@ -8,6 +8,8 @@ export default function SelectPlant(props) {
     const [filteredPlantList, setFilteredPlantlist] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const { navigate } = props.navigation;
+    
+    console.disableYellowBox = true;
 
     const handleChange = text => {
         setSearchTerm(text);
