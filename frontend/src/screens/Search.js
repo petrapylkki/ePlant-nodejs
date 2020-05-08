@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, StyleSheet, Image, TextInput, Button, Header, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Image, TextInput, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import firebase from '../components/firebase';
 
-export default function Search({navigation: { navigate }}) {
-    navigationOptions = { title: 'Search', };
-
-    const [easyPlants, setEasyPlants] = React.useState([]);
-    const [foodPlants, setFoodPlants] = React.useState([]);
-    const [lowWaterPlants, setlowWaterPlants] = React.useState([]);
-    const [searchedPlant, setSearchedPlant] = React.useState('');
+export default function Search(props) {
+    const [easyPlants, setEasyPlants] = useState([]);
+    const [foodPlants, setFoodPlants] = useState([]);
+    const [lowWaterPlants, setlowWaterPlants] = useState([]);
+    const [searchedPlant, setSearchedPlant] = useState('');
+    const { navigate } = props.navigation;
 
     console.disableYellowBox = true;
 
