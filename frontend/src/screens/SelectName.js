@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, KeyboardAvoidingView } from 'react-native';
 import { Input } from 'react-native-elements';
 import firebase from '../components/firebase';
+import Home from './Home.js';
 
 export default function SelectName(props) {
     const [plantName, setPlantName] = useState('');
@@ -25,7 +26,7 @@ export default function SelectName(props) {
                 'ruukkuid': potId 
             }
         )
-        navigate('Home')
+        navigate('Home', {showSnackbar: true, plantName: plantName})
     }
 
     return (
