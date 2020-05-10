@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, StyleSheet, Image, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import firebase from '../components/firebase';
-import Plants from '../components/Plants';
 
 export default function Search(props) {
     const [easyPlants, setEasyPlants] = useState([]);
     const [foodPlants, setFoodPlants] = useState([]);
     const [lowWaterPlants, setlowWaterPlants] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [showList, setShowList] = useState(false);
-    const [showCards, setShowCards] = useState(true);
     const { navigate } = props.navigation;
 
     console.disableYellowBox = true;
@@ -30,10 +27,6 @@ export default function Search(props) {
         });
     }, []);
 
-    const handleHide = () => {
-
-    }
-
     // sending selected items data to next screen and navigating to there
     const handleSelect = (item) => {
         navigate('Plant', { plant: item })
@@ -41,15 +34,8 @@ export default function Search(props) {
 
     // handles change of the search word
     const handleChange = (text) => {
-        setShowList(true)
-        setShowCards(false)
         setSearchTerm(text);
     };
-
-    const handleCancel = () => {
-        setShowList(false)
-        setShowCards(true)
-    }
 
     // handles forwading event data to handleChange after user clicks "search" on keyboard
     const handleSubmit = (event) => {
@@ -75,17 +61,79 @@ export default function Search(props) {
                         containerStyle={styles.searchcontainer}
                         inputContainerStyle={{backgroundColor: '#F0F0F0'}}
                         returnKeyType='search'
-                        onCancel={handleCancel}
                     />
                 </View>
             </View>
             <ScrollView>
-                {showList && <View>
-                    <Text>MOI</Text>
-                </View>}
-                {showCards && <Plants/>}
-            </ScrollView>
+            <View style={styles.category}>
+                    <Text style={styles.text}>Helppohoitoiset kasvit</Text>
+                    <FlatList
+                        horizontal={true}
+                        contentContainerStyle={{ alignSelf: 'flex-start' }}
+                        showsVerticalScrollIndicator={false}
+                        showsHorizontalScrollIndicator={false}
+                        marginLeft={10}
+                        data={easyPlants}
+                        renderItem={({ item }) =>
+                            <TouchableOpacity
+                                onPress={() => handleSelect(item)}
+                                title='Plant'
+                                style={styles.border}
+                            >
+                                <Text style={styles.plantheader}>{item.laji}</Text>
+                                <Image style={styles.plantimage} source={require('../assets/plant_img/kaktus.png')} />
 
+                            </TouchableOpacity>
+
+                        }
+                    />
+                </View>
+                <View style={styles.category}>
+                    <Text style={styles.text}>Ruokakasvit</Text>
+                    <FlatList
+                        horizontal={true}
+                        contentContainerStyle={{ alignSelf: 'flex-start' }}
+                        showsVerticalScrollIndicator={false}
+                        showsHorizontalScrollIndicator={false}
+                        marginLeft={10}
+                        data={foodPlants}
+                        renderItem={({ item }) =>
+                            <TouchableOpacity
+                                onPress={() => handleSelect(item)}
+                                title="Plant"
+                                style={styles.border}
+                            >
+                                <Text style={styles.plantheader}>{item.laji}</Text>
+                                <Image style={styles.plantimage} source={require('../assets/flowerpot.png')} />
+
+                            </TouchableOpacity>
+
+                        }
+                    />
+                </View>
+                <View style={styles.category}>
+                    <Text style={styles.text}>Kuivuutta kestävät kasvit</Text>
+                    <FlatList
+                        horizontal={true}
+                        contentContainerStyle={{ alignSelf: 'flex-start' }}
+                        showsVerticalScrollIndicator={false}
+                        showsHorizontalScrollIndicator={false}
+                        marginLeft={10}
+                        data={lowWaterPlants}
+                        renderItem={({ item }) =>
+                            <TouchableOpacity
+                                onPress={() => handleSelect(item)}
+                                title="Plant"
+                                style={styles.border}
+                            >
+                                <Text style={styles.plantheader}>{item.laji}</Text>
+                                <Image style={styles.plantimage} source={require('../assets/plant_img/aloe_vera.png')} />
+
+                            </TouchableOpacity>
+                        }
+                    />
+                </View>
+            </ScrollView>
         </View>
     );
 

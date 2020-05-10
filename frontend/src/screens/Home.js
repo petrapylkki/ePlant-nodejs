@@ -77,7 +77,7 @@ export default function Home(props) {
                         renderItem={({ item }) =>
                             <View style={styles.bottomitem}>
                                 <View>
-                                    <Image style={[styles.bottomimage]} source={require('../assets/eaaf7e.png')} />
+                                    <Image style={styles.bottomimage} source={require('../assets/eaaf7e.png')} />
                                 </View>
                                 <View style={styles.bottomtext}>
                                     <Text style={styles.bottomtext1}>Tänään klo 8.20</Text>

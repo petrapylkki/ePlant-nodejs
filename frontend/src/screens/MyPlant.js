@@ -48,28 +48,28 @@ export default function MyPlant(props) {
     };
 
     return (
-        <ScrollView style={[styles.container]}>
-            <View style={[styles.top]}>
+        <ScrollView style={styles.container}>
+            <View style={styles.top}>
                 <View>
                     <TouchableOpacity onPress={() => navigate('Home')}>
-                        <Ionicons name="md-arrow-round-back" size={40} style={[styles.icon]}/>
+                        <Ionicons name="md-arrow-round-back" size={40} style={styles.icon}/>
                     </TouchableOpacity>
-                    <Text style={[styles.plantname]}>{plants[0]}</Text>
-                    <Text style={[styles.plantheader]}>Peikonlehti</Text>
-                    <Image style={[styles.topimage]} source={require('../assets/smile.png')} />
+                    <Text style={styles.plantname}>{plants[0]}</Text>
+                    <Text style={styles.plantheader}>Peikonlehti</Text>
+                    <Image style={styles.topimage} source={require('../assets/smile.png')} />
                 </View>
                 <View>
-                    <Image style={[styles.topimage2]} source={require('../assets/flowerpot.png')} />
+                    <Image style={styles.topimage2} source={require('../assets/flowerpot.png')} />
                 </View>
             </View>
-            <View style={[styles.container2]}>
-                <View style={[styles.date]}>
-                    <Text style={[styles.datetext1]}>5.6.2019</Text>
-                    <Text style={[styles.datetext2]}>7 kuukautta</Text>
+            <View style={styles.container2}>
+                <View style={styles.date}>
+                    <Text style={styles.datetext1}>5.6.2019</Text>
+                    <Text style={styles.datetext2}>7 kuukautta</Text>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: "center", alignContent: "center" }}>
-                    <View style={[styles.humidity]}>
-                        <Text style={[styles.humiditytext]}>Mullan kosteus</Text>
+                    <View style={styles.humidity}>
+                        <Text style={styles.humiditytext}>Mullan kosteus</Text>
                         <ProgressCircle
                             percent={(humidity / 2500 * 100).toFixed(0)}
                             radius={50}
@@ -80,15 +80,15 @@ export default function MyPlant(props) {
                             outerCircleStyle={{ marginTop: 15, marginBottom: 15 }}
 
                         >
-                            <Text style={[styles.humiditytext2]}>{(humidity / 2500 * 100).toFixed(0)}%</Text>
+                            <Text style={styles.humiditytext2}>{(humidity / 2500 * 100).toFixed(0)}%</Text>
                         </ProgressCircle>
-                        <Text style={[styles.humiditytext3]}>Seuraava kastelu</Text>
-                        <Text style={[styles.humiditytext4]}>2 päivän kuluttua</Text>
+                        <Text style={styles.humiditytext3}>Seuraava kastelu</Text>
+                        <Text style={styles.humiditytext4}>2 päivän kuluttua</Text>
                     </View>
                     <View>
-                        <Text style={[styles.waterlevel]}>Vesitaso</Text>
+                        <Text style={styles.waterlevel}>Vesitaso</Text>
                         <View style={{ flexDirection: 'row' }}>
-                            <Text style={[styles.waterlevel2]}>{(waterLevel * 0.1).toFixed(0)}%</Text>
+                            <Text style={styles.waterlevel2}>{(waterLevel * 0.1).toFixed(0)}%</Text>
                             <StackedBarChart
 
                                 data={barData}
@@ -113,25 +113,25 @@ export default function MyPlant(props) {
                     <WaterPump />
                     <AutomaticControl />
                 </View>
-                <View style={[styles.bottomheader]}>
-                    <Text style={[styles.header]}>Viimeisimmät tapahtumat</Text>
+                <View style={styles.bottomheader}>
+                    <Text style={styles.header}>Viimeisimmät tapahtumat</Text>
                     <TouchableOpacity
                         onPress={() => navigate('Notifications')}
                     >
-                        <Text style={[styles.showmore]}>Näytä lisää</Text>
+                        <Text style={styles.showmore}>Näytä lisää</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.bottom}>
                     <FlatList data={plants}
                         marginLeft={15}
                         renderItem={({ item }) =>
-                            <View style={[styles.bottomitem]}>
+                            <View style={styles.bottomitem}>
                                 <View>
-                                    <Image style={[styles.bottomimage]} source={require('../assets/eaaf7e.png')} />
+                                    <Image style={styles.bottomimage} source={require('../assets/eaaf7e.png')} />
                                 </View>
-                                <View style={[styles.bottomtext]}>
-                                    <Text style={[styles.bottomtext1]}>Tänään klo 8.20</Text>
-                                    <Text style={[styles.bottomtext2]}>{item} kasteltu.</Text>
+                                <View style={styles.bottomtext}>
+                                    <Text style={styles.bottomtext1}>Tänään klo 8.20</Text>
+                                    <Text style={styles.bottomtext2}>{item} kasteltu.</Text>
                                 </View>
                             </View>
 

@@ -16,9 +16,9 @@ export default function Notifications() {
     }, []);
     
     return (
-        <View style={[styles.container]}>
-            <View style={[styles.border]}>
-                <Text style={[styles.text]}>Ilmoitukset</Text>
+        <View style={styles.container}>
+            <View style={styles.border}>
+                <Text style={styles.text}>Ilmoitukset</Text>
             </View>
             <View style={styles.bottom}>
                 <FlatList
