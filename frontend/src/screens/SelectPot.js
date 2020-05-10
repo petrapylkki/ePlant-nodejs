@@ -16,7 +16,6 @@ export default function SelectPot(props) {
             const potList = Object.values(snapshot.val());
 
             setPotList(potList);
-            console.log(plant)
         });
     }, []);
 

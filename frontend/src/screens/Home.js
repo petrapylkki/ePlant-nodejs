@@ -8,25 +8,25 @@ export default function Home(props) {
     const [plants, setPlants] = useState([]);
     const [visibility, setVisibility] = useState(false);
     const { navigate } = props.navigation;
-    // const plantName = props.navigation.state.params.plantName;
-    const showSnackbar = props.navigation && props.navigation.params.showSnackbar
+    // use these variables if they have all these props (so if user has navigated to Home.js from SelectName.js)
+    const showSnackbar = props.navigation && props.navigation.state && props.navigation.state.params && props.navigation.state.params.showSnackbar
+    const plantName = props.navigation && props.navigation.state && props.navigation.state.params && props.navigation.state.params.plantName
 
     console.disableYellowBox = true;
 
+    // change snackbar visibility opposite to current status
     const toggleSnackBar = () => setVisibility(!visibility);
 
     // retrieving firebase data and inserting it to "plants" list
-    useEffect((props) => {
+    useEffect(() => {
         firebase.database().ref('omatkasvit/').on('value', snapshot => {
             const plants = Object.values(snapshot.val());
             setPlants(plants);
         });
 
         if (showSnackbar === true) {
-            toggleSnackBar;
+            toggleSnackBar();
         }
-
-        console.log(props.navigation.params.showSnackbar)
     }, []);
 
     return (
@@ -44,12 +44,6 @@ export default function Home(props) {
                 </View> */}
                 
                 <View style={styles.middle}>
-                <View>
-                    <Button
-                        title='moi'
-                        onPress={toggleSnackBar}
-                    />
-                </View>
                     <View style={styles.middleheader}>
                         <Text style={styles.header}>Omat kasvini</Text>
                     </View>
@@ -105,13 +99,11 @@ export default function Home(props) {
                         
                     }}
                     action={{
-                        label: 'Näytä',
-                        onPress: () => {
-                        console.log('jee')
-                        },
+                        label: 'SULJE',
+                        onPress: () => {toggleSnackBar},
                     }}
                 >
-                    Pirkko lisätty omiin kasveihin!
+                    {plantName} lisätty omiin kasveihin!
                 </Snackbar>
             </View>
         </View>
