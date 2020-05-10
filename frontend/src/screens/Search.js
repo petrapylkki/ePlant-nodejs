@@ -1,20 +1,20 @@
-import React from 'react';
-import { View, Text, FlatList, StyleSheet, Image, TextInput, Button, Header, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, FlatList, StyleSheet, Image, TextInput, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import firebase from '../components/firebase';
 
-export default function Search({navigation: { navigate }}) {
-    navigationOptions = { title: 'Search', };
-
-    const [easyPlants, setEasyPlants] = React.useState([]);
-    const [foodPlants, setFoodPlants] = React.useState([]);
-    const [lowWaterPlants, setlowWaterPlants] = React.useState([]);
-    const [searchedPlant, setSearchedPlant] = React.useState('');
+export default function Search(props) {
+    const [easyPlants, setEasyPlants] = useState([]);
+    const [foodPlants, setFoodPlants] = useState([]);
+    const [lowWaterPlants, setlowWaterPlants] = useState([]);
+    const [searchedPlant, setSearchedPlant] = useState('');
+    const { navigate } = props.navigation;
 
     console.disableYellowBox = true;
 
-    //retrieving and filtering data from firebase db
-    React.useEffect(() => {
+    // retrieving and filtering data from firebase db
+    // setting filtered data to differend lists
+    useEffect(() => {
         firebase.database().ref('kasvit/').on('value', snapshot => {
           const plants = Object.values(snapshot.val());
           const easyPlants = plants.filter(plant => plant.hoito === 'Helppo')
@@ -31,7 +31,8 @@ export default function Search({navigation: { navigate }}) {
         Alert.alert('Tää ei viel tee mitää :/')
     }
 
-    handleSelect = (item) => {
+    // sending selected items data to next screen and navigating to there
+    const handleSelect = (item) => {
         navigate('Plant', { plant: item })
     };
 

@@ -1,3 +1,4 @@
+// importing all images and naming them
 import jukkapalmuImage from '../assets/background_img/jukkapalmu.jpg';
 import kaktusImage from '../assets/background_img/kaktus.jpg';
 import aloeveraImage from '../assets/background_img/aloevera.jpg'
@@ -10,6 +11,7 @@ import murattiImage from '../assets/background_img/muratti.jpg'
 import palmuvehkaImage from '../assets/background_img/palmuvehka.jpg'
 import placeholderImage from "../assets/background_img/palmuvehka.jpg";
 
+// selecting which image to return based on param from Search.js
 export default function SetBackgroundImg(plant) {
     switch (plant) {
         case 'Jukkapalmu':

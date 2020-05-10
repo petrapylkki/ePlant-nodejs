@@ -1,5 +1,5 @@
-import { View,Text,style, Button, StyleSheet, Switch, Alert } from "react-native"
 import React from 'react';
+import { View,Text, StyleSheet, Switch, Alert } from "react-native"
 
 export default function AutomaticControl() {
 

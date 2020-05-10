@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Image, KeyboardAvoidingView } from 'react-native';
 import { Input } from 'react-native-elements';
 import { Icon } from 'react-native-elements';
 import firebase from '../components/firebase';
@@ -9,19 +9,25 @@ export default function SelectName(props) {
     const { navigate } = props.navigation;
     const plant = props.navigation.state.params.plant;
     const pot = props.navigation.state.params.pot;
+    const potId = props.navigation.state.params.potId;
 
     console.disableYellowBox = true;
 
-    addPlantToDatabase = () => {
+    // adds new plants data to firebase database table "own plants"
+    // data are received with props from previous screens SelectPlant.js and SelectPot.js
+    // user is taken back to Home.js screen, and two props are send with navigation
+    // props are used to show a snackbar in Home.js to inform the user that plant has been added to db
+    const addPlantToDatabase = () => {
         firebase.database().ref('omatkasvit/').push(
             {
                 'kasvi': plant,
                 'ruukku': pot,
                 'nimi': plantName,
-                'paivays': Date()
+                'paivays': Date(),
+                'ruukkuid': potId 
             }
         )
-        navigate('Home')
+        navigate('Home', {showSnackbar: true, plantName: plantName})
     }
 
     return (

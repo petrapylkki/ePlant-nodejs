@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
 
 export default function Notifications() {
-    const [plants, setPlants] = React.useState(["Teuvo", "Martti", "Ykä", "Teppo"]);
+    const [plants, setPlants] = useState(["Teuvo", "Martti", "Ykä", "Teppo"]);
 
     console.disableYellowBox = true;
     

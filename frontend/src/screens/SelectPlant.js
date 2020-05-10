@@ -11,14 +11,18 @@ export default function SelectPlant(props) {
     
     console.disableYellowBox = true;
 
-    const handleChange = text => {
+    // handles change of the search word
+    const handleChange = (text) => {
         setSearchTerm(text);
     };
 
-    const handleSubmit = event => {
+    // handles forwading event data to handleChange after user clicks "search" on keyboard
+    const handleSubmit = (event) => {
         handleChange(event.nativeEvent.text)
     };
 
+    // getting object values from firebase and setting values into two list,
+    // one for all plants and one as the filtered list based on search word user uses
     useEffect(() => {
         firebase.database().ref('kasvit/').on('value', snapshot => {
             const plantList = Object.values(snapshot.val());
@@ -28,6 +32,7 @@ export default function SelectPlant(props) {
         });
     }, []);
 
+    // updates filtered plant list when search word changes, and returns filtered list
     useEffect(() => {
           const results = plantList.filter(plant => 
             plant.laji.toLowerCase().includes(searchTerm.toLowerCase())
@@ -35,6 +40,7 @@ export default function SelectPlant(props) {
           setFilteredPlantlist(results);
     }, [searchTerm]);
 
+    // sending selected items data to next screen and navigating to there
     handleSelect = (item) => {
         navigate('SelectPot', { plant: item.laji })
     };

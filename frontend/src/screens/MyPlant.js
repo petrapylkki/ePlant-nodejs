@@ -1,16 +1,16 @@
-import React, { useState, useEffect, Component } from 'react';
-import { View, Text, StyleSheet, FlatList, Image, ScrollView, TouchableOpacity, ImageBackground, Alert, Button } from 'react-native';
-import { LineChart, BarChart, PieChart, ProgressChart, ContributionGraph, StackedBarChart } from 'react-native-chart-kit';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, FlatList, Image, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import { StackedBarChart } from 'react-native-chart-kit';
 import ProgressCircle from 'react-native-progress-circle';
 import WaterPump from '../components/WaterpumpControl';
 import AutomaticControl from '../components/AutomaticControl';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function MyPlant(props) {
-    const [channelId, setChannelId] = React.useState(1020483);
-    const [humidity, setHumidity] = React.useState(0);
-    const [waterLevel, setWaterLevel] = React.useState(0);
-    const [plants, setPlants] = React.useState(["Teuvo"]);
+    const [channelId, setChannelId] = useState(1020483);
+    const [humidity, setHumidity] = useState(0);
+    const [waterLevel, setWaterLevel] = useState(0);
+    const [plants, setPlants] = useState(["Teuvo"]);
     const { navigate } = props.navigation;
 
     console.disableYellowBox = true;
@@ -19,7 +19,7 @@ export default function MyPlant(props) {
         getData();
     }, []);
 
-    //retrieving sensor statistics from the IoT device
+    // retrieving sensor statistics from the IoT device
     const getData = () => {
         const url = 'https://thingspeak.com/channels/' + channelId + '/feed.json';
         fetch(url)

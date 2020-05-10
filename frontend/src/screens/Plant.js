@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, Image, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import SetBackgroundImage from '../components/SetBackgroundImg.js';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -14,10 +14,7 @@ export default function Plant(props) {
         alert('tää ei tee vielä mitään')
     }
 
-    useEffect(() => {
-        console.log(props.navigation.state.params.plant)
-    }, []);
-
+    // returning plant data based on props from Search.js and plantImage from SetBackgroundImg.js
     return (
         <ScrollView style={styles.container}>
             <View style={{ flex: 1 }}>
