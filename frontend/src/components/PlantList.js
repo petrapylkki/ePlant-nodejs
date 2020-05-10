@@ -3,11 +3,10 @@ import { View, StyleSheet } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import firebase from '../components/firebase';
 
-export default function SelectPlant(props) {
+export default function SelectPlant({searchTerm, navigation}) {
     const [plantList, setPlantlist] = useState([]);
     const [filteredPlantList, setFilteredPlantlist] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
-    const { navigate } = props.navigation;
+    const { navigate } = navigation;
     
     console.disableYellowBox = true;
 
@@ -24,11 +23,12 @@ export default function SelectPlant(props) {
 
     // updates filtered plant list when search word changes, and returns filtered list
     useEffect(() => {
-          const results = plantList.filter(plant => 
+        const results = plantList.filter(plant => 
             plant.laji.toLowerCase().includes(searchTerm.toLowerCase())
-          )
-          setFilteredPlantlist(results);
-    }, [searchTerm]);
+        )
+
+        setFilteredPlantlist(results);
+    }, [searchTerm, plantList]);
 
     // sending selected items data to next screen and navigating to there
     const handleSelect = (item) => {

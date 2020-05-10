@@ -1,54 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, StyleSheet, Image, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SearchBar } from 'react-native-elements';
-import firebase from '../components/firebase';
-import Plants from '../components/Plants';
+import PlantCards from '../components/PlantCards';
+import PlantList from '../components/PlantList';
 
-export default function Search(props) {
-    const [easyPlants, setEasyPlants] = useState([]);
-    const [foodPlants, setFoodPlants] = useState([]);
-    const [lowWaterPlants, setlowWaterPlants] = useState([]);
+export default function Search({navigation}) {
     const [searchTerm, setSearchTerm] = useState('');
-    const [showList, setShowList] = useState(false);
-    const [showCards, setShowCards] = useState(true);
-    const { navigate } = props.navigation;
+    const [searchPhase, setSearchPhase] = useState('cards');
 
     console.disableYellowBox = true;
 
-    // retrieving and filtering data from firebase db
-    // setting filtered data to differend lists
-    useEffect(() => {
-        firebase.database().ref('kasvit/').on('value', snapshot => {
-          const plants = Object.values(snapshot.val());
-          const easyPlants = plants.filter(plant => plant.hoito === 'Helppo')
-          const foodPlants = plants.filter(plant => plant.tyyppi === 'Ruokakasvi')
-          const lowWaterPlants = plants.filter(plant => plant.vesitarve === 'Niukka')
-        
-          setEasyPlants(easyPlants);
-          setFoodPlants(foodPlants);
-          setlowWaterPlants(lowWaterPlants); 
-        });
-    }, []);
-
-    const handleHide = () => {
-
-    }
-
-    // sending selected items data to next screen and navigating to there
-    const handleSelect = (item) => {
-        navigate('Plant', { plant: item })
-    };
-
     // handles change of the search word
     const handleChange = (text) => {
-        setShowList(true)
-        setShowCards(false)
+        setSearchPhase('list')
         setSearchTerm(text);
     };
 
     const handleCancel = () => {
-        setShowList(false)
-        setShowCards(true)
+        setSearchPhase('cards')
     }
 
     // handles forwading event data to handleChange after user clicks "search" on keyboard
@@ -80,10 +49,8 @@ export default function Search(props) {
                 </View>
             </View>
             <ScrollView>
-                {showList && <View>
-                    <Text>MOI</Text>
-                </View>}
-                {showCards && <Plants/>}
+                {searchPhase === 'list' && <PlantList navigation={navigation} searchTerm={searchTerm}/>}
+                {searchPhase === 'cards' && <PlantCards navigation={navigation}/>}
             </ScrollView>
 
         </View>
@@ -93,7 +60,7 @@ export default function Search(props) {
 
 };
 
-Search.navigationOptions = ({ navigate }) => ({ title: 'Search' });
+Search.navigationOptions = () => ({ title: 'Search' });
 
 const styles = StyleSheet.create({
     container: {
