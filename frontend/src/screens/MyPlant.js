@@ -5,18 +5,20 @@ import ProgressCircle from 'react-native-progress-circle';
 import WaterPump from '../components/WaterpumpControl';
 import AutomaticControl from '../components/AutomaticControl';
 import { Ionicons } from '@expo/vector-icons';
+import Moment from 'moment';
 
 export default function MyPlant(props) {
-    const [channelId, setChannelId] = useState(1020483);
+    const plant = props.navigation.state.params.plant;
+    const channelId = plant.ruukkuid;
     const [humidity, setHumidity] = useState(0);
     const [waterLevel, setWaterLevel] = useState(0);
-    const [plants, setPlants] = useState(["Teuvo"]);
     const { navigate } = props.navigation;
 
     console.disableYellowBox = true;
 
     useEffect(() => {
         getData();
+        console.log(plant)
     }, []);
 
     // retrieving sensor statistics from the IoT device
@@ -52,10 +54,10 @@ export default function MyPlant(props) {
             <View style={styles.top}>
                 <View>
                     <TouchableOpacity onPress={() => navigate('Home')}>
-                        <Ionicons name="md-arrow-round-back" size={40} style={styles.icon}/>
+                        <Ionicons name="md-arrow-round-back" size={30} style={styles.icon}/>
                     </TouchableOpacity>
-                    <Text style={styles.plantname}>{plants[0]}</Text>
-                    <Text style={styles.plantheader}>Peikonlehti</Text>
+                    <Text style={styles.plantname}>{plant.nimi}</Text>
+                    <Text style={styles.plantheader}>{plant.laji}</Text>
                     <Image style={styles.topimage} source={require('../assets/smile.png')} />
                 </View>
                 <View>
@@ -64,8 +66,7 @@ export default function MyPlant(props) {
             </View>
             <View style={styles.container2}>
                 <View style={styles.date}>
-                    <Text style={styles.datetext1}>5.6.2019</Text>
-                    <Text style={styles.datetext2}>7 kuukautta</Text>
+                    <Text style={styles.datetext1}>{Moment(plant.paivays).format('D.M.Y')}</Text>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: "center", alignContent: "center" }}>
                     <View style={styles.humidity}>
@@ -122,7 +123,7 @@ export default function MyPlant(props) {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.bottom}>
-                    <FlatList data={plants}
+                    {/*<FlatList data={plant}
                         marginLeft={15}
                         renderItem={({ item }) =>
                             <View style={styles.bottomitem}>
@@ -136,7 +137,7 @@ export default function MyPlant(props) {
                             </View>
 
                         }
-                    />
+                    />*/}
                 </View>
             </View>
         </ScrollView>
@@ -196,11 +197,6 @@ const styles = StyleSheet.create({
         color: '#63816D',
         marginLeft: 20,
         fontWeight: 'bold'
-    },
-    datetext2: {
-        fontSize: 12,
-        color: '#ACACAC',
-        marginLeft: 10
     },
     humidity: {
         borderRightColor: 'lightgrey',

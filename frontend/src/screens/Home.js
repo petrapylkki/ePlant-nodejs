@@ -30,19 +30,18 @@ export default function Home(props) {
         }
     }, []);
 
+    // sending selected items data to next screen and navigating to there
+    const handleSelect = (item) => {
+        console.log(item)
+        navigate('MyPlant', { plant: item })
+    };
+
     return (
         <View style={styles.container}>    
             <ScrollView style={styles.container}>
                 <View style={styles.top} >
                     <Text style={styles.top}>Huomenta {user}!</Text>
                 </View>
-                {/* <View style={{marginLeft: 20, backgroundColor: '#D7E8F7', width: '90%', height: 80, borderRadius: 4, marginBottom: 15, flexDirection: 'row'}}>
-                    <Image style={{height: 30, width: 30, marginTop: 25, marginLeft: 10}} source={require('./drop.png')}/>
-                    <View>
-                        <Text style={{color: '#5386B4', fontSize: 14, fontWeight: 'bold', marginLeft: 10, marginTop: 15}}>Vesisäiliö on lähes tyhjä</Text>
-                        <Text style={{color: '#555555', fontSize: 12, marginLeft: 10, marginRight: 10, marginTop: 5}}>Täytä vesisäiliö säännöllisesti, jotta kasvisi saavat raikasta vettä joka päivä.</Text>
-                    </View>
-                </View> */}
                 
                 <View style={styles.middle}>
                     <View style={styles.middleheader}>
@@ -56,7 +55,7 @@ export default function Home(props) {
                         data={plants}
                         renderItem={({ item }) =>
                             <TouchableOpacity style={styles.border}
-                                onPress={() => navigate('MyPlant')}
+                                onPress={() => handleSelect(item)}
                             >
                                 <Text style={styles.middletext}>{item.nimi}</Text>
                                 <Image style={styles.middleimage} source={require('../assets/flowerpot.png')} />

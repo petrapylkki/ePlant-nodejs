@@ -20,7 +20,7 @@ export default function SelectName(props) {
     const addPlantToDatabase = () => {
         firebase.database().ref('omatkasvit/').push(
             {
-                'kasvi': plant,
+                'laji': plant,
                 'ruukku': pot,
                 'nimi': plantName,
                 'paivays': Date(),
