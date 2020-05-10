@@ -1,3 +1,4 @@
+// importing all necessary components
 import React, { useState } from 'react';
 import { View, Button, StyleSheet } from 'react-native';
 import { DotIndicator } from 'react-native-indicators';
@@ -6,8 +7,12 @@ export default function waterpumpControl() {
   const [res, setRes] = useState(0);
   const [isLoading, setLoading] = useState(false);
 
+  // define ThingSpeak API-key
   const apikey = "XR2Z3K3KE1Q1V3UA";
 
+  // handles waterpump ON-functionality asynchronously
+  // goes through the conditional statement until the desired value is obtained from ThingSpeak
+  // after this WaterOn -function launched
   const waterOn = async () => {
       const url = 'https://api.thingspeak.com/update?api_key=' + apikey + '&field3=1';  
       try {
@@ -26,6 +31,9 @@ export default function waterpumpControl() {
       }
   }
 
+  // handles waterpump OFF-functionality asynchronously
+  // goes through the conditional statement until the desired value is obtained from ThingSpeak
+  // after this WaterOff -function launched
     const waterOff = async () => {
       const url = 'https://api.thingspeak.com/update?api_key=' + apikey + '&field3=0';
       try {
@@ -44,20 +52,7 @@ export default function waterpumpControl() {
       }
   }
 
-    const wait = async (ms) => {
-      try {
-      let start = new Date().getTime();
-      let end = start;
-      console.log("Waiting: " + ms /1000 );
-
-      while(end < start + ms) {
-        end = new Date().getTime()
-    }
-    } catch (error) {
-      Alert.alert('Error', error);
-    } 
-  }
-
+// controls water pump functionalities
     const waterControl = () => {
       waterOn();
       setRes(100);
@@ -68,12 +63,14 @@ export default function waterpumpControl() {
       console.log(res);
 };
 
+// returns Water ON -button and loading indicator on the screen
 return(
 
   <View style= {styles.waterpumpButton}>
       <Button
         onPress ={waterControl}
-        title="Kastele ruukku"
+        title="Water the plant"
+        style={styles.button}
         />  
     <DotIndicator
          animating={isLoading}
