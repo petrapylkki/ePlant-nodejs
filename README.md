@@ -142,6 +142,9 @@ npm install expo-cli --global
 ```
 
 
+*For further information about Expo and its usage, please visit [Expo Documentation](https://docs.expo.io/).*
+
+
 <!-- USAGE EXAMPLES -->
 ## Usage
 
