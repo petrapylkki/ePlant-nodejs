@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, KeyboardAvoidingView } from 'react-native';
 import { Input } from 'react-native-elements';
 import firebase from '../components/firebase';
-import Home from './Home.js';
 
 export default function SelectName(props) {
     const [plantName, setPlantName] = useState('');
@@ -15,8 +14,9 @@ export default function SelectName(props) {
 
     // adds new plants data to firebase database table "own plants"
     // data are received with props from previous screens SelectPlant.js and SelectPot.js
-    // user is taken back to Home.js screen
-    addPlantToDatabase = () => {
+    // user is taken back to Home.js screen, and two props are send with navigation
+    // props are used to show a snackbar in Home.js to inform the user that plant has been added to db
+    const addPlantToDatabase = () => {
         firebase.database().ref('omatkasvit/').push(
             {
                 'kasvi': plant,
