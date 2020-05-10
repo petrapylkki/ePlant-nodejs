@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
         height: 170
     },
     header: {
-        height: 100,
+        height: 140,
         shadowColor: '#DEDDDD',
         shadowOpacity: 2,
         shadowOffset:{
@@ -191,6 +191,9 @@ const styles = StyleSheet.create({
         },
         elevation:4,
         backgroundColor: '#FAFAFA'
+    },
+    searchbar: {
+        alignSelf: 'flex-end'
     },
     searchcontainer: {
         backgroundColor: '#FCFCFC',
