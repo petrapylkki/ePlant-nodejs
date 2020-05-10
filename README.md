@@ -18,10 +18,9 @@
 <br />
 <p align="center">
 
- <!-- <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a> -->
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;![ePlant](https://user-images.githubusercontent.com/25533588/81295527-39008780-9079-11ea-8c84-3de1557d96be.png)
+ <a href="https://github.com/petrapylkki/ePlant/tree/master">
+    <img src="images/ePlant_logo.jpeg" alt="Logo" width="400" height="550">
+  </a>
 
 
 
@@ -120,11 +119,27 @@ eplant-19-cd0
 			needOfWater:
 ```
 <!--FIREBASE PICTURE-->
-![Firebase](https://user-images.githubusercontent.com/25533588/81291522-90e7c000-9072-11ea-8f28-3a1217a54f14.PNG)
+<!-- ![Firebase](https://user-images.githubusercontent.com/25533588/81291522-90e7c000-9072-11ea-8f28-3a1217a54f14.PNG) -->
+
+<p align="center">
+<kbd>
+ <a href="https://github.com/petrapylkki/ePlant/tree/master">
+    <img src="images/Firebase.PNG" alt="Firebase" width="550" height="750">
+  </a>
+</kbd>
+</p>
 
 On ThingSpeak we can see the humidity on chart 1, water level on chart 2, if the pump is on or off on chart 3, sensor values on chart 4 and automatic pilot on chart 5. There is a huge amount of good guides in ThingSpeak on how to do this kind of monitoring, so we're not going into the spesifics here. 
 <!--THINGSPEAK PICTURE-->
-![thingspeak](https://user-images.githubusercontent.com/25533588/81293303-c4781980-9075-11ea-8592-d0801835843f.PNG)
+<!-- ![thingspeak](https://user-images.githubusercontent.com/25533588/81293303-c4781980-9075-11ea-8592-d0801835843f.PNG) -->
+
+<p align="center">
+<kbd>
+ <a href="https://github.com/petrapylkki/ePlant/tree/master">
+    <img src="images/thingspeak.PNG" alt="Thingspeak" width="700" height="750">
+  </a>
+<kbd>
+</p>
 
 ### Installation
 
@@ -149,6 +164,36 @@ npm install expo-cli --global
 ## Usage
 
 <!-- Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources. -->
+
+<p align="center">
+<kbd>
+ <a href="https://github.com/petrapylkki/ePlant/tree/master">
+    <img src="images/ePlant_home.jpeg" alt="Home" width="350" height="750">
+  </a>
+</kbd>
+
+<kbd>
+ <a href="https://github.com/petrapylkki/ePlant/tree/master">
+    <img src="images/ePlant_search.jpeg" alt="Search" width="350" height="750">
+  </a>
+</kbd
+	
+<br>
+<br>
+<br>
+
+<kbd>
+<a href="https://github.com/petrapylkki/ePlant/tree/master">
+    <img src="images/ePlant_addPlant.jpeg" alt="addPlant" width="350" height="750">
+  </a>
+</kbd>
+
+<kbd>
+ <a href="https://github.com/petrapylkki/ePlant/tree/master">
+    <img src="images/ePlant_kaktus.jpeg" alt="Kaktus" width="350" height="750">
+  </a>
+</kbd>
+</p>
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
