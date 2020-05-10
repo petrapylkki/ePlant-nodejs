@@ -58,21 +58,20 @@ export default function waterpumpControl() {
     } 
   }
 
-  waterOff();
-  console.log(res);
-  setRes(100);
-  console.log(res);
-}
+    const waterControl = () => {
+      waterOn();
+      setRes(100);
+      console.log(res);
+  
+      waterOff();
+      setRes(100);
+      console.log(res);
+};
 
 return(
 
-  <View style={styles.box}>
-  { isLoading ? res : 
-   <DotIndicator 
-        color='#63816D'
-        style={{marginBottom:15}}
-        />}
-      <Button buttonStyle={styles.button}
+  <View style= {styles.waterpumpButton}>
+      <Button
         onPress ={waterControl}
         title="Kastele ruukku"
         />  
@@ -83,6 +82,7 @@ return(
        />
   </View>
 );
+}
 
 const styles = StyleSheet.create({
 
@@ -91,8 +91,19 @@ const styles = StyleSheet.create({
       marginLeft:35,
       marginTop:15,
       color: '#63816D',
+      backgroundColor: "#c1dbc9",
+      fontSize: 15,
+      fontWeight: "bold",
+      textAlign:"center",
+      borderColor: "#c1dbc9",
+      borderWidth: 1,
+      borderRadius:10,
+      padding:4,
+      margin: 7,
+      width:150
     },
-    button: {
+    loadingIndicator: {
+      justifyContent: 'center',
 
     }
 });
