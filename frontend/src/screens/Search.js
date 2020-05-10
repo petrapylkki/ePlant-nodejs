@@ -44,6 +44,7 @@ export default function Search({navigation}) {
                         containerStyle={styles.searchcontainer}
                         inputContainerStyle={{backgroundColor: '#F0F0F0'}}
                         returnKeyType='search'
+                        onCancel={handleCancel}
                     />
                 </View>
             </View>
