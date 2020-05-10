@@ -2,14 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import firebase from './firebase';
 
-export default function PlantCards(props) {
+export default function PlantCards({navigation}) {
     const [easyPlants, setEasyPlants] = useState([]);
     const [foodPlants, setFoodPlants] = useState([]);
     const [lowWaterPlants, setlowWaterPlants] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [showList, setShowList] = useState(false);
-    const [showCards, setShowCards] = useState(true);
-    const { navigate } = props.navigation;
+    const { navigate } = navigation;
 
     console.disableYellowBox = true;
 
@@ -31,13 +28,6 @@ export default function PlantCards(props) {
     // sending selected items data to next screen and navigating to there
     const handleSelect = (item) => {
         navigate('Plant', { plant: item })
-    };
-
-    // handles change of the search word
-    const handleChange = (text) => {
-        setShowList(true)
-        setShowCards(false)
-        setSearchTerm(text);
     };
 
     return (
