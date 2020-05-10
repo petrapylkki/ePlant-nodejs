@@ -24,11 +24,12 @@ export default function SelectPlant(props) {
 
     // updates filtered plant list when search word changes, and returns filtered list
     useEffect(() => {
-          const results = plantList.filter(plant => 
+        const results = plantList.filter(plant => 
             plant.laji.toLowerCase().includes(searchTerm.toLowerCase())
-          )
-          setFilteredPlantlist(results);
-    }, [searchTerm]);
+        )
+
+        setFilteredPlantlist(results);
+    }, [searchTerm, plantList]);
 
     // sending selected items data to next screen and navigating to there
     const handleSelect = (item) => {
@@ -48,8 +49,6 @@ export default function SelectPlant(props) {
     const resetPlantList = () => {
         setFilteredPlantlist(plantList)
     }
-
-
 
     return (
         <View style={styles.container}>

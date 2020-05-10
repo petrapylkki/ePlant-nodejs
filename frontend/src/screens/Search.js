@@ -1,41 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SearchBar } from 'react-native-elements';
-import firebase from '../components/firebase';
+import PlantCards from '../components/PlantCards';
+import PlantList from '../components/PlantList';
 
-export default function Search(props) {
-    const [easyPlants, setEasyPlants] = useState([]);
-    const [foodPlants, setFoodPlants] = useState([]);
-    const [lowWaterPlants, setlowWaterPlants] = useState([]);
+export default function Search({navigation}) {
     const [searchTerm, setSearchTerm] = useState('');
-    const { navigate } = props.navigation;
+    const [searchPhase, setSearchPhase] = useState('cards');
 
     console.disableYellowBox = true;
 
-    // retrieving and filtering data from firebase db
-    // setting filtered data to differend lists
-    useEffect(() => {
-        firebase.database().ref('kasvit/').on('value', snapshot => {
-          const plants = Object.values(snapshot.val());
-          const easyPlants = plants.filter(plant => plant.hoito === 'Helppo')
-          const foodPlants = plants.filter(plant => plant.tyyppi === 'Ruokakasvi')
-          const lowWaterPlants = plants.filter(plant => plant.vesitarve === 'Niukka')
-        
-          setEasyPlants(easyPlants);
-          setFoodPlants(foodPlants);
-          setlowWaterPlants(lowWaterPlants); 
-        });
-    }, []);
-
-    // sending selected items data to next screen and navigating to there
-    const handleSelect = (item) => {
-        navigate('Plant', { plant: item })
-    };
-
     // handles change of the search word
     const handleChange = (text) => {
+        setSearchPhase('list')
         setSearchTerm(text);
     };
+
+    const handleCancel = () => {
+        setSearchPhase('cards')
+    }
 
     // handles forwading event data to handleChange after user clicks "search" on keyboard
     const handleSubmit = (event) => {
@@ -65,74 +48,8 @@ export default function Search(props) {
                 </View>
             </View>
             <ScrollView>
-            <View style={styles.category}>
-                    <Text style={styles.text}>Helppohoitoiset kasvit</Text>
-                    <FlatList
-                        horizontal={true}
-                        contentContainerStyle={{ alignSelf: 'flex-start' }}
-                        showsVerticalScrollIndicator={false}
-                        showsHorizontalScrollIndicator={false}
-                        marginLeft={10}
-                        data={easyPlants}
-                        renderItem={({ item }) =>
-                            <TouchableOpacity
-                                onPress={() => handleSelect(item)}
-                                title='Plant'
-                                style={styles.border}
-                            >
-                                <Text style={styles.plantheader}>{item.laji}</Text>
-                                <Image style={styles.plantimage} source={require('../assets/plant_img/kaktus.png')} />
-
-                            </TouchableOpacity>
-
-                        }
-                    />
-                </View>
-                <View style={styles.category}>
-                    <Text style={styles.text}>Ruokakasvit</Text>
-                    <FlatList
-                        horizontal={true}
-                        contentContainerStyle={{ alignSelf: 'flex-start' }}
-                        showsVerticalScrollIndicator={false}
-                        showsHorizontalScrollIndicator={false}
-                        marginLeft={10}
-                        data={foodPlants}
-                        renderItem={({ item }) =>
-                            <TouchableOpacity
-                                onPress={() => handleSelect(item)}
-                                title="Plant"
-                                style={styles.border}
-                            >
-                                <Text style={styles.plantheader}>{item.laji}</Text>
-                                <Image style={styles.plantimage} source={require('../assets/flowerpot.png')} />
-
-                            </TouchableOpacity>
-
-                        }
-                    />
-                </View>
-                <View style={styles.category}>
-                    <Text style={styles.text}>Kuivuutta kestävät kasvit</Text>
-                    <FlatList
-                        horizontal={true}
-                        contentContainerStyle={{ alignSelf: 'flex-start' }}
-                        showsVerticalScrollIndicator={false}
-                        showsHorizontalScrollIndicator={false}
-                        marginLeft={10}
-                        data={lowWaterPlants}
-                        renderItem={({ item }) =>
-                            <TouchableOpacity
-                                onPress={() => handleSelect(item)}
-                                title="Plant"
-                                style={styles.border}
-                            >
-                                <Text style={styles.plantheader}>{item.laji}</Text>
-                                <Image style={styles.plantimage} source={require('../assets/plant_img/aloe_vera.png')} />
-
-                            </TouchableOpacity>
-                        }
-                    />
-                </View>
+                {searchPhase === 'list' && <PlantList navigation={navigation} searchTerm={searchTerm}/>}
+                {searchPhase === 'cards' && <PlantCards navigation={navigation}/>}
             </ScrollView>
         </View>
     );
@@ -141,7 +58,7 @@ export default function Search(props) {
 
 };
 
-Search.navigationOptions = ({ navigate }) => ({ title: 'Search' });
+Search.navigationOptions = () => ({ title: 'Search' });
 
 const styles = StyleSheet.create({
     container: {
