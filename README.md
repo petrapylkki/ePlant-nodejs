@@ -130,7 +130,7 @@ eplant-19-cd0
 
 <br>
 On ThingSpeak we can see the humidity on chart 1, water level on chart 2, if the pump is on or off on chart 3, sensor values on chart 4 and automatic pilot on chart 5. There is a huge amount of good guides in ThingSpeak on how to do this kind of monitoring, so we're not going into the spesifics here. 
-<br>
+<br><br>
 
 <!--THINGSPEAK PICTURE-->
 <p align="center">
