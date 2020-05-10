@@ -43,10 +43,12 @@ export default function MyPlant(props) {
     }
 
     const barData = {
-        labels: ["Test1"],
-        data: [[waterLevel * 0.1, (100 - waterLevel * 0.1)]],
+        labels: ["Vesitaso"],
+        data: [[waterLevel * 0.06, (100 - waterLevel * 0.06)]],
         barColors: ["#6896BE", "#E8E7E2"]
     };
+
+    const barPercent = ((waterLevel) * 0.06).toFixed(0);
 
     return (
         <ScrollView style={[styles.container]}>
@@ -71,7 +73,7 @@ export default function MyPlant(props) {
                     <View style={[styles.humidity]}>
                         <Text style={[styles.humiditytext]}>Mullan kosteus</Text>
                         <ProgressCircle
-                            percent={(humidity / 2500 * 100).toFixed(0)}
+                            percent={(Math.abs(humidity-1700)/5).toFixed(0)}
                             radius={50}
                             borderWidth={4}
                             color="#63816D"
@@ -80,7 +82,7 @@ export default function MyPlant(props) {
                             outerCircleStyle={{ marginTop: 15, marginBottom: 15 }}
 
                         >
-                            <Text style={[styles.humiditytext2]}>{(humidity / 2500 * 100).toFixed(0)}%</Text>
+                            <Text style={[styles.humiditytext2]}>{(Math.abs(humidity-1700)/5).toFixed(0)}%</Text>
                         </ProgressCircle>
                         <Text style={[styles.humiditytext3]}>Seuraava kastelu</Text>
                         <Text style={[styles.humiditytext4]}>2 päivän kuluttua</Text>
@@ -88,7 +90,7 @@ export default function MyPlant(props) {
                     <View>
                         <Text style={[styles.waterlevel]}>Vesitaso</Text>
                         <View style={{ flexDirection: 'row' }}>
-                            <Text style={[styles.waterlevel2]}>{(waterLevel * 0.1).toFixed(0)}%</Text>
+                            <Text style={[styles.waterlevel2]}>{barPercent}%</Text>
                             <StackedBarChart
 
                                 data={barData}
