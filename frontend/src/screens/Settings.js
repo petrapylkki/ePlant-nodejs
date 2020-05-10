@@ -29,7 +29,7 @@ export default function Settings() {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.text}>Asetukset</Text>
+                <Text style={styles.headerText}>Asetukset</Text>
             </View>
 
             <View style={styles.content}>
@@ -66,7 +66,13 @@ export default function Settings() {
                 ))}
             </View>
 
-            <Button title='Kirjaudu ulos' type='clear' titleStyle={{ color: '#63816D' }} buttonStyle={styles.logout}/>
+            <Button 
+                title='Kirjaudu ulos' 
+                type='clear' 
+                titleStyle={{ color: '#63816D' }} 
+                buttonStyle={styles.logout}
+            />
+            
         </View>
     );
 };
@@ -97,7 +103,7 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         flex: 2
     },
-    text: {
+    headerText: {
         fontSize: 14,
         fontWeight: "bold",
         textAlign: 'center',
@@ -112,8 +118,6 @@ const styles = StyleSheet.create({
             width: 2
         },
         elevation:4,
-        backgroundColor: '#FAFAFA',
-        borderBottomColor: '#DEDDDD', 
-        borderBottomWidth: 1,
+        backgroundColor: '#FAFAFA'
     },
 });

@@ -20,9 +20,9 @@ export default function Plant(props) {
             <View style={{ flex: 1 }}>
                 <Image style={styles.topimage} source={plantImage} />
             </View>
-            <View >
+            <View>
                 <TouchableOpacity onPress={() => navigate('Search')}>
-                    <Ionicons name="md-arrow-round-back" size={40} style={styles.arrow} />
+                    <Ionicons name="md-arrow-round-back" size={30} style={styles.arrow} />
                 </TouchableOpacity>
                 <View style={styles.top}>
                     <Text style={styles.header}>{plant.laji}</Text>
@@ -30,7 +30,7 @@ export default function Plant(props) {
                 </View>
                 <View style={styles.view1}>
                     <View style={styles.box}>
-                        <View >
+                        <View>
                             <Image style={styles.icon} source={require('../assets/hand-holding-plant-icon.png')} />
                         </View>
                         <View>
@@ -69,7 +69,7 @@ export default function Plant(props) {
                     </View>
                 </View>
                 <Text style={styles.description}>{plant.kuvaus}</Text>
-                <Text style={styles.header3}>Peikonlehteni</Text>
+                <Text style={styles.header3}>Oman kasvini</Text>
                 <View style={styles.bottom}>
                     <View style={styles.border}>
                         <Text style={styles.bottomtext}>Teuvo</Text>
@@ -83,7 +83,6 @@ export default function Plant(props) {
                     </TouchableOpacity>
                 </View>
             </View>
-            {/* </ImageBackground> */}
         </ScrollView>
     );
 };
@@ -136,7 +135,8 @@ const styles = StyleSheet.create({
         width: 30,
         height: 30,
         marginLeft: 3,
-        marginRight: 15
+        marginRight: 15,
+        tintColor: '#555555'
     },
     boxtext1: {
         fontSize: 12,

@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Image, FlatList, ScrollView, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, View, Text, Image, FlatList, ScrollView, TouchableOpacity } from 'react-native';
 import firebase from '../components/firebase';
 import { Snackbar } from 'react-native-paper';
 
 export default function Home(props) {
-    const [user, setuser] = useState("Petra")
+    const user = "Petra";
     const [plants, setPlants] = useState([]);
     const [visibility, setVisibility] = useState(false);
     const { navigate } = props.navigation;
+
     // use these variables if they have all these props (so if user has navigated to Home.js from SelectName.js)
     const showSnackbar = props.navigation && props.navigation.state && props.navigation.state.params && props.navigation.state.params.showSnackbar
     const plantName = props.navigation && props.navigation.state && props.navigation.state.params && props.navigation.state.params.plantName
 
-    console.disableYellowBox = true;
-
     // change snackbar visibility opposite to current status
     const toggleSnackBar = () => setVisibility(!visibility);
+
+    console.disableYellowBox = true;
 
     // retrieving firebase data and inserting it to "plants" list
     useEffect(() => {
@@ -77,7 +78,7 @@ export default function Home(props) {
                         renderItem={({ item }) =>
                             <View style={styles.bottomitem}>
                                 <View>
-                                    <Image style={styles.bottomimage} source={require('../assets/eaaf7e.png')} />
+                                   <View style={styles.circle}/>
                                 </View>
                                 <View style={styles.bottomtext}>
                                     <Text style={styles.bottomtext1}>Tänään klo 8.20</Text>
@@ -109,7 +110,8 @@ export default function Home(props) {
         </View>
     );
 };
-Home.navigationOptions = ({ navigate }) => ({ title: 'Home' });
+
+Home.navigationOptions = () => ({ title: 'Home' });
 
 const styles = StyleSheet.create({
     button: {
@@ -220,5 +222,11 @@ const styles = StyleSheet.create({
     bottomtext2: {
         marginLeft: 5,
         fontSize: 16
-    }
+    },
+    circle: {
+        width: 40,
+        height: 40,
+        borderRadius: 100/2,
+        backgroundColor: '#eaaf7e'
+    },
 });

@@ -16,6 +16,7 @@ export default function Search({navigation}) {
         setSearchTerm(text);
     };
 
+    // handles when user clicks "cancel" button
     const handleCancel = () => {
         setSearchPhase('cards')
     }
@@ -54,9 +55,6 @@ export default function Search({navigation}) {
             </ScrollView>
         </View>
     );
-
-
-
 };
 
 Search.navigationOptions = () => ({ title: 'Search' });

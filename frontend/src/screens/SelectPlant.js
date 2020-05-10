@@ -3,11 +3,11 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { ListItem, SearchBar, Icon } from 'react-native-elements';
 import firebase from '../components/firebase';
 
-export default function SelectPlant(props) {
+export default function SelectPlant({navigation}) {
     const [plantList, setPlantlist] = useState([]);
     const [filteredPlantList, setFilteredPlantlist] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const { navigate } = props.navigation;
+    const { navigate } = navigation;
     
     console.disableYellowBox = true;
 
@@ -27,8 +27,8 @@ export default function SelectPlant(props) {
         const results = plantList.filter(plant => 
             plant.laji.toLowerCase().includes(searchTerm.toLowerCase())
         )
-
         setFilteredPlantlist(results);
+
     }, [searchTerm, plantList]);
 
     // sending selected items data to next screen and navigating to there
@@ -46,6 +46,7 @@ export default function SelectPlant(props) {
         handleChange(event.nativeEvent.text)
     };
 
+    // resets plantList back to original one after user clicks "cancel" or "empty" button
     const resetPlantList = () => {
         setFilteredPlantlist(plantList)
     }

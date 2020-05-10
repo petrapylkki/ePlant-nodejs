@@ -127,7 +127,7 @@ export default function MyPlant(props) {
                         renderItem={({ item }) =>
                             <View style={styles.bottomitem}>
                                 <View>
-                                    <Image style={styles.bottomimage} source={require('../assets/eaaf7e.png')} />
+                                    <View style={styles.circle} />
                                 </View>
                                 <View style={styles.bottomtext}>
                                     <Text style={styles.bottomtext1}>Tänään klo 8.20</Text>
@@ -304,6 +304,12 @@ const styles = StyleSheet.create({
         marginLeft: 30,
         marginTop: "40%",
         color: 'grey'
-    }
+    },
+    circle: {
+        width: 40,
+        height: 40,
+        borderRadius: 100/2,
+        backgroundColor: '#eaaf7e'
+    },
 
 });
