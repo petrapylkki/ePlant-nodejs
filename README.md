@@ -19,7 +19,7 @@
 <p align="center">
 
  <a href="https://github.com/petrapylkki/ePlant/tree/master">
-    <img src="images/ePlant_logo.jpeg" alt="Logo" width="400" height="550">
+    <img src="images/ePlant_logo.jpeg" alt="Logo" width="300" height="450">
   </a>
 
 
@@ -172,14 +172,14 @@ You can also add your own plant, give it a nickname and pick the automated pot w
 <p align="center">
 <kbd>
  <a href="https://github.com/petrapylkki/ePlant/tree/master">
-    <img src="images/ePlant_home.jpeg" alt="Home" width="350" height="750">
+    <img src="images/ePlant_home.jpeg" alt="Home" width="250" height="500">
   </a>
 </kbd>
 
 <!--SEARCH PICTURE -->
 <kbd>
  <a href="https://github.com/petrapylkki/ePlant/tree/master">
-    <img src="images/ePlant_search.jpeg" alt="Search" width="350" height="750">
+    <img src="images/ePlant_search.jpeg" alt="Search" width="250" height="500">
   </a>
 </kbd
 	
@@ -190,14 +190,14 @@ You can also add your own plant, give it a nickname and pick the automated pot w
 <!--ADD PLANT PICTURE -->
 <kbd>
 <a href="https://github.com/petrapylkki/ePlant/tree/master">
-    <img src="images/ePlant_addPlant.jpeg" alt="addPlant" width="350" height="750">
+    <img src="images/ePlant_addPlant.jpeg" alt="addPlant" width="250" height="500">
   </a>
 </kbd>
 
 <!--SEARCH PICTURE -->
 <kbd>
  <a href="https://github.com/petrapylkki/ePlant/tree/master">
-    <img src="images/ePlant_kaktus.jpeg" alt="Kaktus" width="350" height="750">
+    <img src="images/ePlant_kaktus.jpeg" alt="Kaktus" width="250" height="500">
   </a>
 </kbd>
 </p>
