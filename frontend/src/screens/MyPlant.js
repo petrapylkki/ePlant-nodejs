@@ -18,7 +18,6 @@ export default function MyPlant(props) {
 
     useEffect(() => {
         getData();
-        console.log(plant)
     }, []);
 
     // retrieving sensor statistics from the IoT device

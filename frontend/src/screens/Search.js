@@ -4,6 +4,8 @@ import { SearchBar } from 'react-native-elements';
 import PlantCards from '../components/PlantCards';
 import PlantList from '../components/PlantList';
 
+// search has 2 different search views, card view and list view
+// these views are separate components and only one of these can be visible at the time
 export default function Search({navigation}) {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchPhase, setSearchPhase] = useState('cards');
