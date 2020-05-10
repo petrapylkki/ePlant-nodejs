@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, StyleSheet } from "react-native"
+import { View, Button, StyleSheet } from 'react-native';
 import { DotIndicator } from 'react-native-indicators';
 
 export default function waterpumpControl() {
@@ -8,93 +8,81 @@ export default function waterpumpControl() {
 
   const apikey = "XR2Z3K3KE1Q1V3UA";
 
-  const waterOn = () => {
-      const url = 'https://api.thingspeak.com/update?api_key=' + apikey+ '&field3=1';
-      fetch(url)
-      .then((response) => response.json())
-      .then((responseJson) => {
-          while (true) {
+  const waterOn = async () => {
+      const url = 'https://api.thingspeak.com/update?api_key=' + apikey + '&field3=1';  
+      try {
+        let response = await fetch(url)
+        let responseJson = await response.responseJson()
+        while (responseJson === true) {
               if (parseInt(responseJson) == 0) { 
                   waterOn();
                   console.log(responseJson);
-              } 
-              if (waterOn != 0) {
-                setLoading(true);
               }
               break; 
-          }; 
+          };  
           setRes(responseJson);
-      })
-      .catch((error) => {
-        Alert.alert('Error', error);
-      });
+      } catch (error) {
+        console.log(error)
+      }
   }
 
-    const waterOff = () => {
-      const url = 'https://api.thingspeak.com/update?api_key=' + apikey+ '&field3=0';
-      fetch(url)
-      .then((response) => response.json())
-      .then((responseJson) => {
-          while (true) {
+    const waterOff = async () => {
+      const url = 'https://api.thingspeak.com/update?api_key=' + apikey + '&field3=0';
+      try {
+        let response = await fetch(url)
+        let responseJson = await response.responseJson()
+        while (responseJson === true) {
               if (parseInt(responseJson) == 0) { 
                   waterOff();
                   console.log(responseJson);
               }
-              if (waterOff != true) {
-                setLoading(false);
-            }
               break; 
-          }; 
+          };  
           setRes(responseJson);
-      })
-      .catch((error) => {
-        Alert.alert('Error', error);
-      });
+      } catch (error) {
+        console.log(error)
+      }
+  }
 
-}
+    const wait = async (ms) => {
+      try {
+      let start = new Date().getTime();
+      let end = start;
+      console.log("Waiting: " + ms /1000 );
 
-const wait = (ms) => {
-  let start = new Date().getTime();
-  let end = start;
-  console.log("Waiting: " + ms /1000 );
+      while(end < start + ms) {
+        end = new Date().getTime()
+    }
+    } catch (error) {
+      Alert.alert('Error', error);
+    } 
+  }
 
-  while(end < start + ms) {
-    end = new Date().getTime();
- }
-}
-
-const waterControl = () => {
-
-  waterOn();
-  console.log(res);
-  setRes(100);
-  console.log(res);
-
-  wait(20000);
-
-  waterOff();
-  console.log(res);
-  setRes(100);
-  console.log(res);
+    const waterControl = () => {
+      waterOn();
+      setRes(100);
+      console.log(res);
   
-}
+      waterOff();
+      setRes(100);
+      console.log(res);
+};
 
 return(
 
   <View style= {styles.waterpumpButton}>
-  { isLoading ? res : 
-   <DotIndicator 
-        color='#63816D' 
-        />}
       <Button
         onPress ={waterControl}
         title="Vesi päälle"
         style={styles.button}
         />  
+    <DotIndicator
+         animating={isLoading}
+         color='#63816D'
+         hidesWhenStopped={true}
+       />
   </View>
 );
-
-
 }
 
 const styles = StyleSheet.create({
@@ -109,6 +97,11 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       borderRadius:10,
       padding:4,
+      margin: 7,
       width:150
+    },
+    loadingIndicator: {
+      justifyContent: 'center',
+
     }
 });
