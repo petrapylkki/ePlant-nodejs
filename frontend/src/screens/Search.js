@@ -1,145 +1,74 @@
-import React from 'react';
-import { View, Text, FlatList, StyleSheet, Image, TextInput, Button, Header, ScrollView, TouchableOpacity, Alert } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import firebase from '../components/firebase';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { SearchBar } from 'react-native-elements';
+import PlantCards from '../components/PlantCards';
+import PlantList from '../components/PlantList';
 
-export default function Search(props) {
-    navigationOptions = { title: 'Search', };
+// search has 2 different search views, card view and list view
+// these views are separate components and only one of these can be visible at the time
+export default function Search({navigation}) {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchPhase, setSearchPhase] = useState('cards');
 
-    const [easyPlants, setEasyPlants] = React.useState([]);
-    const [foodPlants, setFoodPlants] = React.useState([]);
-    const [lowWaterPlants, setlowWaterPlants] = React.useState([]);
-    const { navigate } = props.navigation;
-    const [searchedPlant, setSearchedPlant] = React.useState('');
+    console.disableYellowBox = true;
 
-    React.useEffect(() => {
-        firebase.database().ref('kasvit/').on('value', snapshot => {
-          const plants = Object.values(snapshot.val());
-          const easyPlants = plants.filter(plant => plant.hoito === 'Helppo')
-          const foodPlants = plants.filter(plant => plant.tyyppi === 'Ruokakasvi')
-          const lowWaterPlants = plants.filter(plant => plant.vesitarve === 'Niukka')
-        
-          setEasyPlants(easyPlants);
-          setFoodPlants(foodPlants);
-          setlowWaterPlants(lowWaterPlants);
-    
-        });
-    }, []);
+    // handles change of the search word
+    const handleChange = (text) => {
+        setSearchPhase('list')
+        setSearchTerm(text);
+    };
 
-    const search = () => {
-        Alert.alert('Tää ei viel tee mitää :/')
+    // handles when user clicks "cancel" button
+    const handleCancel = () => {
+        setSearchPhase('cards')
     }
+
+    // handles forwading event data to handleChange after user clicks "search" on keyboard
+    const handleSubmit = (event) => {
+        handleChange(event.nativeEvent.text)
+    };
 
     return (
         <View style={styles.container}>
-            <View style={[styles.searchbarcontainer]}>
-            <Text style={[styles.header]}>Haku</Text>
-            <View style={[styles.searchbar]}>
-                <TouchableOpacity onPress={search} >
-                    <Ionicons name="ios-search" size={20} style={[styles.icon]} />
-                </TouchableOpacity>
-                <TextInput
-                    style={[styles.textinput]}
-                    clearButtonMode={"always"}
-                    placeholder={'Hae kasveja'}
-                    onChangeText={searchedPlant => setSearchedPlant(searchedPlant)}
-                    value={searchedPlant}>
-                </TextInput>
+            <View style={styles.header}>
+                <View style={{alignItems: 'center'}}>
+                    <Text style={styles.text}>Haku</Text>
+                </View>
+                <View style={styles.searchbar}>
+                    <SearchBar
+                        onChangeText={handleChange}
+                        placeholder='Hae kasveja'
+                        onSubmitEditing={handleSubmit}
+                        value={searchTerm}
+                        platform='ios'
+                        lightTheme={true}
+                        showCancel={true}
+                        cancelButtonTitle='Peruuta'
+                        containerStyle={styles.searchcontainer}
+                        inputContainerStyle={{backgroundColor: '#F0F0F0'}}
+                        returnKeyType='search'
+                        onCancel={handleCancel}
+                    />
+                </View>
             </View>
-        </View>
-            <ScrollView style={[styles.topborder]} >
-                <View style={styles.category}>
-                    <Text style={styles.text}>Helppohoitoiset kasvit</Text>
-                    <FlatList
-                        horizontal={true}
-                        contentContainerStyle={{ alignSelf: 'flex-start' }}
-                        showsVerticalScrollIndicator={false}
-                        showsHorizontalScrollIndicator={false}
-                        marginLeft={15}
-                        data={easyPlants}
-                        renderItem={({ item }) =>
-                            <TouchableOpacity
-                                onPress={() => navigate('NewPlant')}
-                                title="NewPlant"
-                                style={[styles.border]}
-                            >
-                                <Text style={[styles.plantheader]}>{item.laji}</Text>
-                                <Image style={[styles.plantimage]} source={require('../assets/kaktus.png')} />
-
-                            </TouchableOpacity>
-
-                        }
-                    />
-                </View>
-                <View style={styles.category}>
-                    <Text style={styles.text}>Ruoka kasvit</Text>
-                    <FlatList
-                        horizontal={true}
-                        contentContainerStyle={{ alignSelf: 'flex-start' }}
-                        showsVerticalScrollIndicator={false}
-                        showsHorizontalScrollIndicator={false}
-                        marginLeft={15}
-                        data={foodPlants}
-                        renderItem={({ item }) =>
-                            <TouchableOpacity
-                                onPress={() => navigate('NewPlant')}
-                                title="NewPlant"
-                                style={[styles.border]}
-                            >
-                                <Text style={[styles.plantheader]}>{item.laji}</Text>
-                                <Image style={[styles.plantimage]} source={require('../assets/flowerpot.png')} />
-
-                            </TouchableOpacity>
-
-                        }
-                    />
-                </View>
-                <View style={styles.category}>
-                    <Text style={styles.text}>Kuivuutta kestävät kasvit</Text>
-                    <FlatList
-                        horizontal={true}
-                        contentContainerStyle={{ alignSelf: 'flex-start' }}
-                        showsVerticalScrollIndicator={false}
-                        showsHorizontalScrollIndicator={false}
-                        marginLeft={15}
-                        data={lowWaterPlants}
-                        renderItem={({ item }) =>
-                            <TouchableOpacity
-                                onPress={() => navigate('NewPlant')}
-                                title="NewPlant"
-                                style={[styles.border]}
-                            >
-                                <Text style={[styles.plantheader]}>{item.laji}</Text>
-                                <Image style={[styles.plantimage]} source={require('../assets/aloevera.jpeg')} />
-
-                            </TouchableOpacity>
-                        }
-                    />
-                </View>
+            <ScrollView>
+                {searchPhase === 'list' && <PlantList navigation={navigation} searchTerm={searchTerm}/>}
+                {searchPhase === 'cards' && <PlantCards navigation={navigation}/>}
             </ScrollView>
-
         </View>
     );
-
-
-
 };
 
-Search.navigationOptions = ({ navigate }) => ({ title: 'Search' });
+Search.navigationOptions = () => ({ title: 'Search' });
 
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#FCFCFC',
-        
-    },
-    topborder: {
-        borderTopColor: '#DEDDDD', 
-        borderTopWidth: 1,
+        flex: 1
         
     },
     category: {
-        flex: 2,
-        marginTop: 25
+        marginTop: 25,
     },
     plantheader: { 
         textAlign: 'center', 
@@ -158,33 +87,37 @@ const styles = StyleSheet.create({
         marginBottom: 15,
     },
     border: {
-        borderWidth: 2,
-        borderColor: "#0000000D",
-        borderRadius: 2,
+        shadowColor: 'rgba(0,0,0, .1)', // IOS
+        shadowOffset: { height: 3, width: 2 }, // IOS
+        shadowOpacity: 3, // IOS
+        shadowRadius: 1, //IOS
+        elevation: 3, // android
+        borderRadius: 4,
+        margin:5,
         marginRight: 3,
         marginLeft: 3,
-    },
-    searchbarcontainer: {
-        backgroundColor: '#FCFCFC',
-        marginTop: 28,
-        alignSelf: 'center',
-        
+        backgroundColor: 'white',
+        height: 170
     },
     header: {
-        textAlign: 'center',
-        fontSize: 14,
-        fontWeight: 'bold',
-        marginBottom: 15
+        height: 140,
+        shadowColor: '#DEDDDD',
+        shadowOpacity: 2,
+        shadowOffset:{
+            height: 2,
+            width: 2
+        },
+        elevation:4,
+        backgroundColor: '#FAFAFA'
     },
     searchbar: {
-        flexDirection: 'row',
-        marginTop: 10,
-        backgroundColor: '#F0F0F0',
-        borderRadius: 6,
-        width: '95%',
-        height: 40,
-        marginBottom: 15
-
+        alignSelf: 'flex-end'
+    },
+    searchcontainer: {
+        backgroundColor: '#FCFCFC',
+        borderBottomColor: 'transparent',
+        borderTopColor: 'transparent',
+        marginBottom: 20
     },
     textinput: {
         width: '80%',

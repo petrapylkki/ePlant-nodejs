@@ -1,76 +1,121 @@
-import React from 'react';
-import { StyleSheet, View, Text, Image, FlatList, Button, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, Text, Image, FlatList, ScrollView, TouchableOpacity } from 'react-native';
+import firebase from '../components/firebase';
+import { Snackbar } from 'react-native-paper';
 
 export default function Home(props) {
-    const [user, setuser] = React.useState("Petra")
-    const [plants, setPlants] = React.useState(["Teuvo", "Martti", "Ykä", "Teppo"]);
-    const navigationOptions = { title: 'Home' };
+    const user = "Petra";
+    const [plants, setPlants] = useState([]);
+    const [visibility, setVisibility] = useState(false);
     const { navigate } = props.navigation;
 
-    const alert = () => {
-        
-    }
+    // use these variables if they have all these props (so if user has navigated to Home.js from SelectName.js)
+    const showSnackbar = props.navigation && props.navigation.state && props.navigation.state.params && props.navigation.state.params.showSnackbar
+    const plantName = props.navigation && props.navigation.state && props.navigation.state.params && props.navigation.state.params.plantName
+
+    // change snackbar visibility opposite to current status
+    const toggleSnackBar = () => setVisibility(!visibility);
+
+    console.disableYellowBox = true;
+
+    // retrieving firebase data and inserting it to "plants" list
+    useEffect(() => {
+        firebase.database().ref('omatkasvit/').on('value', snapshot => {
+            const plants = Object.values(snapshot.val());
+            setPlants(plants);
+        });
+
+        if (showSnackbar === true) {
+            toggleSnackBar();
+        }
+    }, []);
+
+    // sending selected items data to next screen and navigating to there
+    const handleSelect = (item) => {
+        console.log(item)
+        navigate('MyPlant', { plant: item })
+    };
 
     return (
-        <ScrollView style={styles.container}>
-            <View style={[styles.top]} >
-                <Text style={[styles.top]}>Huomenta {user}!</Text>
-            </View>
-            {/* <View style={{marginLeft: 20, backgroundColor: '#D7E8F7', width: '90%', height: 80, borderRadius: 4, marginBottom: 15, flexDirection: 'row'}}>
-                <Image style={{height: 30, width: 30, marginTop: 25, marginLeft: 10}} source={require('./drop.png')}/>
-                <View>
-                    <Text style={{color: '#5386B4', fontSize: 14, fontWeight: 'bold', marginLeft: 10, marginTop: 15}}>Vesisäiliö on lähes tyhjä</Text>
-                    <Text style={{color: '#555555', fontSize: 12, marginLeft: 10, marginRight: 10, marginTop: 5}}>Täytä vesisäiliö säännöllisesti, jotta kasvisi saavat raikasta vettä joka päivä.</Text>
+        <View style={styles.container}>    
+            <ScrollView style={styles.container}>
+                <View style={styles.top} >
+                    <Text style={styles.top}>Huomenta {user}!</Text>
                 </View>
-            </View> */}
-            <View style={styles.middle}>
-                <Text style={[styles.header]}>Omat kasvini</Text>
-                <FlatList
-                    horizontal={true}
-                    contentContainerStyle={{ alignSelf: 'flex-start' }}
-                    showsVerticalScrollIndicator={false}
-                    showsHorizontalScrollIndicator={false}
-                    marginLeft={15}
-                    data={plants}
-                    renderItem={({ item }) =>
-                        <TouchableOpacity style={[styles.border]}>
-                            <Text style={[styles.middletext]}>{item}</Text>
-                            <Image style={[styles.middleimage]} source={require('../assets/flowerpot.png')} />
-                        </TouchableOpacity>
-                    }
-                />
-            </View>
-            <View style={[styles.bottomheader]}>
-                <Text style={[styles.header]}>Viimeisimmät tapahtumat</Text>
-                <TouchableOpacity
-                    onPress={() => navigate('Notifications', { plants })}
-                >
-                    <Text style={[styles.showmore]}>Näytä lisää</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.bottom}>
-                <FlatList data={plants}
-                    marginLeft={15}
-                    renderItem={({ item }) =>
-                        <View style={[styles.bottomitem]}>
-                            <View>
-                                <Image style={[styles.bottomimage]} source={require('../assets/eaaf7e.png')} />
+                
+                <View style={styles.middle}>
+                    <View style={styles.middleheader}>
+                        <Text style={styles.header}>Omat kasvini</Text>
+                    </View>
+                    <FlatList
+                        horizontal={true}
+                        contentContainerStyle={{ alignSelf: 'flex-start' }}
+                        showsVerticalScrollIndicator={false}
+                        showsHorizontalScrollIndicator={false}
+                        data={plants}
+                        renderItem={({ item }) =>
+                            <TouchableOpacity style={styles.border}
+                                onPress={() => handleSelect(item)}
+                            >
+                                <Text style={styles.middletext}>{item.nimi}</Text>
+                                <Image style={styles.middleimage} source={require('../assets/flowerpot.png')} />
+                            </TouchableOpacity>
+                        }
+                    />
+                </View>
+                <View style={styles.bottomheader}>
+                    <Text style={styles.header}>Viimeisimmät tapahtumat</Text>
+                    <TouchableOpacity
+                        onPress={() => navigate('Notifications', { plants })}
+                    >
+                        <Text style={styles.showmore}>Näytä lisää</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.bottom}>
+                    <FlatList data={plants}
+                        marginLeft={15}
+                        renderItem={({ item }) =>
+                            <View style={styles.bottomitem}>
+                                <View>
+                                   <View style={styles.circle}/>
+                                </View>
+                                <View style={styles.bottomtext}>
+                                    <Text style={styles.bottomtext1}>Tänään klo 8.20</Text>
+                                    <Text style={styles.bottomtext2}>{item.nimi} kasteltu.</Text>
+                                </View>
                             </View>
-                            <View style={[styles.bottomtext]}>
-                                <Text style={[styles.bottomtext1]}>Tänään klo 8.20</Text>
-                                <Text style={[styles.bottomtext2]}>{item} kasteltu.</Text>
-                            </View>
-                        </View>
 
-                    }
-                />
+                        }
+                    />
+                </View>
+            </ScrollView>
+            <View>
+                <Snackbar
+                    visible={visibility}
+                    onDismiss={toggleSnackBar}
+                    theme={{ colors: { accent: '#63816D' }}}
+                    style={{
+                        backgroundColor: '#404040',
+                        
+                    }}
+                    action={{
+                        label: 'SULJE',
+                        onPress: () => {toggleSnackBar},
+                    }}
+                >
+                    {plantName} lisätty omiin kasveihin!
+                </Snackbar>
             </View>
-        </ScrollView>
+        </View>
     );
 };
-Home.navigationOptions = ({ navigate }) => ({ title: 'Home' });
+
+Home.navigationOptions = () => ({ title: 'Home' });
 
 const styles = StyleSheet.create({
+    button: {
+        paddingBottom: 20
+    },
     container: {
         backgroundColor: '#FCFCFC',
         flex: 1,
@@ -80,7 +125,7 @@ const styles = StyleSheet.create({
         fontSize: 26,
         marginLeft: 10,
         flex: 1,
-        marginTop: 30,
+        marginTop: 40,
         marginBottom: 30
     },
     middle: {
@@ -88,22 +133,29 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         flex: 2,
         fontWeight: 'bold',
+        shadowColor: "#000",
+    },
+    middleheader: {
+        justifyContent:"space-between",
+        flexDirection: 'row',
     },
     header: {
         fontSize: 14,
         fontWeight: "bold",
-        marginLeft: 10,
-        marginBottom: 5
+        marginLeft: 5,
+        marginBottom: 15
     },
     border: {
-        shadowColor: '#DEDDDD',
-        shadowOpacity: 2,
-        shadowOffset:{
-            height: 2,
-            width: 2
-        },
+        shadowColor: 'rgba(0,0,0, .1)', // IOS
+        shadowOffset: { height: 3, width: 2 }, // IOS
+        shadowOpacity: 3, // IOS
+        shadowRadius: 1, //IOS
+        elevation: 3, // android
+        borderRadius: 4,
+        margin:5,
         marginRight: 3,
         marginLeft: 3,
+        marginTop: 10,
         backgroundColor: 'white',
         height: 170
     },
@@ -118,6 +170,7 @@ const styles = StyleSheet.create({
         height: 150
     },
     bottomheader: {
+        justifyContent:"space-between",
         flexDirection: 'row',
         marginLeft: 10,
         marginTop: 30
@@ -125,24 +178,23 @@ const styles = StyleSheet.create({
     showmore: {
         color: '#63816D',
         fontSize: 12,
-        marginLeft: 90
+        fontWeight: "bold",
+        marginRight: 20
     },
     bottom: {
-        marginLeft: 10,
+        marginLeft: 15,
+        marginRight: 15,
+        marginBottom: 10,
         flex: 2,
         fontWeight: 'bold',
         fontSize: 14,
-        shadowColor: '#DEDDDD',
-        shadowOpacity: 2,
-        shadowOffset:{
-            height: 2,
-            width: 2
-        },
+        shadowColor: 'rgba(0,0,0, .1)', // IOS
+        shadowOffset: { height: 3, width: 2 }, // IOS
+        shadowOpacity: 3, // IOS
+        shadowRadius: 1, //IOS
+        elevation: 3, // android
         backgroundColor: 'white',
-        marginRight: 10,
-        marginTop: 10,
-        marginBottom: 10
-
+        borderRadius: 4
     },
     bottomitem: {
         flexDirection: "row",
@@ -169,5 +221,11 @@ const styles = StyleSheet.create({
     bottomtext2: {
         marginLeft: 5,
         fontSize: 16
-    }
+    },
+    circle: {
+        width: 40,
+        height: 40,
+        borderRadius: 100/2,
+        backgroundColor: '#eaaf7e'
+    },
 });
