@@ -30,9 +30,12 @@ export default function SelectPot(props) {
             <View style={styles.bordertop}>
                 <Text style={{width:"14%"}}></Text>
                 <Text style={styles.text}>Lisää kasvi</Text>
-                <TouchableOpacity onPress={() => navigate('Home')}>
-                    <Icon name="close" size={40} iconStyle={styles.icon} />
-                </TouchableOpacity>
+                <Icon 
+                    name="close" 
+                    size={40} 
+                    iconStyle={styles.icon}
+                    onPress={() => navigate('Home')} 
+                />
             </View>
             <View>
                 <Text style={styles.top}>Valitse ruukku</Text>

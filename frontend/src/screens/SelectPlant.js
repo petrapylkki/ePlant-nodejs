@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { ListItem, SearchBar, Icon } from 'react-native-elements';
 import firebase from '../components/firebase';
 
@@ -10,16 +10,6 @@ export default function SelectPlant(props) {
     const { navigate } = props.navigation;
     
     console.disableYellowBox = true;
-
-    // handles change of the search word
-    const handleChange = (text) => {
-        setSearchTerm(text);
-    };
-
-    // handles forwading event data to handleChange after user clicks "search" on keyboard
-    const handleSubmit = (event) => {
-        handleChange(event.nativeEvent.text)
-    };
 
     // getting object values from firebase and setting values into two list,
     // one for all plants and one as the filtered list based on search word user uses
@@ -41,18 +31,37 @@ export default function SelectPlant(props) {
     }, [searchTerm]);
 
     // sending selected items data to next screen and navigating to there
-    handleSelect = (item) => {
+    const handleSelect = (item) => {
         navigate('SelectPot', { plant: item.laji })
     };
+
+    // handles change of the search word
+    const handleChange = (text) => {
+        setSearchTerm(text);
+    };
+
+    // handles forwading event data to handleChange after user clicks "search" on keyboard
+    const handleSubmit = (event) => {
+        handleChange(event.nativeEvent.text)
+    };
+
+    const resetPlantList = () => {
+        setFilteredPlantlist(plantList)
+    }
+
+
 
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <Text style={{width:"14%"}}></Text>
                 <Text style={styles.headertitle}>Lisää kasvi</Text>
-                <TouchableOpacity onPress={() => navigate('Home')}>
-                    <Icon name="close" size={40} iconStyle={styles.icon} />
-                </TouchableOpacity>
+                <Icon 
+                    name="close" 
+                    size={40} 
+                    iconStyle={styles.icon}
+                    onPress={() => navigate('Home')} 
+                />
             </View>
 
         <ScrollView>
@@ -70,7 +79,9 @@ export default function SelectPlant(props) {
                     containerStyle={styles.searchcontainer}
                     inputContainerStyle={{backgroundColor: '#F0F0F0'}}
                     returnKeyType='search'
-                    />
+                    onClear={resetPlantList}
+                    onCancel={resetPlantList}
+                />
                 {filteredPlantList.map((item, i) => (
                     <ListItem
                         onPress={() => handleSelect(item)}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, KeyboardAvoidingView } from 'react-native';
 import { Input } from 'react-native-elements';
 import { Icon } from 'react-native-elements';
 import firebase from '../components/firebase';
@@ -35,9 +35,12 @@ export default function SelectName(props) {
             <View style={styles.header}>
                 <Text style={{width:"14%"}}></Text>
                 <Text style={styles.headertitle}>Lisää kasvi</Text>
-                <TouchableOpacity onPress={() => navigate('Home')}>
-                    <Icon name="close" size={40} iconStyle={styles.icon} />
-                </TouchableOpacity>
+                <Icon 
+                    name="close" 
+                    size={40} 
+                    iconStyle={styles.icon}
+                    onPress={() => navigate('Home')} 
+                />
             </View>
             <KeyboardAvoidingView
                 behavior={'padding'}
