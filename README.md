@@ -81,10 +81,10 @@ The controlling of the smart pot happens with a mobile application that we have 
 
 
 ### Built With
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+
 * [React Native](https://reactnative.dev/)
-* [ESP32](https://www.espressif.com/en/products/socs/esp32/overview)
 * [C++](https://www.cplusplus.com/)
+* [ESP32](https://www.espressif.com/en/products/socs/esp32/overview)
 
 
 ### Enviroments
@@ -118,9 +118,8 @@ eplant-19-cd0
 			needOfLight:
 			needOfWater:
 ```
-<!--FIREBASE PICTURE-->
-<!-- ![Firebase](https://user-images.githubusercontent.com/25533588/81291522-90e7c000-9072-11ea-8f28-3a1217a54f14.PNG) -->
 
+<!--FIREBASE PICTURE-->
 <p align="center">
 <kbd>
  <a href="https://github.com/petrapylkki/ePlant/tree/master">
@@ -129,10 +128,11 @@ eplant-19-cd0
 </kbd>
 </p>
 
+<br>
 On ThingSpeak we can see the humidity on chart 1, water level on chart 2, if the pump is on or off on chart 3, sensor values on chart 4 and automatic pilot on chart 5. There is a huge amount of good guides in ThingSpeak on how to do this kind of monitoring, so we're not going into the spesifics here. 
-<!--THINGSPEAK PICTURE-->
-<!-- ![thingspeak](https://user-images.githubusercontent.com/25533588/81293303-c4781980-9075-11ea-8592-d0801835843f.PNG) -->
+<br>
 
+<!--THINGSPEAK PICTURE-->
 <p align="center">
 <kbd>
  <a href="https://github.com/petrapylkki/ePlant/tree/master">
@@ -163,8 +163,12 @@ npm install expo-cli --global
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-<!-- Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources. -->
+Here is some pictures from our front end. We created an mobile app to show us when the plants have been watered and all the necessary information about the plants placed in our automated pots. It has at the moment the basic information of 10 plants, but our goal is to add more plants in the future. 
 
+You can also add your own plant, give it a nickname and pick the automated pot where your plant is planted.
+
+
+<!--HOME SCREEN PICTURE -->
 <p align="center">
 <kbd>
  <a href="https://github.com/petrapylkki/ePlant/tree/master">
@@ -172,6 +176,7 @@ npm install expo-cli --global
   </a>
 </kbd>
 
+<!--SEARCH PICTURE -->
 <kbd>
  <a href="https://github.com/petrapylkki/ePlant/tree/master">
     <img src="images/ePlant_search.jpeg" alt="Search" width="350" height="750">
@@ -182,12 +187,14 @@ npm install expo-cli --global
 <br>
 <br>
 
+<!--ADD PLANT PICTURE -->
 <kbd>
 <a href="https://github.com/petrapylkki/ePlant/tree/master">
     <img src="images/ePlant_addPlant.jpeg" alt="addPlant" width="350" height="750">
   </a>
 </kbd>
 
+<!--SEARCH PICTURE -->
 <kbd>
  <a href="https://github.com/petrapylkki/ePlant/tree/master">
     <img src="images/ePlant_kaktus.jpeg" alt="Kaktus" width="350" height="750">
@@ -195,23 +202,19 @@ npm install expo-cli --global
 </kbd>
 </p>
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-<!-- See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues). -->
-
-
+See the [open issues](https://github.com/petrapylkki/ePlant/issues) for a list of proposed features (and known issues).
 
 Any contributions you make are **greatly appreciated**.
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feat/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feat/AmazingFeature`)
+2. Create your Feature Branch (`git checkout -b feat/NewFeature`)
+3. Commit your Changes (`git commit -m 'Add some NewFeature'`)
+4. Push to the Branch (`git push origin feat/NewFeature`)
 5. Open a Pull Request
 
 
@@ -224,7 +227,7 @@ The content of this project itself is licensed under the Creative Commons Attrib
 
 MIT License
 
-Copyright (c) [2020] [Petra Pylkki]
+Copyright (c) [2020] [Jaakko Kammonen]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -248,18 +251,10 @@ SOFTWARE.
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-<!-- * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet) -->
-<!-- * [Img Shields](https://shields.io) -->
+
 * [Choose an Open Source License](https://choosealicense.com)
 * [README Template](https://github.com/othneildrew/Best-README-Template)
-<!-- * [GitHub Pages](https://pages.github.com) -->
-<!-- * [Animate.css](https://daneden.github.io/animate.css) -->
-<!-- * [Loaders.css](https://connoratherton.com/loaders) -->
-<!-- * [Slick Carousel](https://kenwheeler.github.io/slick) -->
-<!-- * [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll) -->
-<!-- * [Sticky Kit](http://leafo.net/sticky-kit) -->
-<!-- * [JVectorMap](http://jvectormap.com) -->
-<!-- * [Font Awesome](https://fontawesome.com) -->
+
 
 
 
