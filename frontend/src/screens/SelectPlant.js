@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { ListItem, SearchBar } from 'react-native-elements';
+import { ListItem, SearchBar, Icon } from 'react-native-elements';
 import firebase from '../components/firebase';
 
 export default function SelectPlant(props) {
@@ -10,16 +10,6 @@ export default function SelectPlant(props) {
     const { navigate } = props.navigation;
     
     console.disableYellowBox = true;
-
-    // handles change of the search word
-    const handleChange = (text) => {
-        setSearchTerm(text);
-    };
-
-    // handles forwading event data to handleChange after user clicks "search" on keyboard
-    const handleSubmit = (event) => {
-        handleChange(event.nativeEvent.text)
-    };
 
     // getting object values from firebase and setting values into two list,
     // one for all plants and one as the filtered list based on search word user uses
@@ -34,23 +24,43 @@ export default function SelectPlant(props) {
 
     // updates filtered plant list when search word changes, and returns filtered list
     useEffect(() => {
-          const results = plantList.filter(plant => 
+        const results = plantList.filter(plant => 
             plant.laji.toLowerCase().includes(searchTerm.toLowerCase())
-          )
-          setFilteredPlantlist(results);
-    }, [searchTerm]);
+        )
+
+        setFilteredPlantlist(results);
+    }, [searchTerm, plantList]);
 
     // sending selected items data to next screen and navigating to there
-    handleSelect = (item) => {
+    const handleSelect = (item) => {
         navigate('SelectPot', { plant: item.laji })
     };
+
+    // handles change of the search word
+    const handleChange = (text) => {
+        setSearchTerm(text);
+    };
+
+    // handles forwading event data to handleChange after user clicks "search" on keyboard
+    const handleSubmit = (event) => {
+        handleChange(event.nativeEvent.text)
+    };
+
+    const resetPlantList = () => {
+        setFilteredPlantlist(plantList)
+    }
 
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <View>
+                <Text style={{width:"14%"}}></Text>
                 <Text style={styles.headertitle}>Lisää kasvi</Text>
-                </View>
+                <Icon 
+                    name="close" 
+                    size={40} 
+                    iconStyle={styles.icon}
+                    onPress={() => navigate('Home')} 
+                />
             </View>
 
         <ScrollView>
@@ -68,7 +78,9 @@ export default function SelectPlant(props) {
                     containerStyle={styles.searchcontainer}
                     inputContainerStyle={{backgroundColor: '#F0F0F0'}}
                     returnKeyType='search'
-                    />
+                    onClear={resetPlantList}
+                    onCancel={resetPlantList}
+                />
                 {filteredPlantList.map((item, i) => (
                     <ListItem
                         onPress={() => handleSelect(item)}
@@ -91,22 +103,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#FCFCFC'
     },
     header: {
-        shadowColor: '#DEDDDD',
-        shadowOpacity: 2,
-        shadowOffset:{
-            height: 2,
-            width: 2
-        },
-        backgroundColor: '#FAFAFA'
+        flexDirection:"row",
+        justifyContent:"space-between",
     },
     headertitle: {
         fontSize: 14,
         fontWeight: "bold",
         textAlign: 'center',
-        marginTop: 48,
-        marginBottom: 20,
-        borderBottomColor: '#DEDDDD', 
-        borderBottomWidth: 1,
+        marginTop: "11%",
+        paddingBottom: 20,
+    },
+    icon: {
+        marginTop: "70%",
+        marginRight:15,
+        color: 'grey',
     },
     title: {
         fontSize: 22, 

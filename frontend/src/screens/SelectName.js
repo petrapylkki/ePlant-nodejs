@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, KeyboardAvoidingView } from 'react-native';
 import { Input } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 import firebase from '../components/firebase';
 
 export default function SelectName(props) {
@@ -32,9 +33,15 @@ export default function SelectName(props) {
     return (
         <View style={{flex: 1}}>
             <View style={styles.header}>
+                <Text style={{width:"14%"}}></Text>
                 <Text style={styles.headertitle}>Lisää kasvi</Text>
+                <Icon 
+                    name="close" 
+                    size={40} 
+                    iconStyle={styles.icon}
+                    onPress={() => navigate('Home')} 
+                />
             </View>
-
             <KeyboardAvoidingView
                 behavior={'padding'}
                 style={styles.container}
@@ -66,27 +73,25 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
+    icon: {
+        marginTop: "70%",
+        marginRight:15,
+        color: 'grey',
+    },
     content: {
         alignItems: 'center',
         justifyContent: 'center'
     },
     header: {
-        shadowColor: '#DEDDDD',
-        shadowOpacity: 2,
-        shadowOffset:{
-            height: 2,
-            width: 2
-        },
-        backgroundColor: '#FAFAFA'
+        flexDirection:"row",
+        justifyContent:"space-between",
     },
     headertitle: {
         fontSize: 14,
         fontWeight: "bold",
         textAlign: 'center',
-        marginTop: 48,
+        marginTop: "11%",
         paddingBottom: 20,
-        borderBottomColor: '#DEDDDD', 
-        borderBottomWidth: 1,
     },
     title: {
         fontSize: 22,

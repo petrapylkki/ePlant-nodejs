@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Button } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 import firebase from '../components/firebase';
 
 export default function SelectPot(props) {
@@ -27,7 +28,14 @@ export default function SelectPot(props) {
     return (
         <View style={styles.container}>
             <View style={styles.bordertop}>
+                <Text style={{width:"14%"}}></Text>
                 <Text style={styles.text}>Lisää kasvi</Text>
+                <Icon 
+                    name="close" 
+                    size={40} 
+                    iconStyle={styles.icon}
+                    onPress={() => navigate('Home')} 
+                />
             </View>
             <View>
                 <Text style={styles.top}>Valitse ruukku</Text>
@@ -74,22 +82,20 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 48,
         paddingBottom: 20,
-        borderBottomColor: '#DEDDDD', 
-        borderBottomWidth: 1,
     },
     bordertop: {
-        shadowColor: '#DEDDDD',
-        shadowOpacity: 2,
-        shadowOffset:{
-            height: 2,
-            width: 2
-        },
-        backgroundColor: '#FAFAFA'
+        flexDirection:"row",
+        justifyContent:"space-between"
     },
     top: {
         fontSize: 36,
-        marginTop: 60,
-        marginLeft: 20
+        marginTop: 30,
+        marginLeft: 20,
+    },
+    icon: {
+        marginTop: "70%",
+        marginRight:15,
+        color: 'grey',
     },
     middle: {
         alignItems: 'center',

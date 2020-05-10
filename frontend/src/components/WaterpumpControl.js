@@ -58,23 +58,23 @@ export default function waterpumpControl() {
     } 
   }
 
-    const waterControl = () => {
-      waterOn();
-      setRes(100);
-      console.log(res);
-  
-      waterOff();
-      setRes(100);
-      console.log(res);
-};
+  waterOff();
+  console.log(res);
+  setRes(100);
+  console.log(res);
+}
 
 return(
 
-  <View style= {styles.waterpumpButton}>
-      <Button
+  <View style={styles.box}>
+  { isLoading ? res : 
+   <DotIndicator 
+        color='#63816D'
+        style={{marginBottom:15}}
+        />}
+      <Button buttonStyle={styles.button}
         onPress ={waterControl}
-        title="Vesi päälle"
-        style={styles.button}
+        title="Kastele ruukku"
         />  
     <DotIndicator
          animating={isLoading}
@@ -83,25 +83,16 @@ return(
        />
   </View>
 );
-}
 
 const styles = StyleSheet.create({
 
-    waterpumpButton: {
+    box: {
+      width:150,
+      marginLeft:35,
+      marginTop:15,
       color: '#63816D',
-      backgroundColor: "#c1dbc9",
-      fontSize: 15,
-      fontWeight: "bold",
-      textAlign:"center",
-      borderColor: "#c1dbc9",
-      borderWidth: 1,
-      borderRadius:10,
-      padding:4,
-      margin: 7,
-      width:150
     },
-    loadingIndicator: {
-      justifyContent: 'center',
+    button: {
 
     }
 });

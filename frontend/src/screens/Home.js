@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
         color: '#63816D',
         fontSize: 12,
         fontWeight: "bold",
-        marginRight: 15
+        marginRight: 20
     },
     bottom: {
         marginLeft: 15,
