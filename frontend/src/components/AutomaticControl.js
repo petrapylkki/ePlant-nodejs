@@ -95,11 +95,12 @@ const styles = StyleSheet.create({
     },
     automaticText: {
         fontWeight: "bold",
-        margin: "2%"
+        margin: "2%",
+        marginBottom: '5%'
 
     },
     onoff: {
-        transform: [{ scaleX: 1.5 }, { scaleY: 1.5 }],
+        transform: [{ scaleX: 1.5 }, { scaleY: 1.5 }]
         
     }
 });

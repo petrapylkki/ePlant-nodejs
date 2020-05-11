@@ -13,6 +13,7 @@ export default function MyPlant(props) {
     const [humidity, setHumidity] = useState(0);
     const [waterLevel, setWaterLevel] = useState(0);
     const { navigate } = props.navigation;
+    const [events, setEvents] = React.useState([]);
 
     console.disableYellowBox = true;
 
@@ -36,6 +37,11 @@ export default function MyPlant(props) {
                 } else {
                     setWaterLevel('0')
                 }
+                setEvents(responseJson.feeds);
+                if(events.field3 == '1') {
+                    console.log(events);
+                }
+
             })
             .catch((error) => {
                 Alert.alert('Error', error);
@@ -49,6 +55,12 @@ export default function MyPlant(props) {
     };
 
     const barPercent = ((waterLevel) * 0.06).toFixed(0);
+
+    const filterEvents = () => {
+        if(events.field3 == '1') {
+            console.log(events);
+        }
+    }
 
     return (
         <ScrollView style={[styles.container]}>
@@ -73,7 +85,7 @@ export default function MyPlant(props) {
                     <View style={[styles.humidity]}>
                         <Text style={[styles.humiditytext]}>Mullan kosteus</Text>
                         <ProgressCircle
-                            percent={(Math.abs(humidity-1700)/5).toFixed(0)}
+                            percent={(Math.abs(humidity - 1700) / 5).toFixed(0)}
                             radius={50}
                             borderWidth={4}
                             color="#63816D"
@@ -82,7 +94,7 @@ export default function MyPlant(props) {
                             outerCircleStyle={{ marginTop: 15, marginBottom: 15 }}
 
                         >
-                            <Text style={[styles.humiditytext2]}>{(Math.abs(humidity-1700)/5).toFixed(0)}%</Text>
+                            <Text style={[styles.humiditytext2]}>{(Math.abs(humidity - 1700) / 5).toFixed(0)}%</Text>
                         </ProgressCircle>
                         <Text style={[styles.humiditytext3]}>Seuraava kastelu</Text>
                         <Text style={[styles.humiditytext4]}>2 päivän kuluttua</Text>
@@ -124,21 +136,23 @@ export default function MyPlant(props) {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.bottom}>
-                    {/* <FlatList data={plants}
+                    <FlatList
+                        data={events}
                         marginLeft={15}
+                        keyExtractor={item => item}
                         renderItem={({ item }) =>
                             <View style={[styles.bottomitem]}>
                                 <View>
                                     <Image style={[styles.bottomimage]} source={require('../assets/eaaf7e.png')} />
                                 </View>
                                 <View style={[styles.bottomtext]}>
-                                    <Text style={[styles.bottomtext1]}>Tänään klo 8.20</Text>
-                                    <Text style={[styles.bottomtext2]}>{item} kasteltu.</Text>
+                                    <Text style={[styles.bottomtext1]}>{Moment(item.created_at).format('DD.MM h:mm')}</Text>
+                                    <Text style={[styles.bottomtext2]}>{plant.nimi} kasteltu.</Text>
                                 </View>
                             </View>
 
                         }
-                    /> */}
+                    />
                 </View>
             </View>
         </ScrollView>

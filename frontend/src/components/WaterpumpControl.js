@@ -89,7 +89,7 @@ return(
       <Button
         onPress ={waterControl}
         title="Vesi päälle"
-        style={styles.button}
+        style={[styles.button]}
         />  
   </View>
 );
@@ -109,6 +109,10 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       borderRadius:10,
       padding:4,
-      width:150
+      width:150,
+      marginTop: 10
+    },
+    button: {
+      
     }
 });
