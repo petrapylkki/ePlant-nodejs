@@ -65,37 +65,11 @@ const styles = StyleSheet.create({
         flex: 1
         
     },
-    category: {
-        marginTop: 25,
-    },
-    plantheader: { 
-        textAlign: 'center', 
-        fontSize: 16, 
-        marginTop: 10, 
-        fontWeight: "bold" 
-    },
-    plantimage: { 
-        width: 150, 
-        height: 150 
-    },
     text: {
         fontSize: 14,
         fontWeight: "bold",
-        marginLeft: 10,
-        marginBottom: 15,
-    },
-    border: {
-        shadowColor: 'rgba(0,0,0, .1)', // IOS
-        shadowOffset: { height: 3, width: 2 }, // IOS
-        shadowOpacity: 3, // IOS
-        shadowRadius: 1, //IOS
-        elevation: 3, // android
-        borderRadius: 4,
-        margin:5,
-        marginRight: 3,
-        marginLeft: 3,
-        backgroundColor: 'white',
-        height: 170
+        marginTop:48,
+        marginBottom: 5,
     },
     header: {
         height: 140,
@@ -109,18 +83,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#FAFAFA'
     },
     searchbar: {
-        alignSelf: 'flex-end'
+        alignSelf: 'flex-end',
+        marginLeft:5,
+        marginRight:5
     },
     searchcontainer: {
         backgroundColor: '#FCFCFC',
         borderBottomColor: 'transparent',
         borderTopColor: 'transparent',
-        marginBottom: 20
-    },
-    textinput: {
-        width: '80%',
-        marginLeft: 10
-
     },
     icon: {
         color: 'grey',
