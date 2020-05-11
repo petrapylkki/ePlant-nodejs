@@ -66,6 +66,7 @@ export default function MyPlant(props) {
             <View style={styles.container2}>
                 <View style={styles.date}>
                     <Text style={styles.datetext1}>{Moment(plant.paivays).format('D.M.Y')}</Text>
+                    <AutomaticControl/>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: "center", alignContent: "center" }}>
                     <View style={styles.humidity}>
@@ -111,7 +112,6 @@ export default function MyPlant(props) {
                 </View>
                 <View>
                     <WaterPump />
-                    <AutomaticControl />
                 </View>
                 <View style={styles.bottomheader}>
                     <Text style={styles.header}>Viimeisimmät tapahtumat</Text>
@@ -150,7 +150,8 @@ const styles = StyleSheet.create({
     },
     top: {
         flex: 1,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginTop:15
     },
     plantname: {
         fontSize: 22,
@@ -188,6 +189,7 @@ const styles = StyleSheet.create({
     },
     date: {
         flexDirection: 'row',
+        justifyContent:"space-between",
         marginTop: 15,
         marginBottom: 15
     },
@@ -242,13 +244,14 @@ const styles = StyleSheet.create({
     },
     bottomheader: {
         flexDirection: 'row',
+        justifyContent:"space-between",
         marginLeft: 10,
         marginTop: 50
     },
     showmore: {
         color: '#63816D',
         fontSize: 12,
-        marginLeft: 90,
+        marginRight:15,
         fontWeight: 'bold'
     },
     bottom: {
