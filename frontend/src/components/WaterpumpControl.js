@@ -13,42 +13,57 @@ export default function waterpumpControl() {
   // handles waterpump ON-functionality asynchronously
   // goes through the conditional statement until the desired value is obtained from ThingSpeak
   // after this WaterOn -function launched
-  const waterOn = async () => {
-      const url = 'https://api.thingspeak.com/update?api_key=' + apikey + '&field3=1';  
-      try {
-        let response = await fetch(url)
-        let responseJson = await response.json()
+  const waterOn = () => {
+    const url = 'https://api.thingspeak.com/update?api_key=' + apikey+ '&field3=1';
+    fetch(url)
+    .then((response) => response.json())
+    .then((responseJson) => {
         while (true) {
-              if (parseInt(responseJson) == 0) { 
-                  waterOn();
-              }
-              break; 
-          }; 
-         
-          setRes(responseJson);
-      } catch (error) {
-        console.log(error)
-      }
-  }
+            if (parseInt(responseJson) == 0) { 
+                waterOn();
+                console.log(responseJson);
+            } 
+            break; 
+        }; 
+        setRes(responseJson);
+    })
+    .catch((error) => {
+        Alert.alert('Error', error);
+    });
+}
 
   // handles waterpump OFF-functionality asynchronously
   // goes through the conditional statement until the desired value is obtained from ThingSpeak
   // after this WaterOff -function launched
-    const waterOff = async () => {
-      const url = 'https://api.thingspeak.com/update?api_key=' + apikey + '&field3=0';
-      try {
-        let response = await fetch(url)
-        let responseJson = await response.json()
+  const waterOff = () => {
+    const url = 'https://api.thingspeak.com/update?api_key=' + apikey+ '&field3=0';
+    fetch(url)
+    .then((response) => response.json())
+    .then((responseJson) => {
         while (true) {
-              if (parseInt(responseJson) == 0) { 
-                  waterOff();
-              }
-              break; 
-          };
-          setRes(responseJson);
-      } catch (error) {
-        console.log(error)
-      }
+            if (parseInt(responseJson) == 0) { 
+                waterOff();
+                console.log(responseJson);
+            } 
+            break; 
+        }; 
+        setRes(responseJson);
+    })
+    .catch((error) => {
+      Alert.alert('Error', error);
+    });
+
+}
+
+
+  const wait = (ms) => {
+    let start = new Date().getTime();
+    let end = start;
+    console.log("Waiting: " + ms /1000 );
+  
+    while(end < start + ms) {
+      end = new Date().getTime();
+   }
   }
 
 // controls water pump functionalities
@@ -56,7 +71,8 @@ export default function waterpumpControl() {
       waterOn();
       setRes(100);
       console.log("Waterpump is on.") 
-      
+  
+      wait(20000);
   
       waterOff();
       setRes(100);
