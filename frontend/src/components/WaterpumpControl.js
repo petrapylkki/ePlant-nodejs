@@ -17,14 +17,14 @@ export default function waterpumpControl() {
       const url = 'https://api.thingspeak.com/update?api_key=' + apikey + '&field3=1';  
       try {
         let response = await fetch(url)
-        let responseJson = await response.responseJson()
-        while (responseJson === true) {
+        let responseJson = await response.json()
+        while (true) {
               if (parseInt(responseJson) == 0) { 
                   waterOn();
-                  console.log(responseJson);
               }
               break; 
-          };  
+          }; 
+         
           setRes(responseJson);
       } catch (error) {
         console.log(error)
@@ -38,14 +38,13 @@ export default function waterpumpControl() {
       const url = 'https://api.thingspeak.com/update?api_key=' + apikey + '&field3=0';
       try {
         let response = await fetch(url)
-        let responseJson = await response.responseJson()
-        while (responseJson === true) {
+        let responseJson = await response.json()
+        while (true) {
               if (parseInt(responseJson) == 0) { 
                   waterOff();
-                  console.log(responseJson);
               }
               break; 
-          };  
+          };
           setRes(responseJson);
       } catch (error) {
         console.log(error)
@@ -56,11 +55,13 @@ export default function waterpumpControl() {
     const waterControl = () => {
       waterOn();
       setRes(100);
-      console.log(res);
+      console.log("Waterpump is on.") 
+      
   
       waterOff();
       setRes(100);
-      console.log(res);
+      console.log("Waterpump is off.")
+      
 };
 
 // returns Water ON -button and loading indicator on the screen
