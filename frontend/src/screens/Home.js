@@ -58,7 +58,7 @@ export default function Home(props) {
                                 onPress={() => handleSelect(item)}
                             >
                                 <Text style={styles.middletext}>{item.nimi}</Text>
-                                <Image style={styles.middleimage} source={require('../assets/flowerpot.png')} />
+                                <Image style={styles.middleimage} source={require('../assets/plant_img/aloe_vera.png')} />
                             </TouchableOpacity>
                         }
                     />

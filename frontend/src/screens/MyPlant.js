@@ -4,11 +4,13 @@ import { StackedBarChart } from 'react-native-chart-kit';
 import ProgressCircle from 'react-native-progress-circle';
 import WaterPump from '../components/WaterpumpControl';
 import AutomaticControl from '../components/AutomaticControl';
+import SetPlantImg from '../components/SetPlantImg.js';
 import { Ionicons } from '@expo/vector-icons';
 import Moment from 'moment';
 
 export default function MyPlant(props) {
     const plant = props.navigation.state.params.plant;
+    const plantImg = SetPlantImg(props.navigation.state.params.plant.laji);
     const channelId = plant.ruukkuid;
     const [humidity, setHumidity] = useState(0);
     const [waterLevel, setWaterLevel] = useState(0);
@@ -60,7 +62,7 @@ export default function MyPlant(props) {
                     <Image style={styles.topimage} source={require('../assets/smile.png')} />
                 </View>
                 <View>
-                    <Image style={styles.topimage2} source={require('../assets/flowerpot.png')} />
+                    <Image style={styles.topimage2} source={plantImg} />
                 </View>
             </View>
             <View style={styles.container2}>

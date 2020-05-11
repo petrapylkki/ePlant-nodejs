@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
-import SetBackgroundImage from '../components/SetBackgroundImg.js';
+import SetBackgroundImg from '../components/SetBackgroundImg.js';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function Plant(props) {
     const plant = props.navigation.state.params.plant;
-    const plantImage = SetBackgroundImage(plant.laji);
+    const plantImage = SetBackgroundImg(plant.laji);
     const { navigate } = props.navigation;
 
     console.disableYellowBox = true;

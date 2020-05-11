@@ -71,7 +71,7 @@ export default function PlantCards({navigation}) {
                                 style={[styles.border]}
                             >
                                 <Text style={[styles.plantheader]}>{item.laji}</Text>
-                                <Image style={[styles.plantimage]} source={require('../assets/flowerpot.png')} />
+                                <Image style={[styles.plantimage]} source={require('../assets/plant_img/anopinkieli.png')} />
 
                             </TouchableOpacity>
 
