@@ -150,7 +150,8 @@ const styles = StyleSheet.create({
     },
     top: {
         flex: 1,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginTop:15
     },
     plantname: {
         fontSize: 22,
@@ -243,13 +244,14 @@ const styles = StyleSheet.create({
     },
     bottomheader: {
         flexDirection: 'row',
+        justifyContent:"space-between",
         marginLeft: 10,
         marginTop: 50
     },
     showmore: {
         color: '#63816D',
         fontSize: 12,
-        marginLeft: 90,
+        marginRight:15,
         fontWeight: 'bold'
     },
     bottom: {
