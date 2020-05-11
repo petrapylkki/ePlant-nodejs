@@ -70,10 +70,11 @@ export default function waterpumpControl() {
 
 return(
 
-  <View style= {styles.waterpumpButton}>
+  <View style= {styles.box}>
       <Button
         onPress ={waterControl}
         title="Kastele ruukku"
+        color='#63816D'
         />  
     <DotIndicator
          animating={isLoading}
@@ -88,19 +89,8 @@ const styles = StyleSheet.create({
 
     box: {
       width:150,
-      marginLeft:35,
-      marginTop:15,
-      color: '#63816D',
-      backgroundColor: "#c1dbc9",
-      fontSize: 15,
-      fontWeight: "bold",
-      textAlign:"center",
-      borderColor: "#c1dbc9",
-      borderWidth: 1,
-      borderRadius:10,
-      padding:4,
-      margin: 7,
-      width:150
+      marginLeft:"10%",
+      marginTop:10,
     },
     loadingIndicator: {
       justifyContent: 'center',

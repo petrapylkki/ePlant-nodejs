@@ -65,12 +65,9 @@ const toggleSwitch = () => {
 }
 
 return(
-
   <View style={styles.container}>
-
-    <Text style= {styles.automaticText}>{isEnabled? 'Automatic-mode on' : 'Automatic-mode off'}</Text>
-
-        <View>
+        <View style={styles.switch}>
+            <Text style= {styles.automaticText}>{isEnabled? 'Automatic-mode on' : 'Automatic-mode off'}</Text>
             <Switch
             style = {styles.onoff}
             trackColor={{ false: "#ff2a26", true: "#63816D" }}
@@ -82,24 +79,27 @@ return(
         </View>
   </View>
 );
-
-
 }
 
 const styles = StyleSheet.create({
 
     container: {
-        alignItems:'center',
-        //backgroundColor: 'lightblue',
+        alignItems:"center",
         textAlign: 'center',
+        marginRight: "5%",
+        marginLeft:50
+    },
+    switch: {
+        flexDirection:"row",
     },
     automaticText: {
+        fontSize: 12,
         fontWeight: "bold",
-        margin: "2%"
-
+        alignSelf:"center",
+        marginRight:15
     },
     onoff: {
-        transform: [{ scaleX: 1.5 }, { scaleY: 1.5 }],
+        transform: [{ scaleX: 1.4 }, { scaleY: 1.4 }],
         
     }
 });
